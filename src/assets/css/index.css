@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins/Poppins-Regular.ttf);
+}
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: Oswald;
+  src: url(../fonts//Oswald/Oswald-VariableFont_wght.ttf);
+}
+
+/* defining the base css here  */
+
+@layer base {
+  /* body{ @apply flex flex-col min-h-screen w-full overflow-scroll } */
+  body { @apply sm:w-full md:w-full lg:w-full xl:w-full}
+  
+  footer { @apply fixed bottom-0 bg-slate-200 sm:w-full md:w-full lg:w-full }
+  button { @apply h-[40px] leading-5 align-middle cursor-pointer rounded-md bg-zinc-100 border-none }
+  input { @apply block w-full }
+  textarea {@apply block w-full}
+}
+
+
+/* defining the Compomemts css here  */
+
+@layer components{
+  .btn { @apply flex items-center justify-center p-4}
+  .btn-sm { @apply p-2 h-[40px] text-sm font-Poppins font-normal }
+  .btn-text { @apply text-center font-Quicksand text-[16px] font-normal text-black }
+
+  .input-sm { @apply  px-2 py-1 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition
+                ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none 
+            }
+        
+  .input-md { @apply  px-2 py-2 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition
+    ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none focus:border-green-900
+  }
+
+
+  .textarea { @apply  px-2 py-1 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition
+              ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none 
+          }
+  .select-sm {
+    @apply w-full block appearance-none px-4 py-1 text-sm font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  }
+
+  .select-md { 
+    @apply w-full block px-4 py-2 text-sm font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+  }
+
+  
+
+  
+  .table{
+    @apply w-full mt-4 border-zinc-500 font-Poppins text-[14px] cursor-pointer text-sm
+  }
+
+  .table-border { @apply w-full mt-4 border-zinc-500 font-Poppins text-[14px] cursor-pointer text-sm text-left }
+  .table-border > thead { @apply border-t-[1px] border-b-[1px] }
+  .table-border > tbody > tr > td { @apply border-[1px] }
+
+  .table > thead { @apply border-t-[1px] border-b-[1px] }
+  .table > thead > th { @apply py-3 px-2 font-normal}
+  .table > tbody > td { @apply py-3 px-2 font-normal }
+  .table > tbody > tr > td{ @apply px-6 }
+  .table > tbody > tr > td > h1 { @apply font-normal bg-green-500 px-1 py-2 text-white}
+
+
+  .table > :not(caption) > * > * {
+    padding: 0.5rem 0.5rem;
+    background-color: var(--bs-table-bg);
+    border-bottom-width: 1px;
+    box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+  }
+  .table > tbody > th,  .table > tbody td { @apply font-normal }
+  .table > thead > tr > th {@apply font-normal py-3 border-[1px] text-center}
+  .table > tbody { @apply align-baseline }
+  .table > thead { @apply align-bottom }
+  .table-group-divider { @apply border-t-2 border-solid border-inherit }
+  .table-sm { @apply p-2 }
+  
+  .table-striped > tbody > tr:nth-of-type(odd)  { @apply bg-[#ddd] }
+  .table-striped > tbody > tr:nth-of-type(even) { @apply bg-white  }
+  /* .table-striped > tbody > tr:nth-of-type(odd)  { @apply hover:bg-blue-900 hover:text-white }
+  .table-striped > tbody > tr:nth-of-type(even) { @apply hover:bg-blue-900 hover:text-white } */
+
+
+  .dropdown{ 
+    @apply absolute top-[70px] right-6 w-[200px] rounded-sm bg-white cursor-pointer shadow-md
+    before:content-[''] before:absolute before:-top-4 before:right-3 before:w-[25px] before:h-[25px] before:bg-white before:transform before:rotate-45 before:border-l-[1px] 
+    before:border-t-[1px] 
+  }
+
+  .pagination { @apply list-none flex justify-center items-center space-x-0 m-auto text-sm  }
+  .pagination a { @apply px-3 py-2 rounded-none cursor-pointer hover:bg-sky-400 hover:text-white}
+  .prevButton { @apply cursor-pointer}
+  .activePaginationButton { @apply bg-sky-400 text-white py-2}
+  .disabledPagination { @apply bg-gray-400 cursor-default text-gray-300 py-2 border-gray-400}
+
+  .toast-message { @apply bg-green-900 text-[16px] w-[40vw] px-5 font-Roboto}
+
+  /* custom Cascading style sheet*/
+
+  .overlay-white { @apply bg-banner bg-no-repeat bg-center before:right-0 before:bottom-0 before:bg-white before:opacity-90}
+  .img-section { @apply py-20 bg-center bg-cover bg-fixed bg-no-repeat  before:content-[""] before:absolute before:left-0 before:top-0 before:w-full before:h-full before:z-0}
+
+}
+
+input[type='text']:focus ~ .input-text{
+  @apply text-black border-black transform -translate-y-16 -translate-x-3;
+}
+input[type='password']:focus ~ .input-password{
+  @apply text-black border-black transform -translate-y-16 -translate-x-3;
+}

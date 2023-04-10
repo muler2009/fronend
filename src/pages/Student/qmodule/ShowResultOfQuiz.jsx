@@ -4,49 +4,73 @@ import * as Vsc from 'react-icons/vsc'
 const ShowResultOfQuiz = (props) => {
     const { totalQuestions, result, show, setShow } = props
     if(!show) return null
+    
   return (
-    <React.Fragment>
-         <section className='bg-black bg-opacity-20 inset-0 fixed top-0 backdrop-blur-30 flex justify-center sm:px-10' >
-          <div className={`w-1/3 flex-flex-col bg-white relative h-2/3 top-10 rounded-t-lg mx-auto sm:w-full sm:h-3/4`}>
-              <div className={`flex justify-between items-center rounded-tl-lg rounded-tr-lg bg-[#ddd] w-full px-5 py-3`}>
-                  <h1 className={`font-Oswald tracking-wide text-xl py-5`}>Result Scored</h1>
-                  <Vsc.VscClose className={`hover:bg-red-400 cursor-pointer`} onClick={() => setShow(prev => !prev)} />
+      <React.Fragment>
+        <section className='bg-black bg-opacity-20 inset-0 fixed top-0 backdrop-blur-30 flex justify-center sm:px-10' >
+            <div className={`flex-flex-col bg-[#f7f7f7] relative top-10 rounded-t-2xl mx-auto sm:w-full sm:h-3/4 lg:w-1/3 lg:h-[6clee5%]`}>
+              <div className={`flex justify-between items-center rounded-xl rounded-tr-lg bg-green-400 w-full h-[150px] px-5`}>
+                  <h1 className={`font-Roboto tracking-wide text-xl`}>Result Scored</h1>
+                  <Vsc.VscClose className={`hover:bg-white cursor-pointer`} onClick={() => setShow(prev => !prev)} />
               </div>
 
-              <div className={`flex px-10  py-5 font-Poppins border-b-2`}>
+              <div className={`flex flex-col px-10 font-Poppins`}>
+
+                  <div className={`w-full flex px-5 py-10 -my-16 bg-[#ffffff] rounded-2xl`}>                   
+                      <h1>You Scored:
+                          <span className={`mx-3`}>
+                            {result.score}
+                          </span>
+                      </h1>               
+                  </div>
+
                  
-                  <div className={`w-1/3 flex flex-col gap-5`}>
+                  <div className={`w-full flex flex-col px-5 py-10 my-20 bg-[#ffffff] rounded-2xl`}>  
+
                     <div className={``}>
-                      <h1>Total Question</h1>
-
+                      <h1 className={`font-Roboto`}>Total Question:
+                          <span className={`mx-3`}>
+                            {totalQuestions}
+                          </span>
+                      </h1>
+                      <div className={`border-[1px] border-[#ddd] rounded-xl h-2 bg-[#f2f2f2]`}>
+                       
+                      </div>                    
                     </div>
-                      <h1>Total Score</h1>
-                      <h1>Correct Answers:</h1>
-                      <h1>Wrong Answers</h1>
-                      
-                  </div>
-                  <div className={`w-2/3 flex flex-col gap-5`}>
-                    <h2>{totalQuestions}</h2>
-                    <h2>{result.score}</h2>
-                    <h2>{result.correctAnswers}</h2>
-                    <h2>{result.wrongAnswers}</h2>
+
+                    <div className={`my-4`}>
+                      <h1 className={`font-Roboto`}>Correct Answer:
+                          <span className={`mx-3`}>
+                            {result.correctAnswers}
+                          </span>
+                      </h1>
+                      <div className={`border-[1px] border-[#ddd] rounded-xl h-2 w-full`}>
+                          <div className={`w-[${(result.correctAnswers / totalQuestions) * 100}%] bg-green-500`}></div>
+                      </div>                    
+                    </div>
+
+                    <div className={`my-4`}>
+                      <h1 className={`font-Roboto`}>Wrong Answer:
+                          <span className={`mx-3`}>
+                          {result.wrongAnswers}
+                          </span>
+                      </h1>
+                      <div className={`border-[1px] border-[#ddd] rounded-xl h-2`}>
+                        {/* <div className={`w-[${(result.wrongAnswers / totalQuestions )* 100}%] bg-red-500 h-2`}></div> */}
+                      </div>                    
+                    </div>
+
+
                   </div>
               </div> 
 
-              <div className={`py-16`}>
-                asdasd
-              </div> 
-
-              <div className={`flex justify-end border-t-2 py-2`}>
+             
+              <div className={`flex justify-end border-t-2 `}>
                 <button className={`btn-sm bg-red-600 w-1/4  mr-10 text-white`} onClick={() => setShow(prevState => !prevState)}>Close</button>
-              </div> 
-              
-           
-         
-           
-          </div>
-         </section>
-    </React.Fragment>
+              </div>   
+            </div>
+        </section>
+      </React.Fragment>
   )
 }
 

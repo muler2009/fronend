@@ -3,59 +3,55 @@ import { useAddQuestion } from '../../Uploader/components/useAddQuestion'
 import AnswerExplanation from './AnswerExplanation'
 import ShowResultOfQuiz from './ShowResultOfQuiz'
 import QuestionCardModified from './QuestionCardModified'
+import { currentModuleCode } from '../../../features/module/moduleSlice' 
+import { useSelector } from 'react-redux'
 
 const Questions = (props) => {  
 
-const { 
-    data: questions, 
-    result, 
-    setResult,
-    lastIndex,
-    answerSelected, 
-    setAnswerSelected, 
-    totalQuestions, 
-    setSelectedAnswerIndex, 
-    selectedAnswerIndex, showResult, setShowResult ,
-    page,
-    setPage
-} = props
+    const module_code = useSelector(currentModuleCode);
 
-
- 
-const { onPublishedButtonClicked } = useAddQuestion()
-
+    const { 
+        data: questions, 
+        result, 
+        setResult,
+        lastIndex,
+        answerSelected, 
+        setAnswerSelected, 
+        totalQuestions, 
+        setSelectedAnswerIndex, 
+        selectedAnswerIndex, showResult, setShowResult ,
+        page,
+        setPage
+    } = props
  
   return (
     <React.Fragment>
 
-       
-                    <div className={`bg-white mx-1 flex justify-between items-center px-10 py-5`}>
-                    
-                            <h1 className={`font-Poppins`}>Mock Module</h1>           
-                            <h1 className={`font-Oswald`}>00:00</h1>
-                        
-                    </div>
-                    <div className={`flex flex-col`}>
-                        {
-                            questions?.map((question,index) => {
-                                return(
-                                    <QuestionCardModified  
-                                        question={question} key={index} 
-                                        result={result} setResult={setResult} 
-                                        answerSelected={answerSelected} 
-                                        setAnswerSelected={setAnswerSelected} 
-                                        totalQuestions={totalQuestions}
-                                        selectedAnswerIndex={selectedAnswerIndex}
-                                        setSelectedAnswerIndex={setSelectedAnswerIndex}
-                                        lastIndex={lastIndex}
-                                    />            
-                                )
-                            })
-                        
-                        }
-                    </div>          
-    </React.Fragment>
-    
+        <div className={`bg-white mx-1 flex justify-between items-center px-10 py-5`}>
+        
+                <h1 className={`font-Poppins`}>Mock Module{module_code}</h1>           
+                <h1 className={`font-Oswald`}>00:00</h1>
+        
+        </div>
+        <div className={`flex flex-col`}>
+            {
+                questions?.map((question,index) => {
+                    return(
+                        <QuestionCardModified  
+                            question={question} key={index} 
+                            result={result} setResult={setResult} 
+                            answerSelected={answerSelected} 
+                            setAnswerSelected={setAnswerSelected} 
+                            totalQuestions={totalQuestions}
+                            selectedAnswerIndex={selectedAnswerIndex}
+                            setSelectedAnswerIndex={setSelectedAnswerIndex}
+                            lastIndex={lastIndex}
+                        />            
+                    )
+                })
+            }
+        </div>          
+    </React.Fragment>  
   )
 }
 

@@ -4,8 +4,6 @@ import * as Gr from 'react-icons/gr'
 import * as Hi from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
 import TableStructure from '../ui/TableStructure'
-
-
 import { ShowEntries } from './Result'
 import { useGetModuleQuery } from '../../../../features/module/moduleApiSlice'
 import { MODULE_COLUMN } from '../../../../common/attributes'
@@ -48,7 +46,6 @@ const AllModules = () => {
                                   <Link to={`../new-exam`}>
                                       <Gr.GrUnlock size={20} color='white' />
                                   </Link>
-
                               </button>                         
                               
                           )
@@ -111,9 +108,7 @@ const AllModules = () => {
         </div>
       )
     }
-    
-   
-    
+
     <UpgradeFromModule
         upgradeModalshowState={upgradeModalshowState}
         setUpgradeModalShowState={setUpgradeModalShowState} 
@@ -121,8 +116,12 @@ const AllModules = () => {
     />
       
    </React.Fragment>
+
+   
   )
 }
+
+
 
 export default AllModules
 

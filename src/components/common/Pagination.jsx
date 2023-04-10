@@ -2,15 +2,19 @@ import React, { useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import { FaBackward, FaForward } from 'react-icons/fa'
 import Questions from '../../pages/Student/qmodule/Questions'
+import ShowResultOfQuiz from '../../pages/Student/qmodule/ShowResultOfQuiz'
 
 
 const Pagination = (props) => {
 
+  const [show, setShow] = useState(false)
+
  //extracting the attributed from the props   
-  const { itemPerpage, showResult, setShowResult, totalPage, lastIndex, setPageNumber, data, result, setResult,  answerSelected, setAnswerSelected, selectedAnswerIndex, setSelectedAnswerIndex} = props
+  const { itemPerpage, totalQuestions, showResult, setShowResult, totalPage, lastIndex, setPageNumber, data, result, setResult,  answerSelected, setAnswerSelected, selectedAnswerIndex, setSelectedAnswerIndex} = props
 
   // selecting the corresponding Clicked page
   const handlePageClick = (event) => {
+
     const newOffset = (event.selected * itemPerpage) % data.length; // calculating the current page 
     setPageNumber(newOffset); // setting the pagenumber to new offset
     setSelectedAnswerIndex(null); // to unselect the uanswer fot the next question
@@ -34,28 +38,26 @@ const Pagination = (props) => {
   return (
     <React.Fragment>
       <ReactPaginate
+        breakLabel='...'
         previousLabel={"Previous"}
         nextLabel={lastIndex === data.length ? "Finish" : "Next"}
         pageCount={totalPage}
         onPageChange={handlePageClick}  
         containerClassName={`pagination`}    
-        previousClassName={` prevButton`}
+        previousClassName={`prevButton`}
         activeClassName={"activePaginationButton"}
         disabledClassName={"disabledPagination"}
         disabledLinkClassName={"Finito"}
         renderOnZeroPageCount={null} 
-        onClick={(clickEvent) => {
-          console.log('onClick', clickEvent);
-          // Return false to prevent standard page change,
-          // return false; // --> Will do nothing.
-          // return a number to choose the next page,
-          // return 4; --> Will go to page 5 (index 4)
-          // return nothing (undefined) to let standard behavior take place.
-        }}
+        onClick={() => 
+           lastIndex === data.length 
+           ? setShow(prev => !prev) : null
+        }
         
         
         />
-          
+        
+        <ShowResultOfQuiz totalQuestions={totalQuestions} result={result} show={show} setShow={setShow} />
     </React.Fragment>
   )
 }

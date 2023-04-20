@@ -16,9 +16,9 @@ const Signup = () => {
     } = useSignup()
 
     return (
-        <section className='container mx-auto py-10 bg-white bg-opacity-30 sm:px-5'>
+        <div className='container mx-auto py-10 bg-white bg-opacity-30 sm:px-5'>
             <div className={`w-full mx-auto h-full rounded-lg flex flex-col justify-center items-center shadow-lg bg-white border-2 border-[#7c60b8] py-5 relative 
-                sm:w-full sm:border-green-700 lg:w-2/3 xl:w-1/2 `}>
+                 sm:border-green-700 md:w-4/5`}>
                 {/* Fragment for displaying the key */}
 
                 {/* Fragment for displaying the key */}
@@ -27,19 +27,31 @@ const Signup = () => {
                         Create your Account
                     </h1>
                 </div>
-                <div className='w-full mt-5'>               
+                        
                     <SignUpRegistration 
                         requiredValues={requiredValues} 
                         boolValidators={boolValidators}
                         setBoolValidators={setBoolValidators}
                         setRequiredValues={setRequiredValues}
                         handleSignupChanges={handleSignupChanges}
-                        setRegistrationSuccessful={setRegistrationSuccessful} 
-                        
+                        setRegistrationSuccessful={setRegistrationSuccessful}    
                     />  
-                 </div>  
+                
             </div>
-        </section>
+        </div>
+
+        // <div className="flex md:flex">
+        //     <div className="w-full bg-white p-5 border-[2px]">
+        //     <SignUpRegistration 
+        //        requiredValues={requiredValues} 
+        //        boolValidators={boolValidators}
+        //        setBoolValidators={setBoolValidators}
+        //        setRequiredValues={setRequiredValues}
+        //        handleSignupChanges={handleSignupChanges}
+        //        setRegistrationSuccessful={setRegistrationSuccessful}    
+        //     />  
+        //     </div>
+        // </div>
     )
 }
 

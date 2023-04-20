@@ -54,8 +54,8 @@ export const Login = () => {
     <React.Fragment>
         {
             isLoading ? <Spinner /> : (
-                <section className='flex justify-center items-center my-10 py-10 mx-auto container sm:px-5'> 
-                    <div className='w-1/2 h-full bg-sky-50 rounded-lg -px-4 sm:w-full md:w-full lg:w-3/4 xl:w-2/3 2xl:w-1/2'>   
+                <section className='flex md:flex justify-center mt-9 mb-[17rem] xs:px-5 sm:px-10'> 
+                    <div className='w-full bg-sky-50 rounded-lg -px-4 md:w-3/4 lg:w-1/2'>   
                             <div className='flex flex-col items-center justify-center'>
                                 <div className='border-b-2 border-white w-full py-10 flex justify-center items-center bg-sky-200'>
                                     <h1 className='text-3xl font-Oswald text-green-700 pt-10'>Please login to your account</h1>

@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 const useValidation = () => {
 
     const [requiredValues, setRequiredValues] = useState({
+        fullname: "",
         email: "",
-        inistitute: "",
+        phone: "",
         department: "",
         password: "",
         confirm_password: "",
@@ -19,7 +20,7 @@ const useValidation = () => {
         confirmPwdFocus: false,
         aggrement: false,
         validLName: false,
-        validName: false,
+        validFname: false,
         validEmail: false,
         passwordValidator: false,
         validMatchPassword: false

@@ -9,11 +9,13 @@ import StudentHome from '../pages/Student/StudentspageFile/StudentHome';
 import { StudentDashboardStructure } from '../layout/StudentDashboardStructure';
 import ForgotPassword from '../pages/Login/ForgotPassword';
 import Signup from '../pages/signup/Signup';
+import Home from '../pages/public/Home';
 
 export const PageRoutes = () => {
 
     let route = useRoutes ([
-      
+        { path: "/", element: <Home />},
+       
         { path: "/about", element: <h1>about us</h1>},
         { path: "/pricing", element: <h1>Pricing</h1>},
         { path: "/support", element: <h1>Support Center</h1>},

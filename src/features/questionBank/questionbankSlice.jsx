@@ -4,7 +4,7 @@ export const questionbankSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         getQuestion: builder.query({
             query: (page = 1) => ({
-                url: `/api/getquestions?page=${page}` ,
+                url: `/api/getquestions` ,
                 method: 'GET',
 
             }),

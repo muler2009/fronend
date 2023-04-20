@@ -50,7 +50,8 @@ const Questions = (props) => {
                     )
                 })
             }
-        </div>          
+        </div>    
+        <AnswerExplanation />      
     </React.Fragment>  
   )
 }

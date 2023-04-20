@@ -109,7 +109,7 @@ const UpgradeModuleFor = ({ dataSelected }) => {
                 </div>
                 
              
-{/* 
+
                 <div className={`bg-white py-3 px-5 flex justify-between items-center font-Poppins cursor-pointer hover:bg-[#eff5fa]  hover:border-[#5584a4] hover:rounded-lg shadow-lg`} >
                   <div className={`flex justify-between items-center`}>
                     <div className={`flex justify-start items-center space-x-4 `}>
@@ -152,16 +152,16 @@ const UpgradeModuleFor = ({ dataSelected }) => {
                   <div className={`text-sm`}>
                     <p className={`text-[#5584a4]`}>{dataSelected.moduleTotalQuestion}</p> 
                   </div>
-                </div> */}
+                </div> 
 
-                {/* <div className={`text-xl font-Poppins text-center mt-10`}>
+                 <div className={`text-xl font-Poppins text-center mt-10`}>
                   {
                     dataSelected.moduleTotalQuestion === 200 ? "200 ETB" :
                     dataSelected.moduleTotalQuestion === 400 ? "300 ETB" :
                     dataSelected.moduleTotalQuestion === 500 ? "350 ETB" :
                     null  
                   }
-                </div> */}
+                </div> 
 
             </div>
         </React.Fragment>

@@ -34,7 +34,6 @@ const department = [
     {deptId: 8, name: 'Construction technology Management'},
 ]
 
-
 const NAME_REGEX = /^[A-Za-z][A-Za-z0-9-_]{4,23}$/;
 const EMAIL_VALIDATOR_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -78,11 +77,6 @@ const showSuccessAlert = () => {
       });
 };
 
-
-
-
-
-
 const SignUpRegistration = (props) => {
 
     const navigate = useNavigate()
@@ -119,13 +113,13 @@ const SignUpRegistration = (props) => {
         focusReference.current.focus();     
     }, [])
 
-    // useEffect(() => {
-    //     setBoolValidators({
-    //         ...boolValidators,
-    //         validName: NAME_REGEX.test(requiredValues.firstname)
-    //     });
+    useEffect(() => {
+        setBoolValidators({
+            ...boolValidators,
+            validFname: NAME_REGEX.test(requiredValues.fullname)
+        });
         
-    // }, [requiredValues.firstname])
+    }, [requiredValues.fullname])
 
   
 
@@ -154,10 +148,54 @@ const SignUpRegistration = (props) => {
     
     return (
       <React.Fragment>
-        <form className={`flex flex-col space-y-5`} onSubmit={(event) => event.preventDefault()}>
+        <form className={`flex flex-col space-y-5 w-full px-10 py-10`} onSubmit={(event) => event.preventDefault()}>
+
+            {/* Fragment for Full Name */}
+            <div className={`flex flex-col gap-2 w-full mx-auto`}>
+                    <div className={`flex justify-between items-center`}>
+                        <label htmlFor="email" className='font-Poppins text-muted'>Full Name</label>
+                            <div className={`flex items-center ${boolValidators.validFname ? "ml-2 text-green-700 text-xs" : "hidden"}`}>
+                                <GiCheckMark color="green" size={25} /><span >Correct</span>
+                            </div>
+                            <FaTimesCircle className={`${boolValidators.validFname || !requiredValues.fullname ? "hidden" : "flex justify-center items-center ml-1" }`} color='red' size={20} />
+
+                    </div>
+                    <div className={`py-2 flex-col`}>
+                        <div className={`flex`}>
+                            <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
+                                <Fa.FaUser size={20} color='gray'/>
+                            </span>
+                            <input
+                                type='text'
+                                id='fullname'
+                                name='fullname'
+                                placeholder='Your Full Name'
+                                required
+                                ref={focusReference} 
+                                value={requiredValues.fullname}
+                                aria-invalid={boolValidators.validFname ? "false" : "true"}
+                                aria-describedby="emailnote"
+                                onChange={handleSignupChanges}
+                                onFocus={() => setBoolValidators(boolValidators => ({ ...boolValidators ,nameFocus: true}))}
+                                onBlur={() => setBoolValidators(boolValidators => ({ ...boolValidators ,nameFocus: false}))}
+
+                                className={`input-md w-full font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white `}
+                            /> 
+                        </div>
+                        <p id="emailnote" className={`${boolValidators.nameFocus && requiredValues.fullname && !boolValidators.validFname
+                            ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
+                            : "absolute -left-[9999px]"}`} >
+                                <AiFillInfoCircle className={`mt-1 `}/>
+                                <span className={`ml-1 pr-10`}>
+                                Name must be between 4-8 characchter
+                                </span>
+                        </p>
+                    </div>
+
+            </div>
 
             {/* Fragment for Email */}
-            <div className={`flex flex-col gap-2 w-4/5 mx-auto`}>
+            <div className={`flex flex-col gap-2 w-full mx-auto`}>
                 <div className={`flex justify-between items-center`}>
                     <label htmlFor="email" className='font-Poppins text-muted'>Email</label>
                         <div className={`flex items-center ${boolValidators.validEmail ? "ml-2 text-green-700 text-xs" : "hidden"}`}>
@@ -177,7 +215,6 @@ const SignUpRegistration = (props) => {
                             name='email'
                             placeholder='Email Address'
                             required
-                            ref={focusReference} 
                             value={requiredValues.email}
                             aria-invalid={boolValidators.validEmail ? "false" : "true"}
                             aria-describedby="emailnote"
@@ -202,7 +239,7 @@ const SignUpRegistration = (props) => {
 
             {/* Fragment for Inistitute */}
 
-            <div className={`flex flex-col gap-2 w-4/5 mx-auto`}>
+            {/* <div className={`flex flex-col gap-2 w-4/5 mx-auto`}>
                 <label htmlFor="inistitute" className={`font-Poppins text-muted flex justify-between`}>Inistitution</label>
                 <div className={`flex `}>
                             <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
@@ -224,11 +261,11 @@ const SignUpRegistration = (props) => {
                                     }
                             </select>
                         </div>
-            </div>
+            </div>  */}
 
             {/* Fragment for Department */}
                     
-            <div className={`flex flex-col gap-2 w-4/5 mx-auto font-Poppins`}>
+            <div className={`flex flex-col gap-2 w-full mx-auto font-Poppins`}>
                 <label htmlFor="department" className={`text-[15px]`}>Department</label>
                 <div className={`flex`}>
                     <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
@@ -253,9 +290,44 @@ const SignUpRegistration = (props) => {
                 </div>
             </div>
 
+             {/* Fragment for Phone number  */}
+             <div className={`flex flex-col gap-2 w-full mx-auto`}>
+                    <div className={`flex justify-between items-center`}>
+                        <label htmlFor="email" className='font-Poppins text-muted'>Phone Number</label>
+                            <div className={`flex items-center ${boolValidators.validFname ? "ml-2 text-green-700 text-xs" : "hidden"}`}>
+                                <GiCheckMark color="green" size={25} /><span >Correct</span>
+                            </div>
+                            <FaTimesCircle className={`${boolValidators.validFname || !requiredValues.fullname ? "hidden" : "flex justify-center items-center ml-1" }`} color='red' size={20} />
+
+                    </div>
+                    <div className={`py-2 flex-col font-Poppins`}>
+                        <div className={`flex`}>
+                        <span className="px-4 inline-flex items-center min-w-fit border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">+251</span>
+                            <input 
+                                type={`number`} 
+                                id="phone"
+                                name="phone"
+                                //value={requiredValues.phone}
+                                
+                                className={`input-md font-Poppins overflow-y-scroll border border-l-0 rounded-l-none focus:border-[#ddd] focus:bg-zinc-100 bg-gray-50`} 
+                            />
+                        </div>
+                        <small className={`font-Quicksand text-sm text-[#6c757d]`}>Your active phone number (e.g 912..)</small>
+                        <p id="emailnote" className={`${boolValidators.nameFocus && requiredValues.fullname && !boolValidators.validFname
+                            ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
+                            : "absolute -left-[9999px]"}`} >
+                                <AiFillInfoCircle className={`mt-1 `}/>
+                                <span className={`ml-1 pr-10`}>
+                                    Name must be between 4-8 characchter
+                                </span>
+                        </p>
+                    </div>
+
+            </div>               
+
              {/* Code Section  password */}
 
-            <div className={`flex flex-col gap-2 w-4/5 mx-auto`}>
+            <div className={`flex flex-col gap-2 w-full mx-auto`}>
                 <div className={`flex justify-between items-center`}>
                     <label htmlFor="password" className='font-Poppins text-muted'>Password</label>
                         <div className={`flex items-center ${boolValidators.passwordValidator ? "ml-2 text-green-700 text-xs" : "hidden"}`}>
@@ -305,7 +377,7 @@ const SignUpRegistration = (props) => {
 
              {/* Code Section for Confirm  password */}
 
-            <div className={`flex flex-col gap-2 w-4/5 mx-auto`}>
+            <div className={`flex flex-col gap-2 w-full mx-auto`}>
                 <div className={`flex justify-between items-center`}>
                     <label htmlFor="confirm_password" className='font-Poppins text-muted'>Confirm Password</label>
                         <div className={`flex items-center ${boolValidators.validMatchPassword && requiredValues.password ? "ml-2 text-green-700 text-xs" : "hidden"}`}>
@@ -350,7 +422,7 @@ const SignUpRegistration = (props) => {
 
             </div>
 
-            <div className={`flex flex-col gap-2 w-4/5 mx-auto`}>
+            <div className={`flex flex-col gap-2 w-full mx-auto`}>
                 <div className='flex flex-row justify-start items-center space-x-2'>
                         <aside className={``}>
                             <input type='checkbox' name="aggrement" id="aggrement" className="input-md" onChange={handleSignupChanges} />
@@ -370,7 +442,7 @@ const SignUpRegistration = (props) => {
             </div>
             
             {/* Create An Account Button */}
-            <div className={`flex w-4/5 mx-auto pb-5`}>
+            <div className={`flex w-full mx-auto pb-5`}>
                 <button 
                     className='w-1/2 px-2 bg-[#3C4852] text-sm rounded-none text-white font-Poppins cursor-pointer disabled:opacity-25 disabled:cursor-default' 
                     onClick={ () => {

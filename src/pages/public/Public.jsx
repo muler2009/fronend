@@ -6,7 +6,7 @@ import { PageRoutes } from '../../routes/PageRoutes'
 const Public = () => {
   return (    
    <React.Fragment>
-        <header>
+        <header className="w-full overflow-hidden sticky top-0 bg-opacity-1 bg-white z-50">
             <Navbar />
         </header>
         <main className={`flex-1 `}>
@@ -14,7 +14,7 @@ const Public = () => {
             <Outlet />
         </main>
 
-        <footer className='w-screen scroll bottom-0 grid place-content-center bg-[#0073aa]'>
+        <footer className='w-full relative bottom-0 grid place-content-center bg-[#0073aa] overflow-hidden'>
           <h6 className='font-Poppins text-sm py-5'>
              &copy; 2023 ieXitTutor.com
           </h6>

@@ -5,11 +5,12 @@ module.exports = {
   ],
   theme: {
       screens: {
-        sm: "640px",
-        md: "768px",
-        lg: "1024px",
-        xl: "1280px",
-        "2xl": "1536px",
+        xs: "480px",
+        ss: "640px",
+        sm: "768px",
+        md: "1024px",
+        lg: "1280px",
+        xl: "1700px"
       },
   
     extend: {
@@ -19,6 +20,9 @@ module.exports = {
         'Quicksand': ['Quicksand', 'sans'],
         'Oswald': ['Oswald', 'sans']
       },
+      backgroundImage: {
+        'hero-pattern': "url('/src/assets/images/rect.png')",
+      }
     },
   },
   plugins: [],

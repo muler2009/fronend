@@ -21,7 +21,7 @@ export const weblink = [
     {wbelinkId: '1', label: 'Home', path: '/', icon: <MdIcon.MdHome /> },
     {wbelinkId: '2', label: 'About us', path: '/about', icon: <FcAbout /> },
     {wbelinkId: '3', label: 'Pricing', path: '/pricing', icon: <MdIcon.MdOutlinePriceCheck /> },
-    {wbelinkId: '4', label: 'Support', path: '/support', icon: <FcSupport /> }
+    {wbelinkId: '4', label: 'FAQ', path: '/faq', icon: <FcSupport /> }
 
 ]
 

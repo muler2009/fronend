@@ -111,6 +111,10 @@
   .overlay-white { @apply bg-banner bg-no-repeat bg-center before:right-0 before:bottom-0 before:bg-white before:opacity-90}
   .img-section { @apply py-20 bg-center bg-cover bg-fixed bg-no-repeat  before:content-[""] before:absolute before:left-0 before:top-0 before:w-full before:h-full before:z-0}
 
+  .sector {
+    clip-path: polygon(0 0, 99% 0, 43% 100%, 0% 100%);
+   
+  }
 }
 
 input[type='text']:focus ~ .input-text{
@@ -118,4 +122,16 @@ input[type='text']:focus ~ .input-text{
 }
 input[type='password']:focus ~ .input-password{
   @apply text-black border-black transform -translate-y-16 -translate-x-3;
+}
+
+.bg-blue-gradient {
+  background: linear-gradient(
+    157.81deg,
+    #fadfde -43.27%,
+    #f5c9be -21.24%,
+    #f0b09d 12.19%,
+    #eb847d 29.82%,
+    #e6715c 51.94%,
+    #cf4533 90.29%
+  );
 }

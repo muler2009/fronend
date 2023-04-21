@@ -109,9 +109,9 @@ const SignUpRegistration = (props) => {
         }   
     }
 
-    useEffect(() => {
-        focusReference.current.focus();     
-    }, [])
+    // useEffect(() => {
+    //     focusReference.current.focus();     
+    // }, [])
 
     useEffect(() => {
         setBoolValidators({
@@ -171,7 +171,7 @@ const SignUpRegistration = (props) => {
                                 name='fullname'
                                 placeholder='Your Full Name'
                                 required
-                                ref={focusReference} 
+                                // ref={focusReference} 
                                 value={requiredValues.fullname}
                                 aria-invalid={boolValidators.validFname ? "false" : "true"}
                                 aria-describedby="emailnote"

@@ -6,7 +6,7 @@ import { PageRoutes } from '../../routes/PageRoutes'
 const Public = () => {
   return (    
    <React.Fragment>
-        <header className="w-full overflow-hidden sticky top-0 bg-opacity-1 bg-white z-50">
+        <header className="w-full overflow-hidden sticky top-0 bg-white z-50">
             <Navbar />
         </header>
         <main className={`flex-1 `}>

@@ -65,26 +65,26 @@ const AllModules = () => {
           id: 2,
           Header: 'Upgrade',
           Cell: ({ row }) => {                
-              return(
-                  <div className="flex justify-center items-center space-x-2">
-                    {
-                      row.values.moduleStatus === true
-                      ? 
-                        ( <h1 className={``}> --- </h1> ) 
-                      : 
-                        (
-                          <div className={`text-sm flex items-center `} 
-                              onClick={
-                                () => getDataSelected(row.values) 
-                              }>
-                              <h1 className={`text-blue-700 font-Roboto text-sm hover:underline hover:text-blue-600`}>Upgrade</h1>                               
-                              
-                          </div>
-                        ) 
-                    }
-                  </div>
-                 
-              )
+            return(
+                <div className="flex justify-center items-center space-x-2">
+                  {
+                    row.values.moduleStatus === true
+                    ? 
+                      ( <h1 className={``}> --- </h1> ) 
+                    : 
+                      (
+                        <div className={`text-sm flex items-center `} 
+                            onClick={
+                              () => getDataSelected(row.values) 
+                            }>
+                            <h1 className={`text-blue-700 font-Roboto text-sm hover:underline hover:text-blue-600`}>Upgrade</h1>                               
+                            
+                        </div>
+                      ) 
+                  }
+                </div>
+                
+            )
         }
       },
     ])
@@ -97,7 +97,7 @@ const AllModules = () => {
     }
     {
       isSuccess && (        
-        <div className={`bg-white px-5 py-5`}>
+        <div className={`block bg-white px-5 py-5`}>
           <TableStructure 
             columns={MODULE_COLUMN} 
             data={data} 

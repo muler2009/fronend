@@ -9,7 +9,7 @@ const Public = () => {
         <header className="w-full overflow-hidden sticky top-0 bg-white z-50">
             <Navbar />
         </header>
-        <main className={`flex-1 `}>
+        <main className={`flex-1`}>
             <PageRoutes />
             <Outlet />
         </main>

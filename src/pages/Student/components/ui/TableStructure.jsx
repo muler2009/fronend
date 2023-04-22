@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 import { useTable,  useRowSelect ,usePagination, useFilters, useGlobalFilter} from 'react-table'
 import ShowDataEntries from '../../../../components/common/ShowDataEntries'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-import ModuleSearch from '../../../Uploader/components/ModuleSearch'
+import ModuleSearch from '../../../../components/ModuleSearch'
 
 
 const TableStructure = ({ columns, data, useAction }) => {
@@ -90,8 +90,8 @@ const TableStructure = ({ columns, data, useAction }) => {
 
             </table>
 
-            <div className="flex flex-row justify-between bg-white py-4 px-10 gap-4">
-                   <div className="flex">
+            <div className="flex md:flex flex-wrap justify-between items-center bg-white py-4 px-10 gap-4">
+                   <div className="xs:w-full flex flex-1">
                         <div className="flex justify-start items-center space-x-3">
                             <span className={`font-Poppins text-sm`}>Goto Page</span>
                             <input 

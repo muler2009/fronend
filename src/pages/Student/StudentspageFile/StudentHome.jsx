@@ -1,6 +1,6 @@
 import React from 'react'
 import {  Outlet } from 'react-router-dom'
-import StudentGeneralStastics from '../components/content/StudentGeneralStastics'
+import StudentGeneralStastics, { Scharts } from '../components/StudentGeneralStastics'
 import {
   InformationCard,
   ExamPackage
@@ -8,24 +8,32 @@ import {
 import AllModules from '../components/content/Modules'
 import { currentUser } from '../../../features/auth/authSlice';
 import { useSelector } from 'react-redux'
+import UpgradeAccount from '../components/UpgradeAccount'
 
 const StudentHome = () => {
   const userName = useSelector(currentUser);
   return (
-    <section className='w-full flex sm:px-4 md:px-1'>
-        <div className={`w-full flex flex-col`}>
-            <InformationCard />
-            {userName}
-            {/* <ExamPackage /> */}
-            <AllModules />
-            <div className='py-1'>
-                {/* <CustomBar /> */}
-                <StudentGeneralStastics /> 
-            </div>
-            <Outlet />
-       </div>
-    </section>
+    <>   
+      <InformationCard />
+      <AllModules />
+      <div className="flex flex-wrap md:flex-nowrap">
+        <div className={`w-full ss:mx-10 sm:mx-16 md:w-1/2`}>
+          <UpgradeAccount />
+        </div>
+        <div className={`w-full ss:mx-10 sm:mx-16 md:w-1/2`}>
+          <Scharts />
+        </div>
+       
+
+        
+      </div>
+    </>
   )
 }
 
 export default StudentHome
+
+{/* <div className='py-1'>
+{/* <CustomBar /> */}
+// <StudentGeneralStastics /> 
+// </div> */}

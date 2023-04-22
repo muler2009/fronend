@@ -28,7 +28,7 @@ const Subscribe = () => {
 
           {/* Subscription plan */}
           <div className='flex flex-wrap justify-center items-center'>
-            <div className={`w-full sm:w-1/3 sm:mx-5 ss:mx-16 md:w-1/5 shadow-md ring-2 ring-[#09bdd9] rounded-sm my-3 flex flex-col relative border-tl-[50%]`} >
+            <div className={`w-full xs:mx-5 sm:w-1/3 sm:mx-5 ss:mx-16 md:w-1/5 shadow-md ring-2 ring-[#09bdd9] rounded-sm my-3 flex flex-col relative border-tl-[50%]`} >
                 <div className={`p-5 flex justify-center items-center relative`}>
                   <h1 className="font-Poppins text-xl font-normal my-4 flex">Mock
                     <span className={`absolute -top-3 -right-4 w-20 h-20 border-[1px] rounded-full font-Poppins bg-red-600 text-white flex justify-center items-center text-[16px] font-normal`}>Free</span>

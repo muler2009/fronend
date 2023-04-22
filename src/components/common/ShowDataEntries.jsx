@@ -6,9 +6,9 @@ const ShowDataEntries = (props) => {
     const { pageSize, setPageSize } = props
     return(
         <React.Fragment>
-            <div className={`flex`}>         
-                <div className="flex space-x-4">
-                    <div className="flex items-center justify-center font-Poppins text-sm">Show Entries</div>
+            <div className={`flex md:flex`}>         
+                <div className="flex flex-1 ss:space-x-2">
+                    <h1 className="flex items-center justify-center font-Poppins text-sm">Show Entries</h1>
                     <div className={`flex justify-start`}>
                         
                         <select className="select-sm" type="number" value={pageSize} onChange={(event) => setPageSize(Number(event.target.value))}>
@@ -21,7 +21,7 @@ const ShowDataEntries = (props) => {
                             }
 
                         </select>
-                        </div>
+                    </div>
                 </div>
             </div>
         </React.Fragment>

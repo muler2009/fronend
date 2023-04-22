@@ -16,9 +16,9 @@ export const InformationCard = () => {
 
   return (
     <React.Fragment>
-        <section className={`w-full py-1 px-1`}>
-            <div className={`flex flex-row justify-between items-center space-x-4`}>
-            <div className={`w-1/3 flex shadow-xl bg-white rounded-lg`}>
+        <section className={`w-full flex md:flex py-1 px-1 space-x-3`}>
+            <div className={`flex flex-1 flex-wrap mx-10 ss:mx-16 sm:px-5 sm:flex md:flex-nowrap md:space-x-3`}>              
+                <div className={`w-full sm:w-1/2 md:w-1/3 my-2 flex shadow-xl bg-white rounded-lg`}>
                     <div className={`flex py-5 px-7 space-x-3`}>
                         <VscLayersActive size={50} color='#071466' />
                         <div className='flex flex-col justify-center'>
@@ -37,7 +37,7 @@ export const InformationCard = () => {
                     
                 </div>
                 
-                <div className={`w-1/3 flex shadow-xl bg-white rounded-lg`}>
+                <div className={`w-full sm:w-1/2 md:w-1/3 my-2 flex shadow-xl bg-white rounded-lg`}>
                     <div className={`flex py-5 px-7 space-x-3`}>
                         <VscLayersActive size={50} color='#071466' />
                         <div className='flex flex-col justify-center'>
@@ -56,7 +56,7 @@ export const InformationCard = () => {
                     
                 </div>
 
-                <div className={`w-1/3 flex shadow-xl bg-white rounded-lg`}>
+                <div className={`w-full my-2 md:w-1/3 flex shadow-xl bg-white rounded-lg`}>
                     <div className={`flex py-5 px-7 space-x-3`}>
                         <MdRecentActors size={50} color='#071466' />
                         <div className='flex flex-col justify-center'>

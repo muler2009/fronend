@@ -15,6 +15,7 @@ import { Provider } from 'react-redux';
 import Layout from './layout/Layout';
 import Public from './pages/public/Public';
 import RequiredAuthentication from './features/auth/RequiredAuthentication';
+import Dashboard from './pages/Student/components/Dashboard';
 
 const router = 
   createBrowserRouter(
@@ -26,7 +27,7 @@ const router =
 
           <Route path='/*' element={<Public />} />
           <Route path='upload/*' element={<UploaderStructure />} />            
-          <Route path='student/*' element={<StudentDashboardStructure />} />           
+          <Route path='student/*' element={<Dashboard />} />           
 
           {/* Protected routes */}
           <Route element={<RequiredAuthentication />}>

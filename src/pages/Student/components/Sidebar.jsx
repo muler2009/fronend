@@ -1,13 +1,11 @@
 import React,  { useState } from 'react'
 import { FaBars } from 'react-icons/fa'
-import { side_navigation } from '../../constants/studentNavigation'
+import { side_navigation } from '../constants/studentNavigation'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { currentUserEmail } from '../../../../features/auth/authSlice'
-import user from '../../../../assets/images/user.jpeg'
+import { currentUserEmail } from '../../../features/auth/authSlice'
+import user from '../../../assets/images/user.jpeg'
 import * as Ri from 'react-icons/ri'
-
-
 
 
 const Sidebar = () => {
@@ -16,8 +14,8 @@ const Sidebar = () => {
 
   return (
     <React.Fragment>
-      <div className={`hidden lg:flex h-vh`}>
-      <div className={`${control ? 'w-72' : 'w-24'} h-screen bg-[#ffffff] border-r-[1px] border-[#c9c9c9] relative top-0 duration-300 shadow-md`}>
+      <div className={`hidden md:flex`}>
+      <div className={`${control ? 'w-72' : 'w-24'}  bg-[#ffffff] border-r-[1px] border-[#c9c9c9] relative top-0 duration-300 shadow-md`}>
           <div className='flex border-b-[1px]'>
                 <div className={`flex justify-center items-center space-x-4 py-4 ${!control && 'border-none' }`}>
                   <div className='flex flex-col py-3 px-3 space-x-4 justify-start items-baseline gap-10 justify-cener '>

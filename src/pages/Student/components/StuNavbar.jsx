@@ -9,11 +9,14 @@ import DropDownProfile from '../../../common/DropDownProfile'
 import { side_navigation } from '../constants/studentNavigation'
 import { Submenu } from './Sidebar'
 import { currentUserEmail } from '../../../features/auth/authSlice'
+import { FaPowerOff } from 'react-icons/fa'
+import LogoutConfirmationModal from './LogoutConfirmationModal'
 
 const StuNavbar = () => {
 
   const navigate = useNavigate()
   const [drop, setDrop] = useState(false)
+  const [logout, setLogout] = useState(false)
   const [showNavigationLinks, setShowNavigationLinks] = useState(false)
   const email = useSelector(currentUserEmail)
 
@@ -42,14 +45,17 @@ const StuNavbar = () => {
                     </p>  
                 </div>
 
-                <div className={`mr-10 cursor-pointer font-Poppins text-sm hidden lg:flex lg:justify-center lg:items-center lg:space-x-3`} onClick={() => setDrop(prev => !prev)}>
+                {/* dropdown with edit logout and other profile */}
+                {/* <div className={`mr-10 cursor-pointer font-Poppins text-sm hidden lg:flex lg:justify-center lg:items-center lg:space-x-3`} onClick={() => setDrop(prev => !prev)}>
                   <img src={user} alt='profile image' className={`rounded-full w-10 h-10 object-cover object-center cursor-pointer`} />
                   <p>{email}</p>
                     {
                       drop &&  <DropDownProfile setDrop={setDrop} />
                     }
-                </div>
-               
+                </div> */}
+
+                <Ai.AiOutlinePoweroff size={20} className="cursor-pointer hidden lg:flex" onClick={() => setLogout(prev => !prev)} />
+                               
                 {/* for small devices */}     
                 <div className={showNavigationLinks ? 'fixed top-16 xs:w-[60%] w-[40%] left-0 bg-white ease-in-out duration-500': 'fixed left-[-100%]'}>
                   <div className={`flex flex-col`}>
@@ -82,7 +88,7 @@ const StuNavbar = () => {
 
         {/* for medium devices */} 
                    
-        <div className={`hidden md:flex w-full bg-[#fcfcfc] shadow-lg lg:hidden px-5 py-5 my-2`}>
+        <div className={`hidden md:flex w-full justify-between items-center bg-[#fcfcfc] shadow-lg lg:hidden px-5 py-5 my-2`}>
           <div className="flex flex-1">
             {
               side_navigation.map((link, index) => (
@@ -95,8 +101,12 @@ const StuNavbar = () => {
               ))
             }
           </div>
+          <div className="">
+            <Ai.AiOutlinePoweroff size={20} className="cursor-pointer" onClick={() => setLogout(prev => !prev)} />
+          </div>
         </div>
-            
+        
+        <LogoutConfirmationModal logout={logout} setLogout={setLogout} />
     </React.Fragment>
   )
 }

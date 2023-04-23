@@ -17,7 +17,7 @@ export const InformationCard = () => {
   return (
     <React.Fragment>
         <section className={`w-full md:flex my-5`}>
-            <div className={`flex flex-1 flex-wrap mx-10 ss:mx-16 sm:px-5 sm:flex md:flex-nowrap md:space-x-3`}>              
+            <div className={`flex flex-1 flex-wrap mx-2 ss:mx-16 sm:px-5 sm:flex md:flex-nowrap md:space-x-3`}>              
                 <div className={`w-full sm:w-1/2 md:w-1/3 my-2 flex shadow-xl bg-white rounded-lg`}>
                     <div className={`flex py-5 px-7 space-x-3`}>
                         <VscLayersActive size={50} color='#071466' />
@@ -33,8 +33,7 @@ export const InformationCard = () => {
 
                             </div>
                         </div>
-                    </div>
-                    
+                    </div>   
                 </div>
                 
                 <div className={`w-full sm:w-1/2 md:w-1/3 my-2 flex shadow-xl bg-white rounded-lg`}>
@@ -49,11 +48,9 @@ export const InformationCard = () => {
                                           active => {return !active.moduleStatus; }).length
                                     }
                                 </h2>
-
                             </div>
                         </div>
-                    </div>
-                    
+                    </div>    
                 </div>
 
                 <div className={`w-full my-2 md:w-1/3 flex shadow-xl bg-white rounded-lg`}>
@@ -64,57 +61,10 @@ export const InformationCard = () => {
                             <span className={`inline-block`}>1</span>
                         </div>
                     </div>
-                    
                 </div>
-
             </div>
-
         </section>
     </React.Fragment>
   )
 }
 
-export const ExamPackage = () => {
-    const [open, set] = useState(true)
-
-    return(
-        <React.Fragment>
-            <section className={`bg-[#ffffff] p-1 border-[1px] border-[#ddd]`}>
-                <div className={`p-3 flex justify-between items-center`}>
-                    <h1 className={`text-lg font-Poppins color text-[#071466]`}>Upcoming Exams</h1>
-                    <div className={`cursor-pointer`} onClick={() => set(prev => !prev)}>
-                        {open ? <BsFillCaretUpSquareFill size={25} color='#071466' /> : <BsCaretDownSquareFill size={25} color='#071466'/>}
-                    </div>
-                </div>
-                {
-                    open &&
-
-                    <div className={`border-t-[1px] border-[#ddd] duration-300`}>
-                        <div className={`mt-5`}>
-                            <table className={`table table-striped`}>
-                                <thead className={`bg-zinc-100`}>
-                                        <th>#</th>
-                                        <th>ModuleID</th>
-                                        <th>Module Name</th>
-                                        <th># of Question</th>
-                                        <th>Action</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Pro1234</td>
-                                        <td>Programming</td>
-                                        <td>50</td>
-                                        <td>
-                                            <AiFillEye />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                }
-            </section>
-        </React.Fragment>
-    )
-}

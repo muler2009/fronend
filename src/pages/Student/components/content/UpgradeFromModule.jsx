@@ -19,11 +19,14 @@ const UpgradeFromModule = (props) => {
  
   const displayContents = () => {
     if(page === 0) {
+      
       return <UpgradeModuleFor dataSelected={dataSelected} />
     }else if(page === 1) {
+
       return <PaymentInformation />
     }else {
-        return <UploadPaymentDetails />
+      
+      return <UploadPaymentDetails />
     }
   }
 
@@ -45,7 +48,6 @@ const UpgradeFromModule = (props) => {
     }
   }
 
-  
   if(!upgradeModalshowState) return null
 
   return (

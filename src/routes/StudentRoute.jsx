@@ -1,6 +1,7 @@
 import { useRoutes } from 'react-router-dom'
 
-import Profile from '../pages/Student/components/content/Profile';
+// import Profile from '../pages/Student/components/content/Profile';
+import Profile from '../pages/Student/components/Profile';
 
 
 

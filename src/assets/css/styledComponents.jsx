@@ -8,5 +8,5 @@ export const FormText = styled.div`
 `;
 
 export const Div = styled.div`
-    margin-top: .25rem;
+
 `;

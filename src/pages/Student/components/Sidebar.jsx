@@ -15,7 +15,7 @@ const Sidebar = () => {
   return (
     <React.Fragment>
       <div className={`hidden lg:flex`}>
-        <div className={`${control ? 'w-72' : 'w-24'}  bg-[#ffffff] border-r-[1px] border-[#c9c9c9] relative top-0 duration-300 shadow-md`}>
+        <div className={`${control ? 'w-72' : 'w-24'}  bg-[#ffffff] h-screen border-[#c9c9c9] relative top-0 duration-300 shadow-md`}>
             <div className='flex justify-between items-center border-b-[1px] px-10 bg-[#c2cfc2]'>
               <div className={`flex flex-col my-5 pt-5 ${!control && 'opacity-0 translate-x-28 overflow-hidden'}`}>
                   <h1 className={`font-Poppins text-xl`}>User Name</h1>
@@ -27,36 +27,13 @@ const Sidebar = () => {
                       className={`${control ? 'flex cursor-pointer ' : 'md:flex md:justify-center cursor-pointer' }`}
                       onClick={()=>setControl(prev => ! prev)}  
                       size={20}
-                    />
-                    
-                      
-                    {/* <div className={`flex justify-between items-center space-x-4 `}>
-                      <div  className={`${control ? 'w-20 h-20 rounded-full ' : 'w-16 h-16 '}`}>
-                          
-                          <img 
-                            src={user} alt=''  
-                            className={`${ control ? 'cursor-pointer w-20 h-20 rounded-full object-cover object-center' : 'w-12 h-12 rounded-full'}`}
-                            // className={`${control ? 'flex w-20 h-20 rounded-full object-cover object-center cursor-pointer' : 'w-14 h-14 flex rounded-full object-cover object-center cursor-pointer'}`}
-                            
-                          />
-                      </div>
-                        <div className={`flex flex-col items-baseline justify-start font-Poppins text-sm ${!control && 'opacity-0 translate-x-28 overflow-hidden'} `}>
-                            <h1 className={`text-[16px] `}>{userEmail}</h1>
-                            <div className={`flex items-center justify-center`}>
-                            <span className={`mr-2`}> <Ri.RiRadioButtonLine color='green'/></span>
-                            <h2>Student</h2>
-                            
-                            </div>
-                        </div>
-                    </div> */}
-                        
-                    
+                    />      
                   </div>
                 </div>
             
             </div> 
 
-          <div className={`flex flex-col`}>
+          <div className={`flex flex-col mt-5`}>
                   {
                     side_navigation.map((link, index) => {
                       return <Submenu key={index} link={link} control={control} />
@@ -72,12 +49,6 @@ const Sidebar = () => {
     </React.Fragment>
   )
 }
-
-
-
-
-export default Sidebar
-
 
 export const Submenu = (props) => {
   
@@ -125,3 +96,8 @@ export const Submenu = (props) => {
     </React.Fragment>
   )
 }
+
+
+
+
+export default Sidebar

@@ -2,10 +2,9 @@ import React from 'react'
 import {  Outlet } from 'react-router-dom'
 import StudentGeneralStastics, { Scharts } from '../components/StudentGeneralStastics'
 import {
-  InformationCard,
-  ExamPackage
-} from '../components/content/Components'
-import AllModules from '../components/content/Modules'
+  InformationCard  
+} from '../components/InformationCard'
+import AllModules from '../components/Modules'
 import { currentUser } from '../../../features/auth/authSlice';
 import { useSelector } from 'react-redux'
 import UpgradeAccount from '../components/UpgradeAccount'
@@ -13,6 +12,7 @@ import { Div } from '../../../assets/css/styledComponents'
 import ResultChart from '../components/ResultChart'
 
 const StudentHome = () => {
+
   const userName = useSelector(currentUser);
   return (
     <>

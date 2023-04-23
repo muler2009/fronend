@@ -56,7 +56,7 @@ const UpgradeAccountModal = (props) => {
   if(!upgradeModalshowState) return null
 
   return (
-    <section className='bg-black bg-opacity-10 inset-0 fixed top-0  flex justify-center sm:px-10'>
+    <section className='bg-black bg-opacity-10 inset-0 fixed top-0  flex justify-center sm:px-10 z-50'>
         <div className={`container mx-auto h-2/3 bg-white relative top-10 rounded-t-lg sm:w-full sm:h-[700px] lg:w-[30%] lg:h-2/3`}>
           <div className={`border-b-1 flex flex-col`}>
             <div className={`flex justify-between items-center rounded-tl-lg rounded-tr-lg bg-[#f7f7f7] w-full px-5 py-5 `}>

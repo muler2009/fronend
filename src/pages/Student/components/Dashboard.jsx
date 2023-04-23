@@ -6,16 +6,21 @@ import Sidebar from './Sidebar'
 
 const Dashboard = () => {
   return (
-    <section className="flex-col md:flex-col overflow-hidden">
-      <StuNavbar />
-      <div className="flex flex-1">
-          <Sidebar />
-          <div className="md:w-full xs:overflow-x-auto">
+    <section className="w-full flex-col overflow-hidden">
+        <StuNavbar />
+        <div className="flex flex-1">
+        <Sidebar />
+          <div className="w-full">
              <StuPageRoutes />
              <Outlet />
           </div>
+        </div>
 
-      </div>
+        <footer className='w-full relative bottom-0 grid place-content-center bg-[#0073aa] overflow-hidden'>
+          <h6 className='font-Poppins text-sm py-5'>
+             &copy; 2023 ieXitTutor.com
+          </h6>
+      </footer>
     </section>
   )
 }

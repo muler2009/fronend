@@ -98,7 +98,7 @@ const UpgradeModuleFor = ({ dataSelected }) => {
    
     return(
         <React.Fragment>
-            <div className={`flex flex-col gap-3 px-3 w-[90%] mx-auto font-Poppins`}>
+            <div className={`flex flex-col gap-3 px-3 w-[90%] mx-auto font-Poppins z-50`}>
                 <div className={`flex flex-col space-y-2`}>
                     <label>Total Question</label>
                     <div className={`border-[1px] rounded-sm bg-[#fafafa] `}>

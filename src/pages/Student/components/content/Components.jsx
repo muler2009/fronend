@@ -16,7 +16,7 @@ export const InformationCard = () => {
 
   return (
     <React.Fragment>
-        <section className={`w-full flex md:flex py-1 px-1 space-x-3`}>
+        <section className={`w-full md:flex my-5`}>
             <div className={`flex flex-1 flex-wrap mx-10 ss:mx-16 sm:px-5 sm:flex md:flex-nowrap md:space-x-3`}>              
                 <div className={`w-full sm:w-1/2 md:w-1/3 my-2 flex shadow-xl bg-white rounded-lg`}>
                     <div className={`flex py-5 px-7 space-x-3`}>

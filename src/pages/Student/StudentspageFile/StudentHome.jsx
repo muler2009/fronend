@@ -9,25 +9,23 @@ import AllModules from '../components/content/Modules'
 import { currentUser } from '../../../features/auth/authSlice';
 import { useSelector } from 'react-redux'
 import UpgradeAccount from '../components/UpgradeAccount'
+import { Div } from '../../../assets/css/styledComponents'
+import ResultChart from '../components/ResultChart'
 
 const StudentHome = () => {
   const userName = useSelector(currentUser);
   return (
-    <>   
+    <>
       <InformationCard />
       <AllModules />
-      <div className="flex flex-wrap md:flex-nowrap">
-        <div className={`w-full ss:mx-10 sm:mx-16 md:w-1/2`}>
-          <UpgradeAccount />
-        </div>
-        <div className={`w-full ss:mx-10 sm:mx-16 md:w-1/2`}>
-          <Scharts />
-        </div>
-       
-
+      <Div className={`w-full md:flex md:flex-1 bg-[#ffffff]`}>
+        <UpgradeAccount className="w-full lg:w-2/3" />
+          
+      </Div>
         
-      </div>
     </>
+    
+     
   )
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {Pie, PieChart, Cell, Legend} from 'recharts'
+import {Pie, PieChart, Cell, Legend, ResponsiveContainer} from 'recharts'
 // import ProgressBar from "../ui/ProgressBar";
 import UpgradeAccountOnDashboard from "./UpgradeAccountOnDashboard";
 
@@ -29,9 +29,12 @@ const StudentGeneralStastics = () => {
     )
 }
 
-
-
 export default StudentGeneralStastics;
+
+
+
+
+
 
 export const Scharts = () => {
 
@@ -45,20 +48,35 @@ export const Scharts = () => {
 
     return(
         <React.Fragment>
-            <div className="w-full flex font-Poppins -z-0">
-                <PieChart width={450} height={250}>
-                    <Pie data={data01} dataKey="value" nameKey="name" cx="140" cy="100" outerRadius={100} innerRadius={50} fill="#8884d8" >
-                        {data01.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                    </Pie> 
-                    <Legend align="left" layout="horizontal" verticalAlign="bottom"/>
-                </PieChart>
+            <div className="w-full container mx-auto bg-[#f5f5f5] font-Poppins -z-0">
+                <ResponsiveContainer>
+                    <PieChart width={450} height={250} s>
+                        <Pie data={data01} dataKey="value" nameKey="name" cx="140" cy="100" outerRadius={100} innerRadius={50} fill="#8884d8" >
+                            {data01.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie> 
+                        <Legend align="left" layout="horizontal" verticalAlign="bottom"/>
+                    </PieChart>
+                </ResponsiveContainer>
+
             </div>
             
         </React.Fragment>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const StudentProgressChart = () => {
 

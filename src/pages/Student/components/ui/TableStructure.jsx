@@ -35,9 +35,9 @@ const TableStructure = ({ columns, data, useAction }) => {
     return (
         <React.Fragment>
             <div className={`w-full flex space-x-5 py-10 px-5 border-b-[2px] border-[#ddd]`}>
-                <div className={``}>
-                    <ShowDataEntries pageSize={pageSize} setPageSize={setPageSize} />
-                </div>
+               
+                <ShowDataEntries pageSize={pageSize} setPageSize={setPageSize} />
+                
                 <div className={`w-3/4 font-Poppins`}>
                     <ModuleSearch 
                         globalFilter={globalFilter} 
@@ -49,6 +49,8 @@ const TableStructure = ({ columns, data, useAction }) => {
                 </div>
             </div>
 
+            {/* displaying table */}
+                       
             <table className={`table table-striped text-left mb-5 text-[14px] px-2`} {...getTableProps()}>
                         <thead className="capitalize font-normal py-3">
                             {headerGroups.map(headerGroup => (
@@ -89,7 +91,7 @@ const TableStructure = ({ columns, data, useAction }) => {
                         </tbody>
 
             </table>
-
+            
             <div className="flex md:flex flex-wrap justify-between items-center bg-white py-4 px-10 gap-4">
                    <div className="xs:w-full flex flex-1">
                         <div className="flex justify-start items-center space-x-3">

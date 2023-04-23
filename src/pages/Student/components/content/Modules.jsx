@@ -97,7 +97,7 @@ const AllModules = () => {
     }
     {
       isSuccess && (        
-        <div className={`block bg-white px-5 py-5`}>
+        <div className={`block bg-white px-5 py-5 xxs:overflow-x-scroll md:overflow-x-scroll`}>
           <TableStructure 
             columns={MODULE_COLUMN} 
             data={data} 

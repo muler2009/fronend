@@ -14,58 +14,61 @@ const Sidebar = () => {
 
   return (
     <React.Fragment>
-      <div className={`hidden md:flex`}>
-      <div className={`${control ? 'w-72' : 'w-24'}  bg-[#ffffff] border-r-[1px] border-[#c9c9c9] relative top-0 duration-300 shadow-md`}>
-          <div className='flex border-b-[1px]'>
+      <div className={`hidden lg:flex`}>
+        <div className={`${control ? 'w-72' : 'w-24'}  bg-[#ffffff] border-r-[1px] border-[#c9c9c9] relative top-0 duration-300 shadow-md`}>
+            <div className='flex justify-between items-center border-b-[1px] px-10 bg-[#c2cfc2]'>
+              <div className={`flex flex-col my-5 pt-5 ${!control && 'opacity-0 translate-x-28 overflow-hidden'}`}>
+                  <h1 className={`font-Poppins text-xl`}>User Name</h1>
+                  <p className="font-Poppins text-sm">Department</p>
+              </div>
                 <div className={`flex justify-center items-center space-x-4 py-4 ${!control && 'border-none' }`}>
-                  <div className='flex flex-col py-3 px-3 space-x-4 justify-start items-baseline gap-10 justify-cener '>
+                  <div className='flex flex-col space-x-4 justify-start items-baseline gap-10 justify-cener '>
                     <FaBars 
-                      className={`${control ? 'flex cursor-pointer ' : 'block cursor-pointer' }`}
+                      className={`${control ? 'flex cursor-pointer ' : 'md:flex md:justify-center cursor-pointer' }`}
                       onClick={()=>setControl(prev => ! prev)}  
                       size={20}
                     />
-                    <div className={``}>
-                     
-                        <div className={`flex justify-between items-center space-x-4 `}>
-                          <div  className={`${control ? 'w-20 h-20 rounded-full ' : 'w-16 h-16 '}`}>
-
-                              <img 
-                                src={user} alt=''  
-                                className={`${ control ? 'cursor-pointer w-20 h-20 rounded-full object-cover object-center' : 'w-12 h-12 rounded-full'}`}
-                                // className={`${control ? 'flex w-20 h-20 rounded-full object-cover object-center cursor-pointer' : 'w-14 h-14 flex rounded-full object-cover object-center cursor-pointer'}`}
-                                
-                              />
-                          </div>
-                            <div className={`flex flex-col items-baseline justify-start font-Poppins text-sm ${!control && 'opacity-0 translate-x-28 overflow-hidden'} `}>
-                               <h1 className={`text-[16px] `}>{userEmail}</h1>
-                               <div className={`flex items-center justify-center`}>
-                                <span className={`mr-2`}> <Ri.RiRadioButtonLine color='green'/></span>
-                                <h2>Student</h2>
-                                
-                                </div>
+                    
+                      
+                    {/* <div className={`flex justify-between items-center space-x-4 `}>
+                      <div  className={`${control ? 'w-20 h-20 rounded-full ' : 'w-16 h-16 '}`}>
+                          
+                          <img 
+                            src={user} alt=''  
+                            className={`${ control ? 'cursor-pointer w-20 h-20 rounded-full object-cover object-center' : 'w-12 h-12 rounded-full'}`}
+                            // className={`${control ? 'flex w-20 h-20 rounded-full object-cover object-center cursor-pointer' : 'w-14 h-14 flex rounded-full object-cover object-center cursor-pointer'}`}
+                            
+                          />
+                      </div>
+                        <div className={`flex flex-col items-baseline justify-start font-Poppins text-sm ${!control && 'opacity-0 translate-x-28 overflow-hidden'} `}>
+                            <h1 className={`text-[16px] `}>{userEmail}</h1>
+                            <div className={`flex items-center justify-center`}>
+                            <span className={`mr-2`}> <Ri.RiRadioButtonLine color='green'/></span>
+                            <h2>Student</h2>
+                            
                             </div>
                         </div>
-                       
-                    </div>
+                    </div> */}
+                        
+                    
                   </div>
                 </div>
-          
-          </div> 
+            
+            </div> 
 
-        <div className={`flex flex-col`}>
-                {
-                  side_navigation.map((link, index) => {
-                    return <Submenu key={index} link={link} control={control} />
-                    
-                  })
-                }
+          <div className={`flex flex-col`}>
+                  {
+                    side_navigation.map((link, index) => {
+                      return <Submenu key={index} link={link} control={control} />
+                      
+                    })
+                  }
+          </div>
+
         </div>
-
       </div>
 
-
-      </div>
-
+     
     </React.Fragment>
   )
 }
@@ -90,8 +93,9 @@ export const Submenu = (props) => {
                   onClick={link.submenu && showSubnav} 
                   className={`flex justify-between px-5 py-1hover:bg-[#f9f6f2] focus:text-[#eb3349] hover:border-r-4 border-r-green-500 focus:bg-[#f9f6f2] focus:border-r-4 focus:border-r-green-500`}> 
                       <div className={`flex items-center space-x-2 py-3 px-3 `}>
-                        <div className={` hover:rounded-l-full '} text-lg`} size={20}>{link.icon}</div>
-                        <h2 className={`duration-500 font-Poppins text-sm ${!control && 'opacity-0 translate-x-28 overflow-hidden'}`}>{link.label}</h2>
+                        <div className={` hover:rounded-l-full} text-lg`} size={20}>{link.icon}</div>
+                        <h2 className={`duration-500 font-Poppins text-sm
+                         ${!control && 'opacity-0 translate-x-28 overflow-hidden md:opacity-1 md:translate-x-28 md:overflow-hidden'}`}>{link.label}</h2>
                       </div>
                   
                       <div className={`flex pr-4 items-center ${!control && 'opacity-0 translate-x-28 overflow-hidden'}`}>

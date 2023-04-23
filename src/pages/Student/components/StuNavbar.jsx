@@ -19,28 +19,27 @@ const StuNavbar = () => {
 
   return (
     <React.Fragment>
-        <section className={`py-5 px-4 h-16 bg-[#ffffff] border-b-[1px] border-b-[#dee2e6]`}>
+        <div className={`py-5 px-4 h-16 bg-[#ffffff] border-b-[1px] border-b-[#dee2e6]`}>
             <div className={`flex justify-between items-center`}>
                 <div className={`flex justify-between items-center xs:mx-5 xs:space-x-5`}>
 
                   {/* Menu Icons section */}
+                    <div className={`cursor-pointer block md:hidden`} onClick={() => setShowNavigationLinks(prev => !prev)}>
+                        {
+                            showNavigationLinks ? <Ai.AiOutlineClose size={20} /> : <Ai.AiOutlineMenu size={20} />
+                        }
+                    </div>
 
-                  <div className={`cursor-pointer block lg:hidden`} onClick={() => setShowNavigationLinks(prev => !prev)}>
-                      {
-                          showNavigationLinks ? <Ai.AiOutlineClose size={20} /> : <Ai.AiOutlineMenu size={20} />
-                      }
-                  </div>
+                    <Link to='/student' className={`font-Oswald tracking-[0.045em] text-2xl flex justify-start items-center space-x-2 px-3 text-[#071466]`}>
+                        <Ai.AiOutlineDashboard size={25}/> 
+                        <span className={`text-xl`}>PiConsultancy</span>
+                    </Link>     
+                </div>
 
-                  <Link to='/student' className={`font-Poppins text-sm flex justify-start items-center space-x-2 px-3 text-[#071466]`}>
-                      <Ai.AiOutlineDashboard size={25}/> 
-                      <span className={`text-xl`}>Dashboard</span>
-                  </Link>
-                  <Ai.AiOutlineCaretRight />
+                <div className="">
                     <p className={`font-Poppins text-sm text-[#98a0b8]`}>
                       {`${format(new Date(), 'EEEE do, MMMM, yyyy')}`}
                     </p>  
-
-                    
                 </div>
 
                 <div className={`mr-10 cursor-pointer font-Poppins text-sm hidden lg:flex lg:justify-center lg:items-center lg:space-x-3`} onClick={() => setDrop(prev => !prev)}>
@@ -50,38 +49,54 @@ const StuNavbar = () => {
                       drop &&  <DropDownProfile setDrop={setDrop} />
                     }
                 </div>
+               
+                {/* for small devices */}     
+                <div className={showNavigationLinks ? 'fixed top-16 xs:w-[60%] w-[40%] left-0 bg-white ease-in-out duration-500': 'fixed left-[-100%]'}>
+                  <div className={`flex flex-col`}>
+                    <ul className={`flex flex-col gap-3 justify-start items-start px-10`}>
+                      {
+                        side_navigation.map((link, index) => {
+                          return(
+                            <li key={index} className={`border-b border-gray-200 w-full py-2`}>
+                                <Link to={link.path} className={`flex items-center space-x-4 font-Poppins text-[14px]`}>
+                                    <div>{link.icon}</div>
+                                    <h2>{link.label}</h2>     
+                                </Link>
+                            </li>
+                        )}
+                          
+                        )
+                    }
+                    <li className={`flex items-center space-x-4 font-Poppins text-[14px] pb-2`}>
+                      <Gr.GrPower />
+                          <Link to={`logout`}>Logout</Link>
+                    </li>
+                    </ul>
+                  </div>
+                </div>
 
                
-                  {/* for small devices */}     
-                  <div className={showNavigationLinks ? 'fixed top-16 xs:w-[60%] w-[40%] left-0 bg-white ease-in-out duration-500': 'fixed left-[-100%]'}>
-                    <div className={`flex flex-col`}>
-                      <ul className={`flex flex-col gap-3 justify-start items-start px-10`}>
-                        {
-                          side_navigation.map((link, index) => {
-                            return(
-                              <li key={index} className={`border-b border-gray-200 w-full py-2`}>
-                                  <Link to={link.path} className={`flex items-center space-x-4 font-Poppins text-[14px]`}>
-                                      <div>{link.icon}</div>
-                                      <h2>{link.label}</h2>     
-                                  </Link>
-                              </li>
-                          )}
-                            
-                          )
-                      }
-                      <li className={`flex items-center space-x-4 font-Poppins text-[14px] pb-2`}>
-                        <Gr.GrPower />
-                            <Link to={`logout`}>Logout</Link>
-                      </li>
-                      </ul>
-                    </div>
-                  </div>          
+                  {/* navigation for medium device */}
             </div> 
+        </div>
 
-
-
-
-        </section>
+        {/* for medium devices */} 
+                   
+        <div className={`hidden md:flex w-full bg-[#fcfcfc] shadow-lg lg:hidden px-5 py-5 my-2`}>
+          <div className="flex flex-1">
+            {
+              side_navigation.map((link, index) => (
+                <div className="flex mx-5 font-Poppins" key={index}>
+                  <Link to={link.path} className="flex justify-center items-center space-x-2">
+                    <div>{link.icon}</div>
+                    <div>{link.label}</div>
+                  </Link>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+            
     </React.Fragment>
   )
 }

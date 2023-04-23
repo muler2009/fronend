@@ -8,11 +8,11 @@ const UpgradeAccount = () => {
   const [upgradeModalshowState, setUpgradeModalShowState] = useState(false)
 
   return (
-    <section className="block md:flex px-5">
+    <div className="w-full md:flex px-5">
         <div className="flex-1 flex-col gap-3 my-5 relative">
             <h1 className="font-Oswald tracking-wide text-center xs:text-[25px] before:content-[''] before:absolute before:top-5 before:left-5 before:xs:w-[20%] before:sm:w-[30%] before:md:w-[35%] before:bg-[#09bdd9] before:h-[1px] after:content-[''] after:absolute after:top-5 after:right-5 after:xs:w-[20%] after:sm:w-[30%] after:md:w-[35%] after:bg-[#09bdd9] after:h-[1px]">Upgrade Package</h1>
 
-            <div className="w-full flex-col items-center justify-center">
+            <div className="flex-col items-center justify-center">
               {/* Attension section  */}
               <div className={`w-full bg-yellow-50 mt-5 shadow-lg`}>
                 <div className={`flex flex-col py-4 px-5 text-red-600`}>
@@ -23,24 +23,25 @@ const UpgradeAccount = () => {
                 </div>
               </div>
 
-              {
-                upgradeData?.map((upgrade,index) => (
-                  <div className="flex justify-between items-center py-2" key={index}>
-                    <h1>{upgrade.quesPerModule}</h1>
-                    <p>{upgrade.payment}</p>
-                    <button className={`btn-sm px-4 bg-[#e6720c] text-white`} onClick={() => setUpgradeModalShowState(prev => !prev)}>Upgrade</button>
-                  </div>
-                ))
-              }
-
+              <div className="">
+                {
+                  upgradeData?.map((upgrade,index) => (
+                    <div className="flex justify-between items-center py-2" key={index}>
+                      <h1 className="font-Poppins">{upgrade.quesPerModule}</h1>
+                      <p>{upgrade.payment}</p>
+                      <button className={`btn-sm px-4 bg-[#e6720c] text-white`} onClick={() => setUpgradeModalShowState(prev => !prev)}>Upgrade</button>
+                    </div>
+                  ))
+                }
+              </div>
             </div>  
         </div>
 
         <UpgradeAccountModal
-                upgradeModalshowState={upgradeModalshowState}
-                setUpgradeModalShowState={setUpgradeModalShowState} 
-            />
-    </section>
+            upgradeModalshowState={upgradeModalshowState}
+            setUpgradeModalShowState={setUpgradeModalShowState} 
+        />
+    </div>
   )
 }
 

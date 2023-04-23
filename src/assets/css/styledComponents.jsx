@@ -6,3 +6,7 @@ export const FormText = styled.div`
     font-family: Quicksand;
     margin-left: 5%;
 `;
+
+export const Div = styled.div`
+    margin-top: .25rem;
+`;

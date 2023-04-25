@@ -19,8 +19,7 @@ const StudentHome = () => {
       <InformationCard />
       <AllModules />
       <Div className={`w-full md:flex md:flex-1 bg-[#ffffff]`}>
-        <UpgradeAccount className="w-full lg:w-2/3" />
-          
+        
       </Div>
         
     </>

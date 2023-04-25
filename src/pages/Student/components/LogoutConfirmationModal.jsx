@@ -24,7 +24,7 @@ const LogoutConfirmationModal = (props) => {
                 </Div>
                 <Div className="flex space-x-5 w-1/2 mx-auto">
                     <button className="btn-sm bg-[#fcfcfc] px-5">Logout</button>
-                    <button className="btn-sm bg-[#fcfcfc] px-5">Cancel</button>
+                    <button className="btn-sm bg-[#fcfcfc] px-5" onClick={() => setLogout(prev => !prev)}>Cancel</button>
 
                 </Div>
                

@@ -34,7 +34,7 @@ const StuNavbar = () => {
                     </div>
 
                     <Link to='/student' className={`font-Oswald tracking-[0.045em] text-2xl flex justify-start items-center space-x-2 px-3 text-[#071466]`}>
-                        <Ai.AiOutlineDashboard size={25}/> 
+                        
                         <span className={`text-xl`}>PiConsultancy</span>
                     </Link>     
                 </div>
@@ -85,6 +85,7 @@ const StuNavbar = () => {
                   {/* navigation for medium device */}
             </div> 
         </div>
+
 
         {/* for medium devices */} 
                    

@@ -81,17 +81,7 @@ import images from '../../../assets/images/images.png'
                     <img src={images} alt="Imgage" className={`w-[80%] h-[80%] object-fill object-center`} />
                 </div>
             </div>
-
-            <div className={``}>
-                <button onClick={() => setShow(prev => !prev)}>Show Score</button>
-            </div>
-
            
-
-            <ShowResultOfQuiz totalQuestions={totalQuestions} result={result} show={show} setShow={setShow} />
-                    
-
-
         </React.Fragment>
     )
 }

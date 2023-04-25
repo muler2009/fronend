@@ -6,6 +6,7 @@ import Pagination from '../../../components/common/Pagination'
 import {useGetQuestionQuery} from '../../../features/questionBank/questionbankSlice'
 import Questions, {QuestionCard2} from './Questions'
 import AnswerExplanation from './AnswerExplanation'
+import ShowAnswer from '../components/ShowAnswer'
 
 const QuestionDisplayCard = () => {
     const [page, setPage] = useState(0);
@@ -87,9 +88,8 @@ const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null)
                 setPage={setPage}
                 totalQuestions={totalQuestions}
             />        
-        </div>
-
-       
+        </div>  
+        <ShowAnswer />   
 
     </section>
   )

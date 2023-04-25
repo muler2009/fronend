@@ -1,22 +1,24 @@
 import React, {useState} from 'react'
 import {AiOutlineCheckCircle } from 'react-icons/ai'
 
-const AnswerExplanation = (props) => {
+const ShowAnswer = (props) => {
     
-
-    const [check, setCheck] = useState(false)
+  const [check, setCheck] = useState(false)
 
   return (
    <React.Fragment>
-    {
-        <button className={`btn-sm text-white px-5 text-sm bg-green-600 rounded-none disabled:opacity-25 disabled:cursor-default`}   
-                onClick={() => setCheck(!check)} >
+    
+        {/* <button className={`btn-sm text-white px-5  w-[30%] text-sm bg-green-600 rounded-none disabled:opacity-25 disabled:cursor-default`}   
+                 >
                 Check Answer
-        </button>}
+        </button> */}
+        <div className="w-[80%] border-b-[1px] py-2 px-5 cursor-pointer ">
+            <h1 className="font-Roboto border-r-[1px] focus:border-b-[5px] focus:border-green-300" onClick={() => setCheck(!check)}>Check Answer</h1>
+        </div>
             {
                 check && 
                 (
-                    <div className={`flex`}>
+                    <div className={`flex bg-zinc-50`}>
                         <div className={`w-1/7 p-5 my-5`}>
                             <AiOutlineCheckCircle size={50} color='#4ade80' />
                         </div>
@@ -48,4 +50,4 @@ const AnswerExplanation = (props) => {
   )
 }
 
-export default AnswerExplanation
+export default ShowAnswer

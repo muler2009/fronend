@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 import { StuPageRoutes } from '../../../routes/StudentRoute'
 import Sidebar from './Sidebar'
 import { Div } from '../../../assets/css/styledComponents'
+import BreadCrump from './BreadCrump'
 
 const Dashboard = () => {
   return (
@@ -14,6 +15,7 @@ const Dashboard = () => {
         <Div className="flex flex-1">
         <Sidebar />
           <Div className="w-full">
+              <BreadCrump />
              <StuPageRoutes />
              <Outlet />
           </Div>

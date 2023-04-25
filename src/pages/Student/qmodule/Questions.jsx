@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react'
 import { useAddQuestion } from '../../Uploader/components/useAddQuestion'
-import AnswerExplanation from './AnswerExplanation'
+import ShowAnswer from '../components/ShowAnswer'
 import ShowResultOfQuiz from './ShowResultOfQuiz'
 import QuestionCardModified from './QuestionCardModified'
 import { currentModuleCode } from '../../../features/module/moduleSlice' 
@@ -24,8 +25,8 @@ const Questions = (props) => {
         setPage
     } = props
  
-  return (
-    <React.Fragment>
+    return (
+        <React.Fragment>
 
         <div className={`bg-white mx-1 flex justify-between items-center px-10 py-5`}>
         
@@ -50,8 +51,8 @@ const Questions = (props) => {
                     )
                 })
             }
-        </div>    
-        <AnswerExplanation />      
+        </div>   
+        
     </React.Fragment>  
   )
 }

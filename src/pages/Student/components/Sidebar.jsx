@@ -16,9 +16,9 @@ const Sidebar = () => {
     <React.Fragment>
       <div className={`hidden lg:flex`}>
         <div className={`${control ? 'w-72' : 'w-24'}  bg-[#ffffff] h-screen border-[#c9c9c9] relative top-0 duration-300 shadow-md`}>
-            <div className='flex justify-between items-center border-b-[1px] px-10 bg-[#c2cfc2]'>
+            <div className='flex justify-between items-center border-b-[1px] px-10 bg-zinc-50'>
               <div className={`flex flex-col my-5 pt-5 ${!control && 'opacity-0 translate-x-28 overflow-hidden'}`}>
-                  <h1 className={`font-Poppins text-xl`}>User Name</h1>
+                  <h1 className={`font-Poppins text-xl`}>{userEmail}</h1>
                   <p className="font-Poppins text-sm">Department</p>
               </div>
                 <div className={`flex justify-center items-center space-x-4 py-4 ${!control && 'border-none' }`}>

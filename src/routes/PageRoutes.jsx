@@ -1,15 +1,10 @@
 import { useRoutes } from "react-router-dom";
 import { Login } from "../pages/Login/Login";
-import Registration from "../pages/signup/Registration";
 
 import SuccessMessage from "../components/ui/SuccessMessage";
-import Public from "../pages/public/Public";
-import RequireAuth from "../features/auth/RequireAuth";
-import StudentHome from "../pages/Student/StudentspageFile/StudentHome";
-import { StudentDashboardStructure } from "../layout/StudentDashboardStructure";
 import ForgotPassword from "../pages/Login/ForgotPassword";
+import { Home } from "../pages/public/Home";
 import Signup from "../pages/signup/Signup";
-import Home from "../pages/public/Home";
 
 export const PageRoutes = () => {
   let route = useRoutes([

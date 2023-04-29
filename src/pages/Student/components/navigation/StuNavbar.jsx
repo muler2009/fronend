@@ -1,15 +1,14 @@
+import { format } from "date-fns";
 import React, { useState } from "react";
-import user from "../../../../assets/images/user.jpeg";
 import * as Ai from "react-icons/ai";
 import * as Gr from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { format } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
+import user from "../../../../assets/images/user.jpeg";
 import DropDownProfile from "../../../../common/DropDownProfile";
-import { side_navigation } from "./studentNavigation";
-import { Submenu } from "./Sidebar";
 import { currentUserEmail } from "../../../../features/auth/authSlice";
 import { logout } from "../../../../features/auth/myAuthSlice";
+import { side_navigation } from "../../constants/studentNavigation";
 
 export const StuNavbar = () => {
   const navigate = useNavigate();

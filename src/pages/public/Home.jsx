@@ -3,7 +3,7 @@ import { Heros, Subscribe, FAQ } from "./components";
 import Signup from "../signup/Signup";
 import Aboutus from "./components/Aboutus";
 
-const Home = () => {
+export const Home = () => {
   return (
     <React.Fragment>
       <Heros />

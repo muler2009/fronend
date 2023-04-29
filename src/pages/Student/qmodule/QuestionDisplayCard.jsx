@@ -1,98 +1,101 @@
-import React, { useState } from 'react'
-import { FaQuestion, FaQuestionCircle } from 'react-icons/fa'
-import {AiOutlineCheckCircle} from 'react-icons/ai'
-import images from '../../../assets/images/images.png'
-import Pagination from '../../../components/common/Pagination'
-import {useGetQuestionQuery} from '../../../features/questionBank/questionbankSlice'
-import Questions, {QuestionCard2} from './Questions'
-import AnswerExplanation from './AnswerExplanation'
+import React, { useEffect, useState } from "react";
+import { useGetQuestionsQuery } from "../../../api/apiSlice";
+import Pagination from "../../../components/common/Pagination";
+import Questions from "./Questions";
 
 const QuestionDisplayCard = () => {
-    const [page, setPage] = useState(0);
-    const {
-        data = [],
-        isLoading,
-        isError,
-        isSuccess,
-        isFetching
-    } = useGetQuestionQuery(page)
+  const {
+    data: questionData,
+    isLoading: questionIsLoading,
+    error: questionIsError,
+  } = useGetQuestionsQuery();
 
-const [pageNumber, setPageNumber] = useState(0) // setting the page number
-const [itemPerpage, setItemPerpage] = useState(1) // to set tne number if Items per page
+  const [page, setPage] = useState(0);
 
- 
-const lastIndex = pageNumber + itemPerpage // get the last question index
-const currentItem = data.slice(pageNumber, lastIndex)
+  const [pageNumber, setPageNumber] = useState(0); // setting the page number
+  const [itemPerpage, setItemPerpage] = useState(1); // to set tne number if Items per page
 
-const totalQuestions = data.length // calculating the total number of Questions
+  const [lastIndex, setLastIndex] = useState(0); // get the last question index
+  const [currentItem, setCurrentItem] = useState(null);
 
-const totalPage = Math.ceil( data.length / itemPerpage) // total number of pages 
-//const totalPage = 100;
+  const [totalQuestions, setTotalQuestions] = useState(0); // calculating the total number of Questions
 
-const [answerSelected, setAnswerSelected] = useState('')  // state for handling the selected choice 
+  const [totalPage, setTotalPage] = useState(0); // total number of pages
 
-// for result calculation
-const [result, setResult] = useState({
+  //const totalPage = 100;
+
+  const [answerSelected, setAnswerSelected] = useState(""); // state for handling the selected choice
+
+  useEffect(() => {
+    setLastIndex(pageNumber + itemPerpage); // get the last question index
+    setCurrentItem(questionData?.questionstb[pageNumber]);
+    setTotalQuestions(questionData?.questionstb?.length); // calculating the total number of Questions
+
+    setTotalPage(Math.ceil(questionData?.questionstb?.length / itemPerpage));
+  }, [questionData, pageNumber]);
+
+  // for result calculation
+  const [result, setResult] = useState({
     score: 0,
-    correctAnswers: 0,
-    wrongAnswers: 0,
-})
+    correctAnswers: [],
+    wrongAnswers: [],
+  });
 
-//state for showing the result of the exam 
-const [showResult, setShowResult] = useState(false)
-const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null)
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
 
+  //state for showing the result of the exam
+  const [showResult, setShowResult] = useState(false);
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
 
   return (
     <section className={`w-full flex flex-col`}>
+      {/* Fragment for displaying question  */}
+      {questionIsLoading && <p>Loading data ...</p>}
+      {!questionIsLoading && currentItem && (
+        <Questions
+          questions={currentItem}
+          lastIndex={lastIndex}
+          totalQuestions={totalQuestions}
+          result={result}
+          setResult={setResult}
+          answerSelected={answerSelected}
+          setAnswerSelected={setAnswerSelected}
+          selectedAnswerIndex={selectedAnswerIndex}
+          setSelectedAnswerIndex={setSelectedAnswerIndex}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+          answeredQuestions={answeredQuestions}
+          setAnsweredQuestions={setAnsweredQuestions}
+        />
+      )}
 
-        {/* Fragment for displaying question  */}
-
-        { isLoading && <p>Loading data ...</p>}
-        {
-            isSuccess && 
-            (
-                <Questions 
-                    data={currentItem} 
-                    lastIndex={lastIndex}
-                    totalQuestions={totalQuestions}
-                    result={result} 
-                    setResult={setResult} 
-                    answerSelected={answerSelected} 
-                    setAnswerSelected={setAnswerSelected}
-                    selectedAnswerIndex={selectedAnswerIndex}
-                    setSelectedAnswerIndex={setSelectedAnswerIndex}
-                />               
-            )
-                    
-        }       
-
-        {/* Pagination  */}
-        <div className={`bg-[#fff] flex items-center justify-center font-Poppins py-5`}>
-            <Pagination 
-                data={data}
-                itemPerpage={itemPerpage} 
-                totalPage={totalPage}
-                setPageNumber={setPageNumber}
-                result={result}
-                setResult={setResult}
-                answerSelected={answerSelected} 
-                setAnswerSelected={setAnswerSelected}
-                selectedAnswerIndex={selectedAnswerIndex}
-                setSelectedAnswerIndex={setSelectedAnswerIndex}
-                lastIndex={lastIndex}
-                showResult={showResult}
-                setShowResult={setShowResult}
-                page={page}
-                setPage={setPage}
-                totalQuestions={totalQuestions}
-            />        
-        </div>
-
-       
-
+      {/* Pagination  */}
+      <div
+        className={`bg-[#fff] flex items-center justify-center font-Poppins py-5`}
+      >
+        <Pagination
+          data={questionData?.questionstb}
+          itemPerpage={itemPerpage}
+          totalPage={totalPage}
+          pageNumber={pageNumber}
+          setPageNumber={setPageNumber}
+          result={result}
+          setResult={setResult}
+          answerSelected={answerSelected}
+          setAnswerSelected={setAnswerSelected}
+          selectedAnswerIndex={selectedAnswerIndex}
+          setSelectedAnswerIndex={setSelectedAnswerIndex}
+          lastIndex={lastIndex}
+          showResult={showResult}
+          setShowResult={setShowResult}
+          page={page}
+          setPage={setPage}
+          totalQuestions={totalQuestions}
+          answeredQuestions={answeredQuestions}
+        />
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default QuestionDisplayCard
+export default QuestionDisplayCard;

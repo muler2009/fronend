@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react'
 import { useTable,  useRowSelect ,usePagination, useFilters, useGlobalFilter} from 'react-table'
-import ShowDataEntries from '../../../../components/common/ShowDataEntries'
+import ShowDataEntries from '../../../components/common/ShowDataEntries'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-import ModuleSearch from '../../../../components/ModuleSearch'
+import ModuleSearch from '../../../components/ModuleSearch'
 
 
 const TableStructure = ({ columns, data, useAction }) => {

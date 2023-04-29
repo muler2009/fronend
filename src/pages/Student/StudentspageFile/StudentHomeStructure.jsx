@@ -7,7 +7,7 @@ import StudentHome from './StudentHome'
 const StudentHomeStructure = () => {
     return (
         <React.Fragment>
-            <section className='w-full flex flex-row'>     
+            <section className='w-full flex flex-row overflow-hidden'>     
                 {/* Collapsable Sidebar for Admin page */}
                     <Sidebar />                  
                 <div className={`flex-1 flex-col`}>

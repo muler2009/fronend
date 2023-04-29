@@ -1,6 +1,6 @@
 import React,  { useState } from 'react'
 import { FaBars } from 'react-icons/fa'
-import { side_navigation } from '../navigation/studentNavigation'
+import { side_navigation } from '../../constants/studentNavigation'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { currentUserEmail } from '../../../../features/auth/authSlice'

@@ -1,12 +1,12 @@
 import React, { useState} from 'react'
 import * as Vsc from 'react-icons/vsc'
-import { bank_attribute } from '../../scommon/bankattribute'
+import { bank_attribute } from '../constants/bankattribute'
 import * as Fi from 'react-icons/fi'
 import * as Md from 'react-icons/md' 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSelector } from 'react-redux'
-import { totalNumberOfQuestion } from '../../../../features/module/moduleSlice'
+import { totalNumberOfQuestion } from '../../../features/module/moduleSlice'
 
 const UpgradeFromModule = (props) => {
 

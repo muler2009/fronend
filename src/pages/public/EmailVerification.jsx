@@ -70,7 +70,6 @@ const EmailVerification = () => {
       token: params?.token,
     })
       .then((res) => {
-        console.log(res);
         if (res?.data?.success) {
           showSuccessAlert(); // navigate("/login");
         } else {

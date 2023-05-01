@@ -13,7 +13,10 @@ const initialState = {
 
   errorMsg: "",
   isTokenExpired: false,
-  user: JSON.parse(localStorage.getItem("auth")) || null,
+  user:
+    localStorage.getItem("auth") !== "undefined"
+      ? JSON.parse(localStorage.getItem("auth"))
+      : null,
 };
 
 export const userLogin = createAsyncThunk(

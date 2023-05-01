@@ -25,6 +25,7 @@ const Pagination = (props) => {
     selectedAnswerIndex,
     setSelectedAnswerIndex,
     answeredQuestions,
+    setShowAnswer,
   } = props;
 
   // selecting the corresponding Clicked page
@@ -32,6 +33,7 @@ const Pagination = (props) => {
     const newOffset = (event.selected * itemPerpage) % data.length; // calculating the current page
     setPageNumber(newOffset); // setting the pagenumber to new offset
     setSelectedAnswerIndex(null); // to unselect the uanswer fot the next question
+    setShowAnswer(false);
     setResult(
       (
         prev // result calculatins
@@ -68,15 +70,15 @@ const Pagination = (props) => {
         onPageChange={handlePageClick}
         containerClassName={`pagination`}
         previousClassName={`prevButton`}
-        // activeClassName={"activePaginationButton"}
-        activeClassName={
-          answered
-            ? answered.isCorrect
-              ? "correctPaginationButton"
-              : "wrongPaginationButton"
-            : "activePaginationButton"
-        }
-        // disabledClassName={"disabledPagination"}
+        activeClassName={"activePaginationButton"}
+        // activeClassName={
+        //   answered
+        //     ? answered.isCorrect
+        //       ? "correctPaginationButton"
+        //       : "wrongPaginationButton"
+        //     : "activePaginationButton"
+        // }
+        disabledClassName={"disabledPagination"}
         disabledLinkClassName={"Finito"}
         renderOnZeroPageCount={null}
         onClick={() =>

@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
-import { setCredentials } from "../../features/auth/authSlice";
-import { useLoginMutation } from "../../features/auth/authApiSlice";
 import { AiOutlineLogin } from "react-icons/ai";
 import { FaEnvelope, FaLock } from "react-icons/fa";
-import useLogin from "../../hooks/useLogin";
-import Spinner from "../../components/common/Spinner";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import Spinner from "../../components/common/Spinner";
+import { useLoginMutation } from "../../features/auth/authApiSlice";
+import useLogin from "../../hooks/useLogin";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -17,10 +15,7 @@ export const Login = () => {
     (state) => state.auth
   );
 
-  const [error, setError] = useState();
-
   const emailRef = useRef(); // just for referring the email input field
-  const errorReference = useRef(); // A reference for error
 
   const { isLoading } = useLoginMutation();
   const dispatch = useDispatch();
@@ -64,13 +59,14 @@ export const Login = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log(user);
       navigate("/student");
       toast.success("Welcome!");
     }
+  }, [isSuccess]);
 
+  useEffect(() => {
     isError && toast.error(errorMsg);
-  }, [isSuccess, isError]);
+  }, [isError]);
 
   return (
     <React.Fragment>

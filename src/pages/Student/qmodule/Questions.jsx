@@ -25,6 +25,8 @@ const Questions = (props) => {
     setPageNumber,
     answeredQuestions,
     setAnsweredQuestions,
+    showAnswer,
+    setShowAnswer,
   } = props;
   return (
     <React.Fragment>
@@ -66,6 +68,8 @@ const Questions = (props) => {
           setPageNumber={setPageNumber}
           answeredQuestions={answeredQuestions}
           setAnsweredQuestions={setAnsweredQuestions}
+          showAnswer={showAnswer}
+          setShowAnswer={setShowAnswer}
         />
       </div>
       <AnswerExplanation />

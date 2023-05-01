@@ -16,6 +16,8 @@ const QuestionCardModified = (props) => {
     setPageNumber,
     answeredQuestions,
     setAnsweredQuestions,
+    showAnswer,
+    setShowAnswer,
   } = props;
 
   const [show, setShow] = useState(false);
@@ -39,8 +41,6 @@ const QuestionCardModified = (props) => {
 
   const ChoiceLetter = ["A", "B", "C", "D"];
   let letter = ChoiceLetter.map((letter) => letter);
-
-  const [showAnswer, setShowAnswer] = useState(false);
 
   return (
     <React.Fragment>

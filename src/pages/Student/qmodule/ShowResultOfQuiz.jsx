@@ -61,11 +61,13 @@ const ShowResultOfQuiz = (props) => {
                     }
                     &nbsp; &nbsp;
                     {"(" +
-                      (answeredQuestions?.filter(
-                        (item) => item?.isCorrect == true
-                      )?.length /
-                        totalQuestions) *
-                        100 +
+                      (
+                        (answeredQuestions?.filter(
+                          (item) => item?.isCorrect == true
+                        )?.length /
+                          totalQuestions) *
+                        100
+                      ).toFixed(2) +
                       "%)"}
                   </span>
                 </h1>
@@ -98,10 +100,12 @@ const ShowResultOfQuiz = (props) => {
                     {parseInt(totalQuestions - answeredQuestions?.length)}
                     &nbsp; &nbsp;
                     {"(" +
-                      (parseInt(totalQuestions - answeredQuestions?.length) /
-                        totalQuestions) *
-                        100 +
-                      ")"}
+                      (
+                        (parseInt(totalQuestions - answeredQuestions?.length) /
+                          totalQuestions) *
+                        100
+                      ).toFixed(2) +
+                      "%)"}
                   </span>
                 </h1>
               </div>

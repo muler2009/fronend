@@ -21,6 +21,7 @@ const QuestionDisplayCard = () => {
   const [totalQuestions, setTotalQuestions] = useState(0); // calculating the total number of Questions
 
   const [totalPage, setTotalPage] = useState(0); // total number of pages
+  const [showAnswer, setShowAnswer] = useState(false);
 
   //const totalPage = 100;
 
@@ -66,6 +67,8 @@ const QuestionDisplayCard = () => {
           setPageNumber={setPageNumber}
           answeredQuestions={answeredQuestions}
           setAnsweredQuestions={setAnsweredQuestions}
+          showAnswer={showAnswer}
+          setShowAnswer={setShowAnswer}
         />
       )}
 
@@ -92,6 +95,7 @@ const QuestionDisplayCard = () => {
           setPage={setPage}
           totalQuestions={totalQuestions}
           answeredQuestions={answeredQuestions}
+          setShowAnswer={setShowAnswer}
         />
       </div>
     </section>

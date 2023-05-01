@@ -7,15 +7,17 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "../src/assets/css/index.css";
 import RequiredAuthentication from "./features/auth/RequiredAuthentication";
 import Layout from "./layout/Layout";
 import { StudentDashboardStructure } from "./layout/StudentDashboardStructure";
 import UploaderStructure from "./layout/UploaderStructure";
-import Public from "./pages/public/Public";
+import AssistAdmin from "./pages/Admin/Pages/AssistAdmin/AssistAdmin";
+import ModuleAdmin from "./pages/Admin/Pages/Module/ModuleAdmin";
 import EmailVerification from "./pages/public/EmailVerification";
+import Public from "./pages/public/Public";
 import store from "./store/store";
-import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +32,9 @@ const router = createBrowserRouter(
       <Route element={<RequiredAuthentication />}>
         <Route path="student/*" element={<StudentDashboardStructure />} />
         <Route path="upload/*" element={<UploaderStructure />} />
+
+        <Route path="admin/*" element={<ModuleAdmin />} />
+        <Route path="admin/assist" element={<AssistAdmin />} />
       </Route>
     </Route>
   )

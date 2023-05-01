@@ -5,8 +5,11 @@ export const BASE_FILE_URL = "http://127.0.0.1:8000/File/";
 // export const BASE_FILE_URL = "https://secretary.anchorerp.org/api/File/";
 
 export const API_TAGS = {
+  ASSIST_ADMIN: "assist-admins",
   QUESTIONS: "questions",
+  MODULES: "modules",
   REGISTER_STUDENT: "register-student",
+  SUBSCRIPTIONS: "Subscription",
 };
 
 export const ATTENDANCE_TYPE = [

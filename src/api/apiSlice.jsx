@@ -54,6 +54,10 @@ export const apiSlice = createApi({
       query: () => "subscriptions",
       providesTags: [API_TAGS.SUBSCRIPTIONS],
     }),
+    getAllSubscription: builder.query({
+      query: () => "all-subscriptions",
+      providesTags: [API_TAGS.SUBSCRIPTIONS, API_TAGS.ALL_SUBSCRIPTIONS],
+    }),
     subscribe: builder.mutation({
       query: (data) => ({
         url: `subscribe`,
@@ -105,6 +109,7 @@ export const {
   // SUBSCRIPTIONS
   //---------------------------------
   useGetSubscriptionQuery,
+  useGetAllSubscriptionQuery,
   useSubscribeMutation,
 
   // ASSIST_ADMIN

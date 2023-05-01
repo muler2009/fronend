@@ -6,32 +6,56 @@ import { FaEnvelope, FaLock } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Spinner from "../../components/common/Spinner";
-import { useLoginMutation } from "../../features/auth/authApiSlice";
-import useLogin from "../../hooks/useLogin";
+import { useState } from "react";
+import { userLogin } from "../../features/auth/myAuthSlice";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const { isSuccess, isError, errorMsg, user } = useSelector(
-    (state) => state.auth
-  );
+  const dispatch = useDispatch();
+  const { isSuccess, isError, errorMsg, data } = useSelector((state) => state);
+  const { user } = useSelector((state) => state.auth);
 
   const emailRef = useRef(); // just for referring the email input field
 
-  const { isLoading } = useLoginMutation();
-  const dispatch = useDispatch();
+  // const { isLoading } = useLoginMutation();
+  // const dispatch = useDispatch();
 
-  const {
-    loginAttributes,
-    email,
-    password,
-    setEmail,
-    setPassword,
-    errorMessage,
-    errRef,
-    setErrorMessage,
-    setLoginAttributes,
-    loginClicked,
-  } = useLogin();
+  const [loginAttributes, setLoginAttributes] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [errorMessage, setErrorMessage] = useState();
+  const [isLoginClicked, setIsLoginClicked] = useState(false);
+  // const [errRef, setErrRef] = useState();
+  // const [errRef, setErrRef] = useState();
+
+  // useEffect(() => {
+  //   const {
+  //     loginAttributes,
+  //     email,
+  //     password,
+  //     setEmail,
+  //     setPassword,
+  //     errorMessage,
+  //     errRef,
+  //     setErrorMessage,
+  //     setLoginAttributes,
+  //     loginClicked,
+  //   } = useLogin();
+  //   setLoginAttributes(loginAttributes);
+  // });
+
+  const loginClicked = async (event) => {
+    event.preventDefault();
+
+    if (isLoginClicked) return;
+    console.log("asd");
+    if (!email || !password) {
+      toast.error("Please fill required fields");
+      return;
+    }
+    setIsLoginClicked(true);
+    dispatch(userLogin({ email, password }));
+  };
 
   // To focus on the email field when the component mount
   useEffect(() => {
@@ -56,13 +80,13 @@ export const Login = () => {
   //         }))
   //     }).catch(error => setError(error.response.data.message))
   // }
-
   useEffect(() => {
-    if (isSuccess) {
+    console.log(user);
+    if (user?.token) {
       navigate("/student");
       toast.success("Welcome!");
     }
-  }, [isSuccess]);
+  }, [user]);
 
   useEffect(() => {
     isError && toast.error(errorMsg);
@@ -70,7 +94,7 @@ export const Login = () => {
 
   return (
     <React.Fragment>
-      {isLoading ? (
+      {false ? (
         <Spinner />
       ) : (
         <section className="flex md:flex justify-center mt-9 mb-[17rem] xs:px-5 sm:px-10">
@@ -83,7 +107,7 @@ export const Login = () => {
               </div>
 
               <div className="w-1/2 bg-sky-50 relative">
-                <p
+                {/* <p
                   ref={errRef}
                   className={
                     errorMessage
@@ -93,7 +117,7 @@ export const Login = () => {
                   aria-live="assertive"
                 >
                   {errorMessage}
-                </p>
+                </p> */}
                 <form className="text-black" onSubmit={loginClicked}>
                   <div className="py-9 flex flex-col space-y-9">
                     {/* Email field */}
@@ -135,7 +159,7 @@ export const Login = () => {
                         <span
                           id="email_indicator"
                           className={`${
-                            loginAttributes.loginEmailFocus
+                            loginAttributes?.loginEmailFocus
                               ? "font-Poppins text-black text-opacity-100 absolute left-5 -top-4 px-2 transition duration-200 bg-sky-50 input-text"
                               : "absolute -left-[9999px]"
                           }`}
@@ -192,6 +216,7 @@ export const Login = () => {
                     >
                       <button
                         type="submit"
+                        onClick={() => setIsLoginClicked(false)}
                         className={`font-Poppins w-full text-sm px-4 bg-[#3C4852] text-white flex justify-center items-center space-x-1`}
                       >
                         <AiOutlineLogin className="mr-2" />

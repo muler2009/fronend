@@ -1,18 +1,16 @@
 import React from "react";
-import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { currentUserToken } from "../auth/authSlice";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const RequiredAuthentication = () => {
   // const user = useSelector(currentUserToken);
-  const { isSuccess, isError, errorMsg, user } = useSelector(
-    (state) => state.auth
-  );
+  const { user } = useSelector((state) => state.auth);
   // console.log("protected route", user);
 
   const locate = useLocation();
+  console.log(user?.token);
 
-  return user ? (
+  return user?.token ? (
     <Outlet />
   ) : (
     <Navigate to="/login" state={{ from: locate }} replace />

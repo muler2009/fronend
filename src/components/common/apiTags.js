@@ -5,6 +5,7 @@ export const BASE_FILE_URL = "http://127.0.0.1:8000/File/";
 // export const BASE_FILE_URL = "https://secretary.anchorerp.org/api/File/";
 
 export const API_TAGS = {
+  ALL_SUBSCRIPTIONS: "all-subscription",
   ASSIST_ADMIN: "assist-admins",
   QUESTIONS: "questions",
   MODULES: "modules",

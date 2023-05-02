@@ -81,7 +81,7 @@ export const Login = () => {
   //     }).catch(error => setError(error.response.data.message))
   // }
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
     if (user?.token) {
       navigate("/student");
       toast.success("Welcome!");

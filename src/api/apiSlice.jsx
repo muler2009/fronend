@@ -83,7 +83,7 @@ export const apiSlice = createApi({
     }),
     approveSubscription: builder.mutation({
       query: (data) => ({
-        url: `approve subscription`,
+        url: `approve-subscription`,
         method: "POST",
         body: data,
       }),

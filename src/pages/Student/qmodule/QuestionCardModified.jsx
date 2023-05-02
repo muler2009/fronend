@@ -41,9 +41,12 @@ const QuestionCardModified = (props) => {
 
   const ChoiceLetter = ["A", "B", "C", "D"];
   let letter = ChoiceLetter.map((letter) => letter);
-
+  console.log(show);
   return (
     <React.Fragment>
+      <div className={`text-right pr-5`}>
+        <button onClick={() => setShow((prev) => !prev)}>Show Score</button>
+      </div>
       <div className={`my-2 mx-1 bg-white sm:block lg:flex `}>
         <div className={`sm:w-full lg:w-2/3 flex`}>
           <div className={`w-1/7 p-5 my-5`}>
@@ -124,10 +127,10 @@ const QuestionCardModified = (props) => {
           </div>
         )}
       </div>
-
+      {/* 
       <div className={``}>
         <button onClick={() => setShow((prev) => !prev)}>Show Score</button>
-      </div>
+      </div> */}
 
       <ShowResultOfQuiz
         totalQuestions={totalQuestions}

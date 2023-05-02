@@ -23,6 +23,11 @@ export const sidebar_link = [
     icon: <RiAdminFill />,
   },
   {
+    path: "/admin/subscription",
+    label: "Subscription",
+    icon: <RiAdminFill />,
+  },
+  {
     path: "uploader",
     label: "Uploader",
     icon: <MdOutlineCloudUpload />,

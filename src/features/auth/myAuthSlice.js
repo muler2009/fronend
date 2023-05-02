@@ -1,7 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authService from "./authService";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
 
 const initialState = {
   isLoading: false,
@@ -25,6 +23,7 @@ export const userLogin = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const data = await authService.userLogin(userData);
+      console.log(data);
 
       if (data?.response?.status === 422) {
         return rejectWithValue(data?.response?.data?.message);
@@ -33,7 +32,7 @@ export const userLogin = createAsyncThunk(
         return rejectWithValue(data?.response?.data?.data?.error);
       }
 
-      return data?.data;
+      return data;
     } catch (err) {
       return rejectWithValue(err?.response?.data?.message);
     }

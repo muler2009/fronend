@@ -72,7 +72,7 @@ const Questions = (props) => {
           setShowAnswer={setShowAnswer}
         />
       </div>
-      <AnswerExplanation />
+      {/* <AnswerExplanation /> */}
     </React.Fragment>
   );
 };

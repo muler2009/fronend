@@ -84,11 +84,13 @@ const ShowResultOfQuiz = (props) => {
                     }
                     &nbsp; &nbsp;
                     {"(" +
-                      (answeredQuestions?.filter(
-                        (item) => item?.isCorrect != true
-                      )?.length /
-                        totalQuestions) *
-                        100 +
+                      (
+                        (answeredQuestions?.filter(
+                          (item) => item?.isCorrect != true
+                        )?.length /
+                          totalQuestions) *
+                        100
+                      ).toFixed(2) +
                       "%)"}
                   </span>
                 </h1>

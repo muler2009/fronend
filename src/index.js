@@ -18,6 +18,7 @@ import ModuleAdmin from "./pages/Admin/Pages/Module/ModuleAdmin";
 import EmailVerification from "./pages/public/EmailVerification";
 import Public from "./pages/public/Public";
 import store from "./store/store";
+import AllSubscription from "./pages/Admin/Pages/AllSubscription/AllSubscription";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
 
         <Route path="admin/*" element={<ModuleAdmin />} />
         <Route path="admin/assist" element={<AssistAdmin />} />
+        <Route path="admin/subscription" element={<AllSubscription />} />
       </Route>
     </Route>
   )

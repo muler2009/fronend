@@ -38,26 +38,30 @@ const AssistTable = () => {
   const [openAdd, setOpenAdd] = useState(false);
 
   const columns = [
-    {
-      field: "id",
-      headerName: "No.",
-      filterable: false,
-      renderCell: (index) => index.api.getRowIndex(index.row.id) + 1,
-    },
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
-    },
-    {
-      field: "phone",
-      headerName: "Phone",
-      flex: 1,
-    },
+    // {
+    //   field: "id",
+    //   headerName: "No.",
+    //   filterable: false,
+    //   renderCell: (index) => index.api.getRowIndex(index.row.id) + 1,
+    // },
     {
       field: "email",
       headerName: "Email",
       flex: 1,
+    },
+    {
+      field: "created_at",
+      headerName: "Created At",
+      flex: 1,
+      valueGetter: (params) =>
+        new Date(params?.value)?.toLocaleDateString("en-us"),
+    },
+    {
+      field: "email_verified_at",
+      headerName: "Email Verified At",
+      flex: 1,
+      valueGetter: (params) =>
+        new Date(params?.value)?.toLocaleDateString("en-us"),
     },
     // {
     //   field: "action",
@@ -145,7 +149,7 @@ const AssistTable = () => {
       </div>
 
       <Paper sx={{ width: "100%" }}>
-        <GridData rows={assistData} columns={columns} />
+        <GridData rows={assistData?.data} columns={columns} />
       </Paper>
 
       <Dialog

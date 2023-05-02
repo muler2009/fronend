@@ -44,7 +44,7 @@ const UpgradeFromModule = (props) => {
     console.log(dataSelected);
 
     await subscribeForModule({
-      module_id: dataSelected?.id,
+      module_id: dataSelected?.module_id,
     })
       .then((res) => {
         if (res.error) {

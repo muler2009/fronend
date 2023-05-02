@@ -61,6 +61,8 @@ const AllModules = () => {
                 <h1 className={``}> --- </h1>
               ) : row.values.payment === "Pending" ? (
                 <h1 className={``}> Pending </h1>
+              ) : row.values.payment === "Paid" ? (
+                <h1 className={``}> --- </h1>
               ) : (
                 <div
                   className={`text-sm flex items-center `}

@@ -23,7 +23,7 @@ export const userLogin = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const data = await authService.userLogin(userData);
-      console.log(data);
+      // console.log(data);
 
       if (data?.response?.status === 422) {
         return rejectWithValue(data?.response?.data?.message);

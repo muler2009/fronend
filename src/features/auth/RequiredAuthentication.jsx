@@ -8,7 +8,7 @@ const RequiredAuthentication = () => {
   // console.log("protected route", user);
 
   const locate = useLocation();
-  console.log(user?.token);
+  // console.log(user?.token);
 
   return user?.token ? (
     <Outlet />

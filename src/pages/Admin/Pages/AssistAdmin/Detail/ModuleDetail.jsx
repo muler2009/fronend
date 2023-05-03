@@ -21,7 +21,7 @@ const renderDetailsButton = (params) => {
           variant="contained"
           color="primary"
           size="small"
-          onClick={() => console.log(params)}
+          // onClick={() => console.log(params)}
         />
       </IconButton>
       <IconButton>
@@ -29,7 +29,7 @@ const renderDetailsButton = (params) => {
           variant="contained"
           color="secondary"
           size="small"
-          onClick={() => console.log(params)}
+          // onClick={() => console.log(params)}
         />
       </IconButton>
       <IconButton>
@@ -37,7 +37,7 @@ const renderDetailsButton = (params) => {
           variant="contained"
           color="error"
           size="small"
-          onClick={() => console.log(params)}
+          // onClick={() => console.log(params)}
         />
       </IconButton>
     </div>

@@ -18,7 +18,7 @@ export const sidebar_link = [
     icon: <RiAdminFill />,
   },
   {
-    path: "assist",
+    path: "/admin/assist",
     label: "Assist Admin",
     icon: <RiAdminFill />,
   },

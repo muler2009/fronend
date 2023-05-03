@@ -3,18 +3,23 @@ import CloseIcon from "@mui/icons-material/Close";
 import { LoadingButton } from "@mui/lab";
 import {
   Button,
+  Chip,
   Dialog,
   DialogContent,
   DialogTitle,
   Divider,
+  FormControl,
   Grid,
   IconButton,
+  InputLabel,
+  MenuItem,
   Paper,
+  Select,
   TextField,
   Typography,
 } from "@mui/material";
 import { Stack } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import {
   useAddAssistAdminMutation,
@@ -75,6 +80,12 @@ const AllSubscriptionTable = () => {
       field: "payment",
       headerName: "Status",
       flex: 1,
+      renderCell: (params) => (
+        <Chip
+          label={params?.row?.payment}
+          color={params?.row?.payment === "Paid" ? "primary" : "secondary"}
+        />
+      ),
     },
     {
       field: "payee_code",
@@ -95,15 +106,17 @@ const AllSubscriptionTable = () => {
       renderCell: (params) => {
         return (
           <div className="flex">
-            <IconButton
-              color="primary"
-              onClick={() => {
-                setOpenApproval(true);
-                setSelectedId(params?.row?.id);
-              }}
-            >
-              <Approval />
-            </IconButton>
+            {params?.row?.payment === "Pending" && (
+              <IconButton
+                color="primary"
+                onClick={() => {
+                  setOpenApproval(true);
+                  setSelectedId(params?.row?.id);
+                }}
+              >
+                <Approval />
+              </IconButton>
+            )}
           </div>
         );
       },
@@ -126,6 +139,16 @@ const AllSubscriptionTable = () => {
       .catch((err) => toast.error("Data is not saved"));
   };
 
+  const [filtered, setFiltered] = useState([]);
+  const [show, setShow] = useState("Pending");
+  useEffect(() => {
+    console.log(assistData?.data);
+    assistData?.data &&
+      setFiltered(
+        assistData?.data?.filter((item) => item?.payment === "Pending")
+      );
+  }, [assistData]);
+
   if (errorAssist) return <Typography>{errorAssist?.data?.message}</Typography>;
   if (isAssistLoading) return <Loading />;
 
@@ -134,6 +157,35 @@ const AllSubscriptionTable = () => {
       <div className="flex justify-end w-full place-items-center pb-3">
         {/* <PageTitle title="Decision" sx={{ fontSize: 22, mb: 0 }} /> */}
         <div className="flex gap-2">
+          <FormControl sx={{ width: 300 }} required variant="outlined">
+            <InputLabel id="jobPost">Show</InputLabel>
+            <Select
+              label="Show"
+              value={show}
+              defaultValue={"Pending"}
+              onChange={(e) => {
+                setShow(e.target.value);
+                if (e.target.value === "All") setFiltered(assistData?.data);
+                if (e.target.value === "Pending")
+                  setFiltered(
+                    assistData?.data?.filter(
+                      (item) => item?.payment === "Pending"
+                    )
+                  );
+                if (e.target.value === "Paid")
+                  setFiltered(
+                    assistData?.data?.filter((item) => item?.payment === "Paid")
+                  );
+              }}
+            >
+              {["All", "Pending", "Paid"]?.map((obj, index) => (
+                <MenuItem key={index} value={obj}>
+                  {obj}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
           <Button variant="contained" onClick={() => setOpenApproval(true)}>
             Add
           </Button>
@@ -141,7 +193,7 @@ const AllSubscriptionTable = () => {
       </div>
 
       <Paper sx={{ width: "100%" }}>
-        <GridData rows={assistData?.data} columns={columns} />
+        <GridData rows={filtered} columns={columns} />
       </Paper>
 
       <Dialog

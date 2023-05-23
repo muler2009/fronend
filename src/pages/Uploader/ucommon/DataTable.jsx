@@ -12,6 +12,7 @@ import { useDeleteModuleMutation } from "../../../features/module/moduleApiSlice
 import ModuleEditModal from "../components/ModuleEditModal";
 import ModuleSearch from "../components/ModuleSearch";
 import ShowDataEntries from "../../../components/common/ShowDataEntries";
+import Loading from "../../public/components/Loading";
 
 export const Table = (props) => {
   const [selectedRow, setSelectedRow] = useState({}); // selecting rows
@@ -126,9 +127,11 @@ export const Table = (props) => {
           </div>
         </div>
       </div>
-
-      {isFetching || (isLoading && <p>Loading data ...</p>)}
-
+      {(isFetching || isLoading) && (
+        <div className="py-5">
+          <Loading />
+        </div>
+      )}
       {isSuccess && (
         <table
           className={`table table-striped text-left mb-5 text-[14px] px-2`}
@@ -164,9 +167,7 @@ export const Table = (props) => {
           </tbody>
         </table>
       )}
-
       {/* Fragment for pagination section */}
-
       <div className="w-full flex justify-between bg-white p-4 gap-4">
         <div className="w-1/2 flex  items-start space-x-3">
           <button
@@ -235,7 +236,6 @@ export const Table = (props) => {
           </div>
         </div>
       </div>
-
       {/* <ModuleEditModal 
                 editModal={editModal} 
                 setEditModal={setEditModal}  

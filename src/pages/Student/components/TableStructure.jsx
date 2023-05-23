@@ -17,7 +17,7 @@ const TableStructure = ({ columns, data, useAction }) => {
       data,
       initialState: {
         pageIndex: 0,
-        pageSize: 2,
+        pageSize: 5,
         hiddenColumns: ["lock", "pending"],
       },
     },

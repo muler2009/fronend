@@ -3,12 +3,14 @@ import * as Vsc from "react-icons/vsc";
 import { bank_attribute } from "../constants/bankattribute";
 import * as Fi from "react-icons/fi";
 import * as Md from "react-icons/md";
+import * as Bs from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import { totalNumberOfQuestion } from "../../../features/module/moduleSlice";
 import { Button } from "@mui/material";
 import { useSubscribeMutation } from "../../../api/apiSlice";
+import { Link } from "react-router-dom";
 
 const UpgradeFromModule = (props) => {
   const totalQuestionInModule = useSelector(totalNumberOfQuestion);
@@ -21,9 +23,9 @@ const UpgradeFromModule = (props) => {
 
   const [page, setPage] = useState(0);
 
-  useEffect(() => {
-    setPage(0);
-  }, [props]);
+  // useEffect(() => {
+  //   setPage(0);
+  // }, [props]);
 
   const [subscribeForModule, { isLoading: isSubscribeForModuleLoading }] =
     useSubscribeMutation();
@@ -151,7 +153,7 @@ const UpgradeFromModule = (props) => {
                   : uploadSuccessNotification();
               }}
             >
-              {page !== title.length - 1 ? "Next" : "Submit"}
+              {page !== title.length - 1 ? "Next" : "Request"}
             </Button>
 
             {/* <button
@@ -173,6 +175,7 @@ const UpgradeFromModule = (props) => {
 };
 
 const UpgradeModuleFor = ({ dataSelected }) => {
+  console.log(dataSelected);
   return (
     <React.Fragment>
       <div
@@ -207,7 +210,7 @@ const UpgradeModuleFor = ({ dataSelected }) => {
             </div>
           </div>
           <div className={`text-sm`}>
-            <p className={`text-[#5584a4]`}>{dataSelected.module_name}</p>
+            <p className={`text-[#5584a4]`}>{dataSelected?.module}</p>
           </div>
         </div>
 
@@ -319,11 +322,72 @@ const UploadPaymentDetails = () => {
           <ul
             className={`list-disc px-5 font-Roboto text-sm py-2 text-[#6c757d]`}
           >
-            <li>Find out the TT Number from the recipt</li>
-            <li>Scan/Capture and upload the recipet</li>
+            <li>Find out the TT Number from the receipt</li>
+            <li>Scan/Capture and upload the receipt</li>
+            <li>
+              Send the image to
+              <ul
+                className={`list-disc px-5 font-Roboto text-sm py-2 text-[#6c757d]`}
+              >
+                <li>
+                  <Button
+                    onClick={() =>
+                      window.open("https://t.me/legfetena3", "_blank")
+                    }
+                    target="_blank"
+                    startIcon={<Fi.FiNavigation />}
+                  >
+                    @lefetena3
+                  </Button>
+                </li>
+                <li>
+                  <Button
+                    onClick={() =>
+                      window.open("https://t.me/legfetena2", "_blank")
+                    }
+                    target="_blank"
+                    startIcon={<Fi.FiNavigation />}
+                  >
+                    @lefetena2
+                  </Button>
+                </li>
+                <li>
+                  <Button
+                    onClick={() =>
+                      window.open("https://t.me/legfetena3", "_blank")
+                    }
+                    target="_blank"
+                    startIcon={<Fi.FiNavigation />}
+                  >
+                    @lefetena3
+                  </Button>
+                </li>
+              </ul>
+            </li>
+            <li>
+              For more info
+              <ul
+                className={`list-disc px-5 font-Roboto text-sm py-2 text-[#6c757d]`}
+              >
+                <li>+2519-12-34-56</li>
+                <li>+2519-12-34-56</li>
+                <li>+2519-12-34-56</li>
+              </ul>
+            </li>
           </ul>
+          <p
+            className={`text-black text-lg font-xs py-1 flex justify-start items-center`}
+          >
+            <Bs.BsFillHandIndexThumbFill
+              size={20}
+              className={`mr-2`}
+              color="blue"
+            />
+            Click on <span className="text-blue-700 px-2">REQUEST</span> button
+            to order module upgrade
+          </p>
         </div>
-        <div className={`space-y-2`}>
+        {/* <div className={`space-y-2`}>
           <label className={`font-Roboto mb-[0.5rem] text-[15px]`}>
             TT Number
           </label>
@@ -347,7 +411,7 @@ const UploadPaymentDetails = () => {
           <small className={`font-Roboto  text-sm text-[#6c757d]`}>
             Upload your Receipt
           </small>
-        </div>
+        </div> */}
       </form>
     </React.Fragment>
   );

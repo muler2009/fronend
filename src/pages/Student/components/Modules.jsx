@@ -7,6 +7,7 @@ import TableStructure from "./TableStructure";
 import { useGetSubscriptionQuery } from "../../../api/apiSlice";
 import { MODULE_COLUMN } from "../constants/moduleattributes";
 import UpgradeFromModule from "./UpgradeFromModule";
+import Loading from "../../public/components/Loading";
 
 const AllModules = () => {
   const { data, isLoading, isSuccess, isError } = useGetSubscriptionQuery(); // destructuring items from Query
@@ -84,7 +85,11 @@ const AllModules = () => {
 
   return (
     <React.Fragment>
-      {isLoading && <p>Loading Data ....</p>}
+      {isLoading && (
+        <div className="py-5">
+          <Loading />
+        </div>
+      )}
       {isSuccess && (
         <div
           className={`block bg-zinc-50 px-5 py-5 xxs:overflow-x-scroll md:overflow-x-scroll border-t-[1px] border-b-[1px]`}

@@ -131,7 +131,8 @@ const RegistrationForm = (props) => {
   useEffect(() => {
     setBoolValidators({
       ...boolValidators,
-      passwordValidator: PWD_REGEX.test(requiredValues.password),
+      passwordValidator: requiredValues.password?.length < 6,
+      // passwordValidator: PWD_REGEX.test(requiredValues.password),
       validMatchPassword:
         requiredValues.password === requiredValues.confirm_password,
     });

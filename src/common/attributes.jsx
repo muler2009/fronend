@@ -2,14 +2,14 @@ import * as fi from "react-icons/fi";
 import * as cg from "react-icons/cg";
 
 export const dropDownMenu = [
-  {
-    label: "Edit Profile",
-    icon: <cg.CgProfile />,
-    path: "./profile",
-  },
+  // {
+  //   label: "Edit Profile",
+  //   icon: <cg.CgProfile />,
+  //   path: "./profile",
+  // },
   {
     label: "Change Password",
-    icon: <fi.FiPower />,
+    icon: <fi.FiUnlock />,
     hasModal: true,
   },
   //   {

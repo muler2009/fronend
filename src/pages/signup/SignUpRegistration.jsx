@@ -154,7 +154,8 @@ const SignUpRegistration = (props) => {
   useEffect(() => {
     setBoolValidators({
       ...boolValidators,
-      validFname: NAME_REGEX.test(requiredValues.fullname),
+      validFname: requiredValues.fullname?.length >= 4,
+      // validFname: NAME_REGEX.test(requiredValues.fullname),
     });
   }, [requiredValues.fullname]);
 
@@ -175,7 +176,10 @@ const SignUpRegistration = (props) => {
   useEffect(() => {
     setBoolValidators({
       ...boolValidators,
-      passwordValidator: PWD_REGEX.test(requiredValues.password),
+      // passwordValidator: PWD_REGEX.test(requiredValues.password),
+      passwordValidator:
+        requiredValues.password?.length >= 6 &&
+        requiredValues.password?.length <= 24,
       validMatchPassword:
         requiredValues.password === requiredValues.confirm_password,
     });
@@ -256,7 +260,7 @@ const SignUpRegistration = (props) => {
             >
               <AiFillInfoCircle className={`mt-1 `} />
               <span className={`ml-1 pr-10`}>
-                Name must be between 4-8 characchter
+                Name must be at least 4 character
               </span>
             </p>
           </div>
@@ -396,9 +400,9 @@ const SignUpRegistration = (props) => {
             <label htmlFor="email" className="font-Poppins text-muted">
               Phone Number
             </label>
-            <div
+            {/* <div
               className={`flex items-center ${
-                boolValidators.validFname
+                boolValidators.validPhone
                   ? "ml-2 text-green-700 text-xs"
                   : "hidden"
               }`}
@@ -408,13 +412,13 @@ const SignUpRegistration = (props) => {
             </div>
             <FaTimesCircle
               className={`${
-                boolValidators.validFname || !requiredValues.fullname
+                boolValidators.validPhone
                   ? "hidden"
                   : "flex justify-center items-center ml-1"
               }`}
               color="red"
               size={20}
-            />
+            /> */}
           </div>
           <div className={`py-2 flex-col font-Poppins`}>
             <div className={`flex`}>
@@ -425,28 +429,25 @@ const SignUpRegistration = (props) => {
                 type={`number`}
                 id="phone"
                 name="phone"
-                //value={requiredValues.phone}
-
+                // value={requiredValues.phone}
                 className={`input-md font-Poppins overflow-y-scroll border border-l-0 rounded-l-none focus:border-[#ddd] focus:bg-zinc-100 bg-gray-50`}
               />
             </div>
-            <small className={`font-Quicksand text-sm text-[#6c757d]`}>
+            {/* <small className={`font-Quicksand text-sm text-[#6c757d]`}>
               Your active phone number (e.g 912..)
-            </small>
+            </small> */}
             <p
               id="emailnote"
               className={`${
-                boolValidators.nameFocus &&
-                requiredValues.fullname &&
-                !boolValidators.validFname
+                boolValidators.phoneFocus &&
+                requiredValues.phone &&
+                !boolValidators.validPhone
                   ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
                   : "absolute -left-[9999px]"
               }`}
             >
               <AiFillInfoCircle className={`mt-1 `} />
-              <span className={`ml-1 pr-10`}>
-                Name must be between 4-8 characchter
-              </span>
+              <span className={`ml-1 pr-10`}>Phone number must be 9 digit</span>
             </p>
           </div>
         </div>
@@ -523,7 +524,7 @@ const SignUpRegistration = (props) => {
               <span className={`pl-3`}>
                 8 to 24 characters.
                 <br />
-                Must include uppercase and lowercase letters, a number and a
+                {/* Must include uppercase and lowercase letters, a number and a
                 special character.
                 <br />
                 Allowed special characters:
@@ -531,7 +532,7 @@ const SignUpRegistration = (props) => {
                 <span aria-label="at symbol">@</span>
                 <span aria-label="hashtag">#</span>
                 <span aria-label="dollar sign">$</span>
-                <span aria-label="percent">%</span>
+                <span aria-label="percent">%</span> */}
               </span>
             </p>
           </div>

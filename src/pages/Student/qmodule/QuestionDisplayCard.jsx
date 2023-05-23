@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useGetQuestionsQuery } from "../../../api/apiSlice";
 import Pagination from "../../../components/common/Pagination";
 import Questions from "./Questions";
+import Loading from "../../public/components/Loading";
 
 const QuestionDisplayCard = () => {
   const {
@@ -51,7 +52,11 @@ const QuestionDisplayCard = () => {
   return (
     <section className={`w-full flex flex-col`}>
       {/* Fragment for displaying question  */}
-      {questionIsLoading && <p>Loading data ...</p>}
+      {questionIsLoading && (
+        <div className="py-15">
+          <Loading />
+        </div>
+      )}
       {!questionIsLoading && currentItem && (
         <Questions
           questions={currentItem}

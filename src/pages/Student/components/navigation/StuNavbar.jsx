@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import React, { useState } from "react";
 import * as Ai from "react-icons/ai";
 import * as Gr from "react-icons/gr";
+import * as Vs from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import user from "../../../../assets/images/user.jpeg";
@@ -15,8 +16,9 @@ export const StuNavbar = () => {
   const dispatch = useDispatch();
   const [drop, setDrop] = useState(false);
   const [showNavigationLinks, setShowNavigationLinks] = useState(false);
-  const email = useSelector(currentUserEmail);
-
+  const email =
+    JSON.parse(localStorage.getItem("auth"))?.data?.user?.email || "";
+  console.log(email);
   return (
     <React.Fragment>
       <section
@@ -41,11 +43,12 @@ export const StuNavbar = () => {
             className={`mr-10 cursor-pointer font-Poppins text-sm hidden lg:flex lg:justify-center lg:items-center lg:space-x-3`}
             onClick={() => setDrop((prev) => !prev)}
           >
-            <img
+            <Vs.VscAccount size={32} />
+            {/* <img
               src={user}
               alt="profile image"
               className={`rounded-full w-10 h-10 object-cover object-center cursor-pointer`}
-            />
+            /> */}
             <p>{email}</p>
             {drop && <DropDownProfile setDrop={setDrop} />}
           </div>

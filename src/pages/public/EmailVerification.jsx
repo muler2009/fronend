@@ -92,7 +92,7 @@ const EmailVerification = () => {
         </div>
         <footer className="w-full relative bottom-0 grid place-content-center bg-[#0073aa] overflow-hidden">
           <h6 className="font-Poppins text-sm py-5">
-            &copy; 2023 ieXitTutor.com
+            &copy; 2023 lefetenaTutor.com
           </h6>
         </footer>
       </main>

@@ -47,7 +47,22 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: [API_TAGS.REGISTER_STUDENT],
     }),
-
+    forgot: builder.mutation({
+      query: (data) => ({
+        url: `forgot-password`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [API_TAGS.REGISTER_STUDENT],
+    }),
+    forgotVerify: builder.mutation({
+      query: (data) => ({
+        url: `forgot-password/${data?.token}`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [API_TAGS.REGISTER_STUDENT],
+    }),
     // SUBSCRIPTIONS
     //---------------------------------
     getSubscription: builder.query({
@@ -117,4 +132,6 @@ export const {
   useGetAssistAdminQuery,
   useAddAssistAdminMutation,
   useApproveSubscriptionMutation,
+  useForgotVerifyMutation,
+  useForgotMutation,
 } = apiSlice;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import  RegistrationForm from './RegistrationForm'
-import register from '../../assets/images/register.png'
+
 import useValidation from '../../hooks/useSignup'
 import SuccessMessage from '../../components/ui/SuccessMessage'
 
@@ -35,7 +35,7 @@ const Registration = () => {
                                 <li>Use differnet special characheters</li>                            
                             </ul>
                         </div>
-                        <img src={register} alt='Registration promotion' className={`w-2/3 flex `}/>
+                        
                     </div>
                     {/* right section  */}
 

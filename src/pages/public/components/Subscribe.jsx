@@ -3,27 +3,21 @@ import { subscribtion } from '../constants/constants'
 import { FaSearch } from 'react-icons/fa'
 import * as Ai from 'react-icons/ai';
 import * as Bs from 'react-icons/bs' 
-import { useSpring, animated, config } from 'react-spring';
-import useAnimations from '../../../hooksForAnimation/useAnimations';
+
+
 
 const Subscribe = () => {
 
-  const {fade} = useAnimations()
 
-  const slideLeft = useSpring({ 
-    from: { marginLeft: -100 }, 
-    to: { marginLeft: 0, delay: 200} ,
-    config: { delay: 1000, duration: 1000 }
-  })
 
   return (
-    <section className="bg-white flex md:flex bg-opacity-40 py-5 my-5">
+    <section className="bg-[#effafa] flex md:flex bg-opacity-40">
       <div className="flex-1 py-10">
         <div className="container mx-auto xs:px-[5px] flex flex-col relative">
 
           {/* Heading  */}
           <div className={`flex justify-center py-5`}>
-            <h1 className='font-Oswald text-3xl before:xs:none after:xs:none before:content-[""] before:absolute before:top-10 before:left-32 before:h-[1px] before:w-1/3 before:bg-[#f2f2f2] before:mr-5 after:content-[""] after:absolute after:top-10 after:right-32 after:h-[1px] after:w-1/3 after:bg-[#f2f2f2]'>Your Subscription Offer</h1>
+            <h1 className='px-5 py-5 font-Oswald text-[32px] uppercase before:xs:none after:xs:none before:content-[""] before:absolute before:top-10 before:left-32 before:h-[1px] before:w-1/3 before:bg-[#f2f2f2] before:mr-5 after:content-[""] after:absolute after:top-10 after:right-32 after:h-[1px] after:w-1/3 after:bg-[#f2f2f2]'>Your Subscription    <span className="text-[#00bdff]">Offer</span></h1>           
           </div>
 
           {/* Subscription plan */}

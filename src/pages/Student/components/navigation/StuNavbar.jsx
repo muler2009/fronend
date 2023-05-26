@@ -18,7 +18,6 @@ export const StuNavbar = () => {
   const [showNavigationLinks, setShowNavigationLinks] = useState(false);
   const email =
     JSON.parse(localStorage.getItem("auth"))?.data?.user?.email || "";
-  console.log(email);
   return (
     <React.Fragment>
       <section

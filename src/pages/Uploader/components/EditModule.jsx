@@ -1,28 +1,16 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import { useGetSingleModuleQuery } from '../../../features/module/moduleApiSlice'
-import ModuleAdderModal from './ModuleAdderModal'
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useGetSingleModuleQuery } from "../../../features/module/moduleApiSlice";
+import ModuleAdderModal from "./ModuleAdderModal";
 
 const EditModule = () => {
+  const { id } = useParams();
 
-  const { id } = useParams()
+  const { data, isLoading, isFetching, isError } = useGetSingleModuleQuery(id);
 
-  const { 
-      data,
-      isLoading,
-      isFetching,
-      isError
-  } = useGetSingleModuleQuery(id)
+  // console.log(data)
 
-  console.log(data)
+  return <React.Fragment>{isError && <p>error occured </p>}</React.Fragment>;
+};
 
-  return (
-    <React.Fragment>
-       {
-        isError && <p>error occured </p>
-       }
-    </React.Fragment>
-  )
-}
-
-export default EditModule
+export default EditModule;

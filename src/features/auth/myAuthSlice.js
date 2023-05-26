@@ -23,7 +23,7 @@ export const userLogin = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const data = await authService.userLogin(userData);
-      // console.log(data);
+      // // console.log(data);
 
       if (data?.response?.status === 422) {
         return rejectWithValue(data?.response?.data?.message);
@@ -44,7 +44,7 @@ export const checkToken = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth?.token;
-      console.log(thunkAPI.getState());
+      // // console.log(thunkAPI.getState());
 
       return await authService.checkToken(token);
     } catch (err) {

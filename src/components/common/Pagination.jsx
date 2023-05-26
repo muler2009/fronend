@@ -58,7 +58,7 @@ const Pagination = (props) => {
     (item) => item?.pageNumber == pageNumber
   );
 
-  // console.log(answered);
+  // // console.log(answered);
 
   return (
     <React.Fragment>

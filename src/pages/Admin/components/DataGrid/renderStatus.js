@@ -39,7 +39,7 @@ const Status = /*#__PURE__*/ React.memo((props) => {
     icon = /*#__PURE__*/ _jsx(MoreHorizIcon, {
       className: "icon",
     });
-    console.log(["Requested", "Pending"]?.includes(status));
+    // console.log(["Requested", "Pending"]?.includes(status));
   } else if (status === "PartiallyFilled") {
     icon = /*#__PURE__*/ _jsx(AutorenewIcon, {
       className: "icon",

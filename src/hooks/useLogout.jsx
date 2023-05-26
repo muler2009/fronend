@@ -14,7 +14,7 @@ const useLogout = () => {
       localStorage.removeItem("loginCredintials");
       navigate("/");
     } catch (error) {
-      // console.log("error on loggin out")
+      // // console.log("error on loggin out")
     }
   };
 

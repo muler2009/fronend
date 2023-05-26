@@ -98,7 +98,7 @@ const RegistrationForm = (props) => {
       setRequiredValues("");
       setBoolValidators(false);
     } catch (error) {
-      console.log("Error has Occured");
+      // console.log("Error has Occured");
     }
   };
 

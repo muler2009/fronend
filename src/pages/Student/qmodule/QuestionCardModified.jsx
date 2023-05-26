@@ -41,7 +41,7 @@ const QuestionCardModified = (props) => {
 
   const ChoiceLetter = ["A", "B", "C", "D"];
   let letter = ChoiceLetter.map((letter) => letter);
-  console.log(show);
+  // console.log(show);
   return (
     <React.Fragment>
       <div className={`text-right pr-5`}>

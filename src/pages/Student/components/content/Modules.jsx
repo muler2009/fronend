@@ -31,7 +31,7 @@ const AllModules = () => {
         Header: "status",
         Cell: ({ row }) => {
           const rowData = row.values.moduleStatus;
-          console.log(String(rowData));
+          // console.log(String(rowData));
 
           return (
             <div className="flex space-x-2 justify-center cursor-pointer">

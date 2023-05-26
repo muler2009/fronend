@@ -35,7 +35,7 @@ const useRegistration = () => {
     try {
       await dispatch(addUserProfile(profileData)).unwrap();
     } catch (error) {
-      // console.log(error)
+      // // console.log(error)
     }
   };
 

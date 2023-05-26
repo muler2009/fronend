@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import Spinner from "../../components/common/Spinner";
 import { useState } from "react";
 import { userLogin } from "../../features/auth/myAuthSlice";
+import { LoadingButton } from "@mui/lab";
+import Loading from "../public/components/Loading";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -48,13 +50,15 @@ export const Login = () => {
     event.preventDefault();
 
     if (isLoginClicked) return;
-    console.log("asd");
     if (!email || !password) {
       toast.error("Please fill required fields");
       return;
     }
+
     setIsLoginClicked(true);
-    dispatch(userLogin({ email, password }));
+    dispatch(userLogin({ email, password })).then((value) => {
+      setIsLoginClicked(false);
+    });
   };
 
   // To focus on the email field when the component mount
@@ -62,18 +66,13 @@ export const Login = () => {
     emailRef.current.focus();
   }, []);
 
-  // For Error message field when the component mount
-  useEffect(() => {
-    setErrorMessage("");
-  }, [email, password]);
-
   // const loginUser = (event) => {
   //     event.preventDefault();
   //     axios.post("http://localhost:5000/authenticationAPI/login",
   //     {
   //         email, password
   //     }).then((response) => {
-  //         console.log("response", response)
+  //         // console.log("response", response)
   //         localStorage.setItem("loginCredintials", JSON.stringify({
   //             userLogin: true,
   //             token: response.data.accessToken
@@ -81,7 +80,7 @@ export const Login = () => {
   //     }).catch(error => setError(error.response.data.message))
   // }
   useEffect(() => {
-    // console.log(user);
+    // // console.log(user);
     if (user?.token) {
       navigate("/student");
       toast.success("Welcome!");
@@ -214,14 +213,28 @@ export const Login = () => {
                     <div
                       className={`flex justify-start items-center space-x-3`}
                     >
-                      <button
-                        type="submit"
-                        onClick={() => setIsLoginClicked(false)}
-                        className={`font-Poppins w-full text-sm px-4 bg-[#3C4852] text-white flex justify-center items-center space-x-1`}
-                      >
-                        <AiOutlineLogin className="mr-2" />
-                        Login
-                      </button>
+                      {isLoginClicked ? (
+                        <div className="w-full text-center">
+                          <Loading />
+                          {/* <button
+                            type="submit"
+                            onClick={() => setIsLoginClicked(false)}
+                            className={`font-Poppins w-full text-sm px-4 bg-[#3C4852] text-white flex justify-center items-center space-x-1`}
+                          >
+                            <AiOutlineLogin className="mr-2" />
+                            Login
+                          </button> */}
+                        </div>
+                      ) : (
+                        <button
+                          type="submit"
+                          onClick={() => setIsLoginClicked(false)}
+                          className={`font-Poppins w-full text-sm px-4 bg-[#3C4852] text-white flex justify-center items-center space-x-1`}
+                        >
+                          <AiOutlineLogin className="mr-2" />
+                          Login
+                        </button>
+                      )}
                       {/* <button className='font-Poppins w-1/3 text-sm px-4 bg-red-600 text-white'>Cancel</button> */}
                     </div>
                   </div>

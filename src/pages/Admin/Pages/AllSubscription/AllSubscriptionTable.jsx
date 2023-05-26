@@ -142,7 +142,7 @@ const AllSubscriptionTable = () => {
   const [filtered, setFiltered] = useState([]);
   const [show, setShow] = useState("Pending");
   useEffect(() => {
-    console.log(assistData?.data);
+    // console.log(assistData?.data);
     assistData?.data &&
       setFiltered(
         assistData?.data?.filter((item) => item?.payment === "Pending")

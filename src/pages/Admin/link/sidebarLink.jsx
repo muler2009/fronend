@@ -18,12 +18,12 @@ export const sidebar_link = [
     icon: <RiAdminFill />,
   },
   {
-    path: "/admin/assist",
+    path: "/my-admin/assist",
     label: "Assist Admin",
     icon: <RiAdminFill />,
   },
   {
-    path: "/admin/subscription",
+    path: "/my-admin/subscription",
     label: "Subscription",
     icon: <RiAdminFill />,
   },

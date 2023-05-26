@@ -118,7 +118,7 @@ const SignUpRegistration = (props) => {
     useRegisterStudentMutation();
 
   const onCreateClicked = async () => {
-    // console.log(requiredValues);
+    // // console.log(requiredValues);
     // try{
     //     // createStudent(requiredValues)
     await registerStudent({
@@ -130,7 +130,7 @@ const SignUpRegistration = (props) => {
       phone: requiredValues?.phone,
     })
       .then((res) => {
-        console.log(res?.error?.data?.message);
+        // console.log(res?.error?.data?.message);
         if (res?.error) {
           toast.error(res.error?.data?.message);
         } else {
@@ -143,7 +143,7 @@ const SignUpRegistration = (props) => {
     //     setBoolValidators(false)
 
     // }catch(error) {
-    //     console.log("Error has Occured")
+    //     // console.log("Error has Occured")
     // }
   };
 

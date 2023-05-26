@@ -34,9 +34,9 @@ const router = createBrowserRouter(
         <Route path="student/*" element={<StudentDashboardStructure />} />
         <Route path="upload/*" element={<UploaderStructure />} />
 
-        <Route path="admin/*" element={<ModuleAdmin />} />
-        <Route path="admin/assist" element={<AssistAdmin />} />
-        <Route path="admin/subscription" element={<AllSubscription />} />
+        <Route path="my-admin/*" element={<ModuleAdmin />} />
+        <Route path="my-admin/assist" element={<AssistAdmin />} />
+        <Route path="my-admin/subscription" element={<AllSubscription />} />
       </Route>
     </Route>
   )

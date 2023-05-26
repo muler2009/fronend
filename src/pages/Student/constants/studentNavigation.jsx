@@ -33,24 +33,24 @@ export const student_status = [
 ];
 
 export const side_navigation = [
-  {
-    sideKey: 1,
-    label: "Dashboard",
-    path: "/student",
-    icon: <BsGrid3X3GapFill />,
-  },
-  {
-    sideKey: 2,
-    label: "Profile",
-    path: "profile",
-    icon: <FaUserGraduate />,
-  },
-  {
-    sideKey: 2,
-    label: "Module",
-    path: "modules",
-    icon: <GrNotes />,
-  },
+  // {
+  //   sideKey: 1,
+  //   label: "Dashboard",
+  //   path: "/student",
+  //   icon: <BsGrid3X3GapFill />,
+  // },
+  // {
+  //   sideKey: 2,
+  //   label: "Profile",
+  //   path: "profile",
+  //   icon: <FaUserGraduate />,
+  // },
+  // {
+  //   sideKey: 2,
+  //   label: "Module",
+  //   path: "modules",
+  //   icon: <GrNotes />,
+  // },
 
   // {
   //     sideKey: 2,
@@ -80,12 +80,12 @@ export const side_navigation = [
   //     ]
 
   // },
-  {
-    sideKey: 3,
-    label: "Result",
-    path: "result",
-    icon: <AiFillProfile />,
-  },
+  // {
+  //   sideKey: 3,
+  //   label: "Result",
+  //   path: "result",
+  //   icon: <AiFillProfile />,
+  // },
 
   {
     sideKey: 5,

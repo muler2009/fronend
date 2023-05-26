@@ -19,7 +19,7 @@ const UpgradeAccountModal = (props) => {
   const title = ["Payment Account Information", "Upload details"];
 
   const val = Object.keys(title).length;
-  // console.log(val);
+  // // console.log(val);
 
   const displayContents = () => {
     if (page === 0) {
@@ -98,7 +98,7 @@ const UpgradeAccountModal = (props) => {
             <button
               className={`px-5 bg-gray-200  text-sm rounded-none disabled:cursor-default disabled:opacity-25 duration-200`}
               onClick={() => {
-                console.log("asd");
+                // console.log("asd");
                 page !== title.length - 1
                   ? setPage((prev) => prev + 1)
                   : uploadSuccessNotification();

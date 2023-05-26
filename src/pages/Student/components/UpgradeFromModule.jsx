@@ -43,8 +43,6 @@ const UpgradeFromModule = (props) => {
   };
 
   const uploadSuccessNotification = async () => {
-    console.log(dataSelected);
-
     await subscribeForModule({
       module_id: dataSelected?.module_id,
     })
@@ -175,7 +173,7 @@ const UpgradeFromModule = (props) => {
 };
 
 const UpgradeModuleFor = ({ dataSelected }) => {
-  console.log(dataSelected);
+  // console.log(dataSelected);
   return (
     <React.Fragment>
       <div

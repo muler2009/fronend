@@ -87,10 +87,10 @@ const Questions = (props) => {
 //     const onAnswerSelected = (answer) => {
 //         if(answer === question.correct_answer) {
 //             setAnswerSelected(true)
-//             console.log('right')
+//             // console.log('right')
 //         }else {
 //             setAnswerSelected(false)
-//             console.log('wrong')
+//             // console.log('wrong')
 //         }
 //     }
 
@@ -212,10 +212,10 @@ const Questions = (props) => {
 
 //         if(answer === question.correct_answer) {
 //             setAnswerSelected(true)
-//             console.log('right')
+//             // console.log('right')
 //         }else {
 //             setAnswerSelected(false)
-//             console.log('wrong')
+//             // console.log('wrong')
 //         }
 //     }
 

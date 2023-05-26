@@ -1,49 +1,105 @@
-import React, { useState } from 'react'
-import { animated } from 'react-spring'
-import useAnimations  from '../../../hooksForAnimation/useAnimations'
-
- 
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import img from "../../../assets/images/img-1.png";
+import { motion } from "framer-motion";
 
 const Heros = () => {
-  const { fade } = useAnimations();
-  
+  const heroVariants = {
+    init: {
+      opacity: 0,
+      y: 10,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        when: "beforeChildren",
+        staggerChildren: 0.3,
+        staggerDirection: -1,
+      },
+    },
+  };
 
-  return(
-    <section className={`flex md:flex py-10 bg-[#f2eef8]`}>
-      <div className={`flex-1 justify-start flex-col sm:px-16 px-6 xl:px-56`}>
-        <div className="flex flex-row items-center py-[3px]">
-          <p className="text-normal font-Poppins font-normal text-indigo-500 text-smeibold">Be the first to get special Offer</p>
-        </div>
-        <animated.div className="flex flex-row justify-between items-center w-full" style={fade}>
-          <h1 className="flex-1 font-Poppins font-semibold text-4xl ss:text-[60px] text-black xs:leading-[60px] ss:leading-[80px] md:text-[50px] md:leading-[60px]" >
-            Start Your Journey to <br className="ss:block hidden" /> {" "}
-            <span className="text-red-600">success with Us!</span><br/>{" "}
-            <span>to Ethio Exit !</span>
-          </h1>
-        </animated.div>
-        {/* <h1 className="flex-1 font-Poppins font-semibold ss:text-[62px] text-5xl text-black ss:leading-[80px] md:text-[50px]">
-          to Ethio Exit !
-        </h1> */}
-        <p className="font-Poppins max-w-[470px] mt-5 leading-8">
-            PI Education Consultancy Can Fulfill Your Education Dream
-            As Per Your Best Fit bla bla bla``
-        </p>  
+  const heroChildVariants = {
+    init: {
+      opacity: 0,
+      y: 10,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+  const heroImage = {
+    init: {
+      opacity: 0,
+      x: 100,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        delay: 0.4,
+        duration: 2,
+      },
+    },
+  };
 
-        <div className="my-10 flex space-x-5">
-            <button id="register" className="btn-md font-Poppins text-white ring-2 ring-black px-5 bg-black rounded-none hover:bg-white hover:text-black ">Register</button>
-             <button 
-              className="btn-md font-Poppins ring-2 text-black ring-black px-10 bg-white rounded-none
-               hover:bg-black hover:text-white hover:ring-0">Start Journey
-             </button>
-        </div> 
+  return (
+    <div className="bg-hero-bg bg-[#effafa] bg-right-top bg-no-repeat bg-cover shadow-sm h-full">
+      <div className="container mx-auto py-10 px-10 flex xs:flex-wrap-reverse md:flex-nowrap justify-center items-center">
+        <motion.div
+          variants={heroVariants}
+          initial="init"
+          animate="visible"
+          className="xs:w-full xs:px-1 lg:w-1/2 py-5"
+        >
+          <motion.p className="pt-10 text-[#5c727d] text-bold font-Poppins text-sm">
+            Great place to hug a knowledge
+          </motion.p>
+          <motion.h1
+            variants={heroChildVariants}
+            className="flex-1 font-Oswald font-[700] text-5xl xs:text-[50px] ss:text-[60px] text-[#071c1f] xs:leading-[70px] ss:leading-[80px] sm:text-[70px] md:text-[60px] md:leading-[70px] py-5"
+          >
+            Start Your Journey to <br className="ss:block hidden" />{" "}
+            <span className="text-[#00bdff]">success with Us!</span>
+            <br />{" "}
+          </motion.h1>
+          <motion.div
+            variants={heroChildVariants}
+            className="pt-5 pb-10 leading-7"
+          >
+            <p className="font-Poppins max-w-[470px] border-l-[2px] border-[#5c727d] px-5 text-[#5c727d] text-justify text-[15px]">
+              Our Online platform is built to Fulfill Your Education Dream by
+              our experienced expertise in different domain
+            </p>
+          </motion.div>
+          {/* Contact us button */}
+          <motion.div variants={heroChildVariants} className="">
+            <Link to="signup">
+              <button className="btn-md font-Poppins bg-[#00bdff] rounded-none text-white w-[50%] hover:bg-[#01b0f0]">
+                Register
+              </button>
+            </Link>
+          </motion.div>
+        </motion.div>
 
+        <motion.div
+          variants={heroImage}
+          initial="init"
+          animate="visible"
+          className="xs:hidden md:flex"
+        >
+          <img src={img} alt="SOmething" />
+        </motion.div>
       </div>
-    </section>
-  )
-}
+    </div>
+  );
+};
 
 export default Heros;
-
-// bg-[url('/src/assets/images/rect.png')] bg-cover bg-no-repeat w-full bg-black bg-opacity-20
-{/* <img src={graduate} alt="Side Image" className="object-cover object-center w-full " /> */}

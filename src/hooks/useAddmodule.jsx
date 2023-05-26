@@ -36,7 +36,7 @@ const useAddModule = () => {
       dispatch(addModule(moduleAddingAttributes));
       setModuleAddingAttributes("");
     } catch (error) {
-      // console.log(error)
+      // // console.log(error)
     }
   };
 

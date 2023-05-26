@@ -1,61 +1,48 @@
-import React, { useCallback, useState} from "react";
+import React, { useCallback, useState } from "react";
 import { useAddQuestionMutation } from "../../../features/questionBank/questionbankSlice";
 import { useDispatch } from "react-redux";
 
 export const useAddQuestion = () => {
+  const [addQuestion, { isLoading }] = useAddQuestionMutation();
+  const dispatch = useDispatch;
 
-    const [addQuestion, { isLoading }] = useAddQuestionMutation()
-    const dispatch = useDispatch
+  const [choices, setChoices] = useState([]);
+  const [questionState, setQuestionState] = useState({});
 
-    const [choices, setChoices] = useState([])
-    const [questionState, setQuestionState] = useState({
+  const [questionAttributes, setQuestionAttributes] = useState({
+    question: "",
+    correct_answer: "",
+    choices: [],
+  });
 
-    })
+  const [ch, setCh] = useState([]);
 
-    const [questionAttributes, setQuestionAttributes] = useState({
-        question : "",    
-        correct_answer:"",
-        choices: []
-        
-    })
+  const handleQuestionChanges = (event) => {
+    setQuestionAttributes({
+      ...questionAttributes,
+      [event.target.name]: event.target.value,
+      choices: [
+        ...questionAttributes,
+        { [event.target.name]: event.target.value },
+      ],
+    });
+  };
 
-    const [ch, setCh] = useState([])
+  const onPublishedButtonClicked = (event) => {
+    try {
+      addQuestion(questionAttributes);
+      choices.push(event.target.value);
 
-    const handleQuestionChanges = (event)  => {
-        setQuestionAttributes({
-            ...questionAttributes,
-            [event.target.name] : event.target.value,
-            choices: [
-                ...questionAttributes,
-                { [event.target.name] : event.target.value}
-            ] 
-        })
+      setQuestionAttributes("");
+    } catch (error) {
+      // console.log(error.message)
     }
+  };
 
-
-   
-   
-       
-    const onPublishedButtonClicked = (event) => {
-        
-        try {          
-          
-                addQuestion(questionAttributes)
-                choices.push(event.target.value)
-            
-            setQuestionAttributes("")
-        }catch(error){
-            console.log(error.message)
-        }
-    }
-
-
-    return { 
-        questionAttributes, 
-        setQuestionAttributes, 
-        handleQuestionChanges,
-        onPublishedButtonClicked
-    }
-
-
-}
+  return {
+    questionAttributes,
+    setQuestionAttributes,
+    handleQuestionChanges,
+    onPublishedButtonClicked,
+  };
+};

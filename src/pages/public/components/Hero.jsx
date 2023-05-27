@@ -54,9 +54,9 @@ const Heros = () => {
 
   return(
     <div className="bg-hero-bg bg-[#effafa] bg-right-top bg-no-repeat bg-cover shadow-sm h-full">
-      <div  className="container mx-auto py-10 px-10 flex xs:flex-wrap-reverse md:flex-nowrap justify-center items-center" >
+      <div  className="container mx-auto py-10 px-10 flex xxs:flex-wrap-reverse xs:flex-wrap-reverse md:flex-nowrap justify-center items-center" >
         <motion.div variants={heroVariants} initial="init" animate="visible" className="xs:w-full xs:px-1 lg:w-1/2 py-5">
-            <motion.p className="pt-10 text-[#5c727d] text-bold font-Poppins text-sm">Great place to hug a knowledge</motion.p>
+            <motion.p className="pt-10 text-[#5c727d] text-bold font-Poppins text-sm xx:w-full">Great place to hug a knowledge</motion.p>
             <motion.h1 variants={heroChildVariants} className="flex-1 font-Oswald font-[700] text-5xl xs:text-[50px] ss:text-[60px] text-[#071c1f] xs:leading-[70px] ss:leading-[80px] sm:text-[70px] md:text-[60px] md:leading-[70px] py-5" >
                 Start Your Journey to <br className="ss:block hidden" /> {" "}
                 <span className="text-[#00bdff]">success with Us!</span><br/>{" "} 
@@ -74,7 +74,7 @@ const Heros = () => {
             </motion.div>
         </motion.div> 
 
-        <motion.div variants={heroImage} initial='init' animate="visible" className="xs:hidden md:flex">
+        <motion.div variants={heroImage} initial='init' animate="visible" className="xxs:hidden xs:hidden md:flex">
           <img src={img} alt="SOmething" />
         </motion.div>
       </div>

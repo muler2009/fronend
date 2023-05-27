@@ -4,97 +4,108 @@ import { useLoginMutation } from "../features/auth/authApiSlice";
 import { setCredentials } from "../features/auth/authSlice";
 
 import { useDispatch } from "react-redux";
+import { userLogin } from "../features/auth/myAuthSlice";
+import { toast } from "react-toastify";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 const useLogin = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const errRef = useRef();
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
-    const errRef = useRef()
+  const [loginAttributes, setLoginAttributes] = useState({
+    email: "",
+    password: "",
+    errorMessage: "",
+    loginEmailFocus: false,
+  });
 
+  const handleLoginChanges = (event) => {
+    const type = event.target.type;
+    const name = event.target.name;
 
-    const [loginAttributes, setLoginAttributes] = useState({
-        email: "",
-        password: "",
-        errorMessage: "",
-        loginEmailFocus: false 
-    })
+    const value = type === "checkbox" ? event.type.checked : event.target.value;
+    setLoginAttributes((loginData) => ({
+      ...loginData,
+      [name]: value,
+    }));
+  };
 
+  const [login, { data, error: error }] = useLoginMutation();
 
-    const handleLoginChanges = (event) => {
-        const type = event.target.type
-        const name = event.target.name 
+  const handleEmailChange = (event) => {
+    setLoginAttributes((prev) => ({
+      ...prev,
+      loginEmail: event.target.value,
+    }));
+  };
 
-        const value = type === 'checkbox' ? event.type.checked : event.target.value;
-        setLoginAttributes(loginData => ({
-            ...loginData,
-            [name]: value
-        })
-        )
+  const handlePasswordChange = (event) => {
+    setLoginAttributes((prev) => ({
+      ...prev,
+      loginPassword: event.target.value,
+    }));
+  };
+
+  {
+    /* A function for handling login button clicked */
+  }
+
+  const loginClicked = async (event) => {
+    event.preventDefault();
+
+    if (!email || !password) {
+      toast.error("Please fill required fields");
+      return;
     }
 
-    const [login, { data, error: error }] = useLoginMutation() 
+    dispatch(userLogin({ email, password }));
 
-    const handleEmailChange = (event) => {
-        setLoginAttributes(prev => ({
-            ...prev,
-            loginEmail: event.target.value
-        }))
-    }
+    // try {
+    //     const userData = await login({ email, password }).unwrap()
+    //     dispatch(setCredentials({...userData, email }))
+    //     localStorage.setItem("loginCredintials", JSON.stringify({
+    //         userLogin: true,
+    //         token: data.accessToken
+    //     }))
+    //    setLoginAttributes('')
+    //     navigate('/student')
 
-    const handlePasswordChange = (event) => {
-        setLoginAttributes(prev => ({
-            ...prev,
-            loginPassword: event.target.value
-        }))
-    }
+    // }catch(error){
 
-    {/* A function for handling login button clicked */}
-    
-    const loginClicked = async(event) => {
-        event.preventDefault()
+    //     if(!error?.response){
+    //         setErrorMessage('No server Response');
+    //     }else if(error.response?.status === 400) {
+    //         setErrorMessage(error.response.data.message);
+    //     }else if(error.response?.status === 401) {
+    //         setErrorMessage('Unauthorized')
+    //     }else {
+    //         setErrorMessage('Login Failed');
+    //     }
 
-        try {
-            const userData = await login({ email, password }).unwrap()
-            dispatch(setCredentials({...userData, email }))
-            localStorage.setItem("loginCredintials", JSON.stringify({
-                userLogin: true,
-                token: data.accessToken
-            }))
-           setLoginAttributes('')
-            navigate('/student')
+    // }
+  };
 
-        }catch(error){     
+  return {
+    email,
+    password,
+    errorMessage,
+    errRef,
+    setEmail,
+    setPassword,
+    setErrorMessage,
+    loginClicked,
+    handleEmailChange,
+    handlePasswordChange,
+    loginAttributes,
+    setLoginAttributes,
+    handleLoginChanges,
+    // onLoginButtonClicked
+  };
+};
 
-            if(!error?.response){
-                setErrorMessage('No server Response');
-            }else if(error.response?.status === 400) {
-                setErrorMessage(error.response.data.message);
-            }else if(error.response?.status === 401) {
-                setErrorMessage('Unauthorized')
-            }else {
-                setErrorMessage('Login Failed');
-            }
-               
-        }      
-
-    }
-    
-    return {
-        email, password, errorMessage, errRef,
-        setEmail, setPassword,
-        setErrorMessage,
-        loginClicked,
-        handleEmailChange,
-        handlePasswordChange,
-        loginAttributes, 
-        setLoginAttributes, 
-        handleLoginChanges
-        // onLoginButtonClicked 
-    } 
-}
-
-export default useLogin
+export default useLogin;

@@ -1,47 +1,137 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { setCredentials, logout } from '../features/auth/authSlice'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { BASE_URL, API_TAGS } from "../components/common/apiTags";
 
-const baseQuery = fetchBaseQuery({
-    baseUrl: "http://localhost:5000",
-    credentials: 'include', // to send cookie related issue in every request 
-    
-    prepareHeaders: (headers, api) => {  // prepareHeader Fn is use to inject headers on every request
-        const { getState } = api
-        const loginToken = getState().auth.token
-        loginToken && headers.set('authorization', `Bearer ${loginToken}`)
+export const apiSlice = createApi({
+  reducerpath: "apiSlice",
 
-        return headers
-    }
-})
+  baseQuery: fetchBaseQuery({
+    baseUrl: BASE_URL,
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth?.user?.token;
 
-const baseQueryWithRefreshAuthentication = async(args, api, extraOptions) => {
-    let result = await baseQuery(args, api, extraOptions)
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
 
-    // Logic related to sending and attaching refresh token would be placed here
-    if (result?.error?.originalStatus === 403) {
-        console.log('sending refresh token')
-        // send refresh token to get new access token 
-        const refreshResult = await baseQuery('/refresh', api, extraOptions)
-        console.log(refreshResult)
-        if (refreshResult?.data) {
-            const email = api.getState().auth.email
-            // store the new token 
-            api.dispatch(setCredentials({ ...refreshResult.data, email }))
-            // retry the original query with new access token 
-            result = await baseQuery(args, api, extraOptions)
-        } else {
-            api.dispatch(logout())
-        }
-    }
-    return result
-}
+      return headers;
+    },
+  }),
 
-const apiSlice = createApi({
-    baseQuery: baseQueryWithRefreshAuthentication,
-    refetchOnMountOrArgChange: true,
-    tagTypes: ['Users', 'Module', 'UserTest'],
-   // tagTypes: ['User'],   
-    endpoints: builder => ({})
-})
+  tagTypes: Object.values(API_TAGS),
+  refetchOnFocus: true,
+  refetchOnMountOrArgChange: true,
 
-export default apiSlice
+  endpoints: (builder) => ({
+    // QUESTIONS
+    //---------------------------------
+    getQuestions: builder.query({
+      query: () => "questions",
+      providesTags: [API_TAGS.QUESTIONS],
+    }),
+
+    // REGISTER_STUDENT
+    //---------------------------------
+    registerStudent: builder.mutation({
+      query: (data) => ({
+        url: `register-student`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [API_TAGS.REGISTER_STUDENT],
+    }),
+    verify: builder.mutation({
+      query: (data) => ({
+        url: `user-verification/${data?.token}`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [API_TAGS.REGISTER_STUDENT],
+    }),
+    forgot: builder.mutation({
+      query: (data) => ({
+        url: `forgot-password`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [API_TAGS.REGISTER_STUDENT],
+    }),
+    forgotVerify: builder.mutation({
+      query: (data) => ({
+        url: `forgot-password/${data?.token}`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [API_TAGS.REGISTER_STUDENT],
+    }),
+    // SUBSCRIPTIONS
+    //---------------------------------
+    getSubscription: builder.query({
+      query: () => "subscriptions",
+      providesTags: [API_TAGS.SUBSCRIPTIONS],
+    }),
+    getAllSubscription: builder.query({
+      query: () => "all-subscriptions",
+      providesTags: [API_TAGS.SUBSCRIPTIONS, API_TAGS.ALL_SUBSCRIPTIONS],
+    }),
+    subscribe: builder.mutation({
+      query: (data) => ({
+        url: `subscribe`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [API_TAGS.SUBSCRIPTIONS],
+    }),
+
+    // ASSIST_ADMIN
+    //---------------------------------
+    getAssistAdmin: builder.query({
+      query: () => "assist-admins",
+      providesTags: [API_TAGS.ASSIST_ADMIN],
+    }),
+    addAssistAdmin: builder.mutation({
+      query: (data) => ({
+        url: `assist-admins`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [API_TAGS.ASSIST_ADMIN],
+    }),
+    approveSubscription: builder.mutation({
+      query: (data) => ({
+        url: `approve-subscription`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [
+        API_TAGS.ASSIST_ADMIN,
+        API_TAGS.MODULES,
+        API_TAGS.SUBSCRIPTIONS,
+      ],
+    }),
+  }),
+});
+
+export const {
+  // QUESTIONS
+  //---------------------------------
+  useGetQuestionsQuery,
+
+  // REGISTER_STUDENT
+  //---------------------------------
+  useRegisterStudentMutation,
+  useVerifyMutation,
+
+  // SUBSCRIPTIONS
+  //---------------------------------
+  useGetSubscriptionQuery,
+  useGetAllSubscriptionQuery,
+  useSubscribeMutation,
+
+  // ASSIST_ADMIN
+  //---------------------------------
+  useGetAssistAdminQuery,
+  useAddAssistAdminMutation,
+  useApproveSubscriptionMutation,
+  useForgotVerifyMutation,
+  useForgotMutation,
+} = apiSlice;

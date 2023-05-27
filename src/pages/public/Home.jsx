@@ -38,13 +38,13 @@ const HomeX = ({ children }) => {
 
 } 
 
-const Home = () => {
+export const Home = () => {
   return(
     <HomeX>
       <Heros />
       <Subscribe /> 
-      <div className="container mx-auto flex">
-        <div className="xs:w-full xs:px-5 sm:px-10 md:w-1/2"><FAQCard /></div>
+      <div className="container mx-auto flex flex-wrap">
+        <div className="xs:w-full sm:px-10 md:w-1/2"><FAQCard /></div>
         <div className="xs:w-full xs:px-5 md:w-1/2"><Signup id="#register"/></div>
       </div>    
       <Aboutus />
@@ -55,4 +55,23 @@ const Home = () => {
 
 
 
-export default Home
+// export const Home = () => {
+//   return (
+//     <React.Fragment>
+//       <Heros />
+//       <Subscribe />
+//       <section className="flex md:flex space-x-5 bg-[#f7f9fa]">
+//         <div className="flex flex-1 flex-wrap justify-start md:container md:mx-auto md:px-10 ">
+//           <div className="w-full md:w-1/2 px-5 ">
+//             <Aboutus />
+//             <FAQ />
+//           </div>
+//           <div className="w-full md:w-1/2">
+//             <Signup id="#register" />
+//           </div>
+//         </div>
+//       </section>
+//     </React.Fragment>
+//   );
+// };
+

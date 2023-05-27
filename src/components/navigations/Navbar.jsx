@@ -32,7 +32,7 @@ export const Navbar = () => {
 
             </div>
                 
-            <form className={`flex w-[50%] mx-10 xs:hidden lg:flex`}>
+            <form className={`flex w-[50%] mx-10 xxs:hidden xs:hidden lg:flex`}>
                 <input 
                     type="text"
                     name="search"

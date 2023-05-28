@@ -49,8 +49,8 @@ export const registration_processes = [
         step_no: "01",
         process: [
             {
-                list_one: "Go to https://www.lefetena.com and sccroll down to register section",
-                list_two: "Add your full name, email address and department"
+                list_one: "Go to https://www.lefetena.com and scroll down to register section or click menu button to signup",
+                list_two: "Fill up the required information (i.e Full name, email, etc)"
             }
         ]
     },
@@ -60,7 +60,7 @@ export const registration_processes = [
         step_no: "02",
         process: [
             {
-                list_one: "Go to your email then click verification link sent from lefetena.com",
+                list_one: "Up on receiving successful registration message Go to your email then click verification link sent from lefetena.com",
                 list_two: "Once verified, login using the email and password you used during registration"
             }
         ]

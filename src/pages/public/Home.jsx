@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react'
 import { Heros, Subscribe, FAQ, FAQImage, FAQCard} from './components'
-import Signup from '../signup/Signup'
+import Signup, { SignupHome } from '../signup/Signup'
 import Aboutus from './components/Aboutus'
 import { motion, useInView, useAnimation} from 'framer-motion'
 
@@ -43,9 +43,9 @@ export const Home = () => {
     <HomeX>
       <Heros />
       <Subscribe /> 
-      <div className="container mx-auto flex flex-wrap">
+      <div className="xxs:w-full xxs:mx-auto xxs:px-5 md:container md:mx-auto md:flex md:flex-wrap">
         <div className="xs:w-full sm:px-10 md:w-1/2"><FAQCard /></div>
-        <div className="xs:w-full xs:px-5 md:w-1/2"><Signup id="#register"/></div>
+        <div className="xs:w-full md:w-1/2 lg:px-10 lg:mx-auto"><SignupHome id="#register"/></div>
       </div>    
       <Aboutus />
     </HomeX>

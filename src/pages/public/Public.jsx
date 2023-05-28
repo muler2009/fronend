@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { Navbar } from "../../components/navigations/Navbar";
 import { PageRoutes } from "../../routes/PageRoutes";
+import { Div } from "../../assets/css/styledComponents";
 
 const Public = () => {
   return (
@@ -14,9 +15,9 @@ const Public = () => {
         <Outlet />
       </main>
 
-      <footer className="w-full relative bottom-0 grid place-content-center bg-[#0073aa] overflow-hidden">
+      <footer className={`w-full relative bottom-0 grid place-content-center bg-white border-[1px] text-[#5c727d] overflow-hidden`}>
         <h6 className="font-Poppins text-sm py-5">
-          &copy; 2023 lefetenaTutor.com
+          &copy; 2023 piOnlineTutor.com
         </h6>
       </footer>
     </React.Fragment>

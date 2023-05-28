@@ -2,16 +2,16 @@ import React from 'react'
 
 const Aboutus = () => (
 
-    <div className="relative my-24">
+    <div className="relative xxs:my-10 xs:pl-10 sm:px-10 md:my-24">
         <div className="container mx-auto flex flex-col">
             <div className="">
-                <h1 className="px-5 py-5 font-Oswald uppercase xs:after:w-0 xs:text-center xs:text-[35px] md:text-left md:text-[32px] after:content-[''] after:absolute after:top-11 after:right-1 md:after:w-[75%] after:h-[1px] after:bg-[#ddd] after:left-[20%]">
+                <h1 className="px-5 py-5 font-Oswald uppercase xxs:text-[40px] xxs:text-center xxs:after:w-0 xs:text-left xs:text-[35px] md:text-left md:text-[32px] after:content-[''] after:absolute after:top-11 after:right-1 md:after:w-[75%] after:h-[1px] after:bg-[#ddd] after:left-[20%]">
                     <span className="text-[#00bdff]">About</span> us
                 </h1>
             </div>
             <div className="flex">
                 <div className="xs:w-full lg:w-1/2">
-                    <p className="font-Poppins text-sm leading-8 px-5 text-justify first-letter:text-[30px] indent-16">
+                    <p className="font-Poppins text-sm leading-8 px-5 text-justify first-letter:text-[30px] indent-16 xxs:px-0">
                         Pi Online tutor is online educational platform designed to empower students with skills and knowledge. We are dedicated provide expert advice and comprehensive services in the areas of education, engineering and information technologies. Our team of seasoned professionals possess an impressive array of skills and knowledge that we utilize to offer innovative solutions to both individuals and organizations alike. We pride ourselves on our ability to provide customized solutions that meet the unique needs of each of our clientele. Our commitment to excellence is what sets us apart and makes us a sought-after partner in our industry. Join us as we embark on a journey to provide top-notch consultancy services in education,engineering and information technologies.
                     </p>
                 </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import * as Hi from 'react-icons/hi'
 
 import { AiOutlineLogin } from "react-icons/ai";
 import { FaEnvelope, FaLock } from "react-icons/fa";
@@ -31,11 +32,7 @@ export const Login = () => {
   // useEffect(() => {
   //   const {
   //     loginAttributes,
-  //     email,
-  //     password,
-  //     setEmail,
-  //     setPassword,
-  //     errorMessage,
+  //     email,home
   //     errRef,
   //     setErrorMessage,
   //     setLoginAttributes,
@@ -97,16 +94,18 @@ export const Login = () => {
       {false ? (
         <Spinner />
       ) : (
-        <section className="flex md:flex justify-center mt-9 mb-[17rem] xs:px-5 sm:px-10">
-          <div className="w-full bg-sky-50 rounded-lg -px-4 md:w-3/4 lg:w-1/2">
+        <section className="flex md:flex justify-center items-center xxs:bg-[#fdfdff] xs:px-5 sm:px-10">
+          <div className="rounded-lg -px-4 xxs:mx-5 sm:w-full lg:w-full">
             <div className="flex flex-col items-center justify-center">
-              <div className="border-b-2 border-white w-full py-10 flex justify-center items-center bg-sky-200">
-                <h1 className="text-3xl font-Oswald text-green-700 pt-10">
-                  Please login to your account
+              <div className="border-b-2 border-white w-full pt-10 pb-3 flex flex-col justify-center items-center">
+                <Hi.HiUserCircle className="text-opacity-30 text-red-700 text-[120px]" />
+                <h1 className="text-3xl font-Oswald pt-10 uppercase xxs:text-[35px]">
+                  Login
                 </h1>
+                <p className="font-Poppins text-sm text-[#5c727d] my-2 text-[13px]">Use the email and password you used on the registration</p>
               </div>
 
-              <div className="w-1/2 bg-sky-50 relative">
+              <div className="xxs:w-full xxs:px-0 ss:w-full sm:w-4/5 sm:px-10 md:w-2/3 lg:w-1/3 lg:mx-auto relative">
                 {/* <p
                   ref={errRef}
                   className={
@@ -118,7 +117,7 @@ export const Login = () => {
                 >
                   {errorMessage}
                 </p> */}
-                <form className="text-black" onSubmit={loginClicked}>
+                <form className="text-black mb-[12rem]" onSubmit={loginClicked}>
                   <div className="py-9 flex flex-col space-y-9">
                     {/* Email field */}
                     <div className="relative flex-row items-center">
@@ -160,7 +159,7 @@ export const Login = () => {
                           id="email_indicator"
                           className={`${
                             loginAttributes?.loginEmailFocus
-                              ? "font-Poppins text-black text-opacity-100 absolute left-5 -top-4 px-2 transition duration-200 bg-sky-50 input-text"
+                              ? "font-Poppins text-black text-opacity-100 absolute left-5 -top-4 px-2 transition duration-200 xxs:bg-[#fdfdff] input-text"
                               : "absolute -left-[9999px]"
                           }`}
                         >
@@ -190,7 +189,7 @@ export const Login = () => {
                           onChange={(event) => setPassword(event.target.value)}
                           className={`w-full font-Poppins input-md pl-9 py-3 text-black border-opacity-50 outline-none focus:border-black-500  placeholder-gray-400 placeholder-opacity-1 transition duration-200 `}
                         />
-                        <span className="font-Poppins text-white text-opacity-100 absolute left-5 top-12 px-2 transition duration-200 bg-sky-50 input-password">
+                        <span className="font-Poppins text-white text-opacity-100 absolute left-5 top-12 px-2 transition duration-200  xxs:bg-[#fdfdff] input-password">
                           Password
                         </span>
                       </label>

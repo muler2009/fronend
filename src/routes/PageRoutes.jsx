@@ -4,7 +4,7 @@ import { Login } from "../pages/Login/Login";
 import SuccessMessage from "../components/ui/SuccessMessage";
 import ForgotPassword from "../pages/Login/ForgotPassword";
 import { Home } from "../pages/public/Home";
-import Signup from "../pages/signup/Signup";
+import Signup, { SignupHome } from "../pages/signup/Signup";
 
 export const PageRoutes = () => {
   let route = useRoutes([
@@ -17,6 +17,7 @@ export const PageRoutes = () => {
     { path: "/forgotpassword", element: <ForgotPassword /> },
     { path: "/success", element: <SuccessMessage /> },
     { path: "/signup", element: <Signup /> },
+    { path: "/signup", element: <SignupHome /> },
   ]);
 
   return route;

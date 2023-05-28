@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import { Div } from '../../../assets/css/styledComponents'
 import { motion } from 'framer-motion'
 import { registration_processes } from '../constants/constants'
+import Mockmodal from './Mockmodal'
 
 const FAQCard = () => { 
-
     const faqMainVariants = {
         init: {
             opacity: 0,
@@ -39,11 +39,8 @@ const FAQCard = () => {
 
   return (
     <motion.div variants={faqMainVariants} initial="init" animate="visible" className='relative flex flex-col mt-16'>
-        <motion.div variants={faqComponentVariant} className="before:content-[''] before:absolute before:top-[2%] before:w-[35%] before:h-[1px] before:left-0 before:bg-[#ddd] after:content-[''] after:absolute after:top-[2%] after:w-[35%] after:h-[1px] after:right-0 after:bg-[#ddd]"
-        
-        
-        >
-            <motion.h1  className="font-Oswald text-[25px] tracking-normal uppercase flex justify-center items-center"
+        <motion.div variants={faqComponentVariant} className="before:xxs:w-0 before:content-[''] before:absolute before:top-[2%] before:w-[35%] before:h-[1px] before:left-0 before:bg-[#ddd] after:xxs:w-0 after:content-[''] after:absolute after:top-[2%] after:w-[35%] after:h-[1px] after:right-0 after:bg-[#ddd]" >
+            <motion.h1  className="font-Oswald pb-10 xxs:text-[35px] lg:text-[25px] tracking-normal uppercase flex justify-center items-center after:xxs:content-[''] after:xxs:absolute after:xxs:top-16 after:xxs:w-[35%] after:xxs:h-[1px] after:xxs:-bottom-[0%] after:xxs:bg-[#ddd]"
             >Steps to Follow</motion.h1>
         </motion.div>
 

@@ -687,22 +687,21 @@ const RegistrationForm = (props) => {
         </div>
 
         {/* Create An Account Buttone */}
-        <div className="py-4 relative top-6">
+        <div className="py-4 relative top-6 xxs:w-full">
           <button
-            className="w-1/2 px-2 py-5 bg-[#3C4852] text-sm rounded-none text-white font-Poppins cursor-pointer disabled:opacity-25 disabled:cursor-default"
-            onClick={() => {
-              onCreateClicked();
-              showSuccessAlert();
-            }}
-            disabled={
-              !boolValidators.validLName ||
-              !boolValidators.validName ||
-              !boolValidators.validMatchPassword ||
-              !requiredValues.aggrement
-                ? true
-                : false
-            }
-          >
+            className="xxs:w-full md:w-1/2 px-2 py-5 bg-[#3C4852] text-sm rounded-none text-white font-Poppins cursor-pointer disabled:opacity-25 disabled:cursor-default"
+                      onClick={() => {
+                        onCreateClicked();
+                        showSuccessAlert();
+                      }}
+                      disabled={
+                        !boolValidators.validLName ||
+                        !boolValidators.validName ||
+                        !boolValidators.validMatchPassword ||
+                        !requiredValues.aggrement
+                          ? true
+                          : false
+                      }>
             Create an account
           </button>
         </div>

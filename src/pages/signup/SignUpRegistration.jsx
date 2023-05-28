@@ -7,6 +7,7 @@ import { FaEnvelope, FaTimesCircle, FaLock } from "react-icons/fa";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useRegisterUserDataMutation } from "../../features/users/registerApiSlice";
 import SuccessMessage from "../../components/ui/SuccessMessage";
+import * as Ioio from 'react-icons/io'
 
 import Swal from "sweetalert2";
 import * as BsIcon from "react-icons/bs";
@@ -147,9 +148,9 @@ const SignUpRegistration = (props) => {
     // }
   };
 
-  useEffect(() => {
-    focusReference.current.focus();
-  }, []);
+  // useEffect(() => {
+  //   focusReference.current.focus();
+  // }, []);
 
   useEffect(() => {
     setBoolValidators({
@@ -187,500 +188,480 @@ const SignUpRegistration = (props) => {
 
   return (
     <React.Fragment>
-      <form
-        className={`flex flex-col space-y-5 w-full px-10 py-10`}
-        onSubmit={(event) => event.preventDefault()}
-      >
-        {/* Fragment for Full Name */}
-        <div className={`flex flex-col gap-2 w-full mx-auto`}>
-          <div className={`flex justify-between items-center`}>
-            <label htmlFor="email" className="font-Poppins text-muted">
-              Full Name
-            </label>
-            <div
-              className={`flex items-center ${
-                boolValidators.validFname
-                  ? "ml-2 text-green-700 text-xs"
-                  : "hidden"
-              }`}
-            >
-              <GiCheckMark color="green" size={25} />
-              <span>Correct</span>
+      <div className="flex flex-col bg-[#d3b9b900] xxs:w-full sm:mx-auto md:w-[65%] lg:w-[50%] shadow-md md:mx-auto"> 
+        <div className="flex space-x-5 justify-center items-center mb-2 border-b-[1px]">
+          <Ioio.IoIosCreate className="text-[110px] text-[#00bdff] text-opacity-40 xxs:hidden lg:flex"/>
+          <h1 className={`font-Oswald uppercase xxs:text-[28px] md:text-3xl py-4 text-center`}>
+              Create <span className="text-[#00bdff]">your Account</span>
+          </h1>
+        </div>   
+        <form className={`flex flex-col space-y-5 py-5 px-10 `} onSubmit={(event) => event.preventDefault()} >
+          {/* Fragment for Full Name */}
+          <div className={`flex flex-col gap-2 w-full mx-auto`}>
+            <div className={`flex justify-between items-center`}>
+              <label htmlFor="email" className="font-Poppins text-muted">
+                Full Name
+              </label>
+
+              <div className={`flex items-center ${ boolValidators.validFname ? "ml-2 text-green-700 text-xs" : "hidden"}`}>
+                <GiCheckMark color="green" size={25} />
+                <span>Correct</span>
+              </div>
+
+              <FaTimesCircle
+                className={`${
+                  boolValidators.validFname || !requiredValues.fullname
+                    ? "hidden"
+                    : "flex justify-center items-center ml-1"
+                }`}
+                color="red"
+                size={20}
+              />
             </div>
-            <FaTimesCircle
-              className={`${
-                boolValidators.validFname || !requiredValues.fullname
-                  ? "hidden"
-                  : "flex justify-center items-center ml-1"
-              }`}
-              color="red"
-              size={20}
-            />
+            <div className={`py-2 flex-col`}>
+              <div className={`flex`}>
+                <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
+                  <Fa.FaUser size={20} color="gray" />
+                </span>
+                <input
+                  type="text"
+                  id="fullname"
+                  name="fullname"
+                  placeholder="Your Full Name"
+                  required
+                  
+                  value={requiredValues.fullname}
+                  aria-invalid={boolValidators.validFname ? "false" : "true"}
+                  aria-describedby="emailnote"
+                  onChange={handleSignupChanges}
+                  onFocus={() =>
+                    setBoolValidators((boolValidators) => ({
+                      ...boolValidators,
+                      nameFocus: true,
+                    }))
+                  }
+                  onBlur={() =>
+                    setBoolValidators((boolValidators) => ({
+                      ...boolValidators,
+                      nameFocus: false,
+                    }))
+                  }
+                  className={`input-md w-full font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white `}
+                />
+              </div>
+              <p
+                id="emailnote"
+                className={`${
+                  boolValidators.nameFocus &&
+                  requiredValues.fullname &&
+                  !boolValidators.validFname
+                    ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
+                    : "absolute -left-[9999px]"
+                }`}
+              >
+                <AiFillInfoCircle className={`mt-1 `} />
+                <span className={`ml-1 pr-10`}>
+                  Name must be at least 4 character
+                </span>
+              </p>
+            </div>
           </div>
-          <div className={`py-2 flex-col`}>
+
+          {/* Fragment for Email */}
+          <div className={`flex flex-col gap-2 w-full mx-auto`}>
+            <div className={`flex justify-between items-center`}>
+              <label htmlFor="email" className="font-Poppins text-muted">
+                Email
+              </label>
+              <div
+                className={`flex items-center ${
+                  boolValidators.validEmail
+                    ? "ml-2 text-green-700 text-xs"
+                    : "hidden"
+                }`}
+              >
+                <GiCheckMark color="green" size={25} />
+                <span>Correct</span>
+              </div>
+              <FaTimesCircle
+                className={`${
+                  boolValidators.validEmail || !requiredValues.email
+                    ? "hidden"
+                    : "flex justify-center items-center ml-1"
+                }`}
+                color="red"
+                size={20}
+              />
+            </div>
+            <div className={`py-2 flex-col`}>
+              <div className={`flex`}>
+                <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
+                  <FaEnvelope size={20} color="gray" />
+                </span>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                  value={requiredValues.email}
+                  aria-invalid={boolValidators.validEmail ? "false" : "true"}
+                  aria-describedby="emailnote"
+                  onChange={handleSignupChanges}
+                  onFocus={() =>
+                    setBoolValidators((boolValidators) => ({
+                      ...boolValidators,
+                      emailFocus: true,
+                    }))
+                  }
+                  onBlur={() =>
+                    setBoolValidators((boolValidators) => ({
+                      ...boolValidators,
+                      emailFocus: false,
+                    }))
+                  }
+                  className={`input-md w-full font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white `}
+                />
+              </div>
+              <p
+                id="emailnote"
+                className={`${
+                  boolValidators.emailFocus &&
+                  requiredValues.email &&
+                  !boolValidators.validEmail
+                    ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
+                    : "absolute -left-[9999px]"
+                }`}
+              >
+                <AiFillInfoCircle className={`mt-1 `} />
+                <span className={`ml-1 pr-10`}>
+                  Email must be valid (e.g example@domain.com)
+                </span>
+              </p>
+            </div>
+          </div>
+          {/* Fragment for Department */}
+
+          <div className={`flex flex-col gap-2 w-full mx-auto font-Poppins`}>
+            <label htmlFor="department" className={`text-[15px]`}>
+              Department
+            </label>
             <div className={`flex`}>
               <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
-                <Fa.FaUser size={20} color="gray" />
+                <Fa.FaUserGraduate size={20} color="gray" />
               </span>
-              <input
+              <select
+                id="department"
                 type="text"
-                id="fullname"
-                name="fullname"
-                placeholder="Your Full Name"
-                required
-                ref={focusReference}
-                value={requiredValues.fullname}
-                aria-invalid={boolValidators.validFname ? "false" : "true"}
-                aria-describedby="emailnote"
+                name="department"
+                value={requiredValues.department}
                 onChange={handleSignupChanges}
-                onFocus={() =>
-                  setBoolValidators((boolValidators) => ({
-                    ...boolValidators,
-                    nameFocus: true,
-                  }))
-                }
-                onBlur={() =>
-                  setBoolValidators((boolValidators) => ({
-                    ...boolValidators,
-                    nameFocus: false,
-                  }))
-                }
-                className={`input-md w-full font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white `}
-              />
-            </div>
-            <p
-              id="emailnote"
-              className={`${
-                boolValidators.nameFocus &&
-                requiredValues.fullname &&
-                !boolValidators.validFname
-                  ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
-                  : "absolute -left-[9999px]"
-              }`}
-            >
-              <AiFillInfoCircle className={`mt-1 `} />
-              <span className={`ml-1 pr-10`}>
-                Name must be at least 4 character
-              </span>
-            </p>
-          </div>
-        </div>
-
-        {/* Fragment for Email */}
-        <div className={`flex flex-col gap-2 w-full mx-auto`}>
-          <div className={`flex justify-between items-center`}>
-            <label htmlFor="email" className="font-Poppins text-muted">
-              Email
-            </label>
-            <div
-              className={`flex items-center ${
-                boolValidators.validEmail
-                  ? "ml-2 text-green-700 text-xs"
-                  : "hidden"
-              }`}
-            >
-              <GiCheckMark color="green" size={25} />
-              <span>Correct</span>
-            </div>
-            <FaTimesCircle
-              className={`${
-                boolValidators.validEmail || !requiredValues.email
-                  ? "hidden"
-                  : "flex justify-center items-center ml-1"
-              }`}
-              color="red"
-              size={20}
-            />
-          </div>
-          <div className={`py-2 flex-col`}>
-            <div className={`flex`}>
-              <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
-                <FaEnvelope size={20} color="gray" />
-              </span>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email Address"
-                required
-                value={requiredValues.email}
-                aria-invalid={boolValidators.validEmail ? "false" : "true"}
-                aria-describedby="emailnote"
-                onChange={handleSignupChanges}
-                onFocus={() =>
-                  setBoolValidators((boolValidators) => ({
-                    ...boolValidators,
-                    emailFocus: true,
-                  }))
-                }
-                onBlur={() =>
-                  setBoolValidators((boolValidators) => ({
-                    ...boolValidators,
-                    emailFocus: false,
-                  }))
-                }
-                className={`input-md w-full font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white `}
-              />
-            </div>
-            <p
-              id="emailnote"
-              className={`${
-                boolValidators.emailFocus &&
-                requiredValues.email &&
-                !boolValidators.validEmail
-                  ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
-                  : "absolute -left-[9999px]"
-              }`}
-            >
-              <AiFillInfoCircle className={`mt-1 `} />
-              <span className={`ml-1 pr-10`}>
-                Email must be valid (e.g example@domain.com)
-              </span>
-            </p>
-          </div>
-        </div>
-
-        {/* Fragment for Inistitute */}
-
-        {/* <div className={`flex flex-col gap-2 w-4/5 mx-auto`}>
-                <label htmlFor="inistitute" className={`font-Poppins text-muted flex justify-between`}>Inistitution</label>
-                <div className={`flex `}>
-                            <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
-                                <Fa.FaUniversity size={20} color='gray' />
-                            </span>
-                            <select id='inistitute' 
-                                    type='text' 
-                                    name='inistitute' 
-                                    value={requiredValues.inistitute}
-                                    onChange={handleSignupChanges}
-                                    className={`select-md font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white w-full`}>
-                                <option className={`text-[#6c757d]`} value="">---Select your Institution---</option>
-                                    {
-                                        institution.map((inistitute, index) => (
-                                            <option key={index} value={inistitute.name} >
-                                                {inistitute.name}
-                                            </option>
-                                        ))
-                                    }
-                            </select>
-                        </div>
-            </div>  */}
-
-        {/* Fragment for Department */}
-
-        <div className={`flex flex-col gap-2 w-full mx-auto font-Poppins`}>
-          <label htmlFor="department" className={`text-[15px]`}>
-            Department
-          </label>
-          <div className={`flex`}>
-            <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
-              <Fa.FaUserGraduate size={20} color="gray" />
-            </span>
-            <select
-              id="department"
-              type="text"
-              name="department"
-              value={requiredValues.department}
-              onChange={handleSignupChanges}
-              className={`select-md font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white w-full`}
-            >
-              <option value="">---Select your Department---</option>
-              {department.map((department) => (
-                <option key={department.deptId} value={department.name}>
-                  {department.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* Fragment for Phone number  */}
-        <div className={`flex flex-col gap-2 w-full mx-auto`}>
-          <div className={`flex justify-between items-center`}>
-            <label htmlFor="email" className="font-Poppins text-muted">
-              Phone Number
-            </label>
-            {/* <div
-              className={`flex items-center ${
-                boolValidators.validPhone
-                  ? "ml-2 text-green-700 text-xs"
-                  : "hidden"
-              }`}
-            >
-              <GiCheckMark color="green" size={25} />
-              <span>Correct</span>
-            </div>
-            <FaTimesCircle
-              className={`${
-                boolValidators.validPhone
-                  ? "hidden"
-                  : "flex justify-center items-center ml-1"
-              }`}
-              color="red"
-              size={20}
-            /> */}
-          </div>
-          <div className={`py-2 flex-col font-Poppins`}>
-            <div className={`flex`}>
-              <span className="px-4 inline-flex items-center min-w-fit border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
-                +251
-              </span>
-              <input
-                type={`number`}
-                id="phone"
-                name="phone"
-                // value={requiredValues.phone}
-                className={`input-md font-Poppins overflow-y-scroll border border-l-0 rounded-l-none focus:border-[#ddd] focus:bg-zinc-100 bg-gray-50`}
-              />
-            </div>
-            {/* <small className={`font-Quicksand text-sm text-[#6c757d]`}>
-              Your active phone number (e.g 912..)
-            </small> */}
-            <p
-              id="emailnote"
-              className={`${
-                boolValidators.phoneFocus &&
-                requiredValues.phone &&
-                !boolValidators.validPhone
-                  ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
-                  : "absolute -left-[9999px]"
-              }`}
-            >
-              <AiFillInfoCircle className={`mt-1 `} />
-              <span className={`ml-1 pr-10`}>Phone number must be 9 digit</span>
-            </p>
-          </div>
-        </div>
-
-        {/* Code Section  password */}
-
-        <div className={`flex flex-col gap-2 w-full mx-auto`}>
-          <div className={`flex justify-between items-center`}>
-            <label htmlFor="password" className="font-Poppins text-muted">
-              Password
-            </label>
-            <div
-              className={`flex items-center ${
-                boolValidators.passwordValidator
-                  ? "ml-2 text-green-700 text-xs"
-                  : "hidden"
-              }`}
-            >
-              <GiCheckMark color="green" size={25} />
-              <span>Correct</span>
-            </div>
-            <FaTimesCircle
-              className={`${
-                boolValidators.passwordValidator || !requiredValues.password
-                  ? "hidden"
-                  : "flex justify-center items-center ml-1"
-              }`}
-              color="red"
-              size={20}
-            />
-          </div>
-
-          <div className={`py-2 flex-col`}>
-            <div className={`flex`}>
-              <span className="px-4 inline-flex items-center border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
-                <FaLock size={18} color="gray" />
-              </span>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={requiredValues.password}
-                onChange={handleSignupChanges}
-                required
-                aria-invalid={
-                  boolValidators.passwordValidator ? "false" : "true"
-                }
-                aria-describedby="pwdnote"
-                placeholder="Type your password"
-                className={`input-md font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white`}
-                onFocus={() =>
-                  setBoolValidators((boolValidators) => ({
-                    ...boolValidators,
-                    pwdFocus: true,
-                  }))
-                }
-                onBlur={() =>
-                  setBoolValidators((boolValidators) => ({
-                    ...boolValidators,
-                    pwdFocus: false,
-                  }))
-                }
-              />
-            </div>
-            <p
-              id="pwdnote"
-              className={
-                boolValidators.pwdFocus && !boolValidators.passwordValidator
-                  ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2  -bottom-5 flex"
-                  : "absolute -left-[9999px]"
-              }
-            >
-              <AiFillInfoCircle className={`mt-1`} />
-              <span className={`pl-3`}>
-                8 to 24 characters.
-                <br />
-                {/* Must include uppercase and lowercase letters, a number and a
-                special character.
-                <br />
-                Allowed special characters:
-                <span aria-label="exclamation mark">!</span>{" "}
-                <span aria-label="at symbol">@</span>
-                <span aria-label="hashtag">#</span>
-                <span aria-label="dollar sign">$</span>
-                <span aria-label="percent">%</span> */}
-              </span>
-            </p>
-          </div>
-        </div>
-
-        {/* Code Section for Confirm  password */}
-
-        <div className={`flex flex-col gap-2 w-full mx-auto`}>
-          <div className={`flex justify-between items-center`}>
-            <label
-              htmlFor="confirm_password"
-              className="font-Poppins text-muted"
-            >
-              Confirm Password
-            </label>
-            <div
-              className={`flex items-center ${
-                boolValidators.validMatchPassword && requiredValues.password
-                  ? "ml-2 text-green-700 text-xs"
-                  : "hidden"
-              }`}
-            >
-              <GiCheckMark color="green" size={25} />
-              <span>Correct</span>
-            </div>
-            <FaTimesCircle
-              className={`${
-                boolValidators.validMatchPassword ||
-                !requiredValues.confirm_password
-                  ? "hidden"
-                  : "flex justify-center items-center ml-1"
-              }`}
-              color="red"
-              size={20}
-            />
-          </div>
-
-          <div className={`py-2 flex-col`}>
-            <div className={`flex`}>
-              <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
-                <FaLock size={18} color="gray" />
-              </span>
-              <input
-                type="password"
-                id="confirm_password"
-                name="confirm_password"
-                value={requiredValues.confirm_password}
-                onChange={handleSignupChanges}
-                required
-                aria-invalid={
-                  boolValidators.validMatchPassword ? "false" : "true"
-                }
-                aria-describedby="confirmnote"
-                placeholder="Re-Type your password"
-                className={`input-md font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white w-full`}
-                onFocus={() =>
-                  setBoolValidators((boolValidators) => ({
-                    ...boolValidators,
-                    confirmPwdFocus: true,
-                  }))
-                }
-                onBlur={() =>
-                  setBoolValidators((boolValidators) => ({
-                    ...boolValidators,
-                    confirmPwdFocus: false,
-                  }))
-                }
-              />
-            </div>
-
-            <p
-              id="confirmnote"
-              className={
-                boolValidators.confirmPwdFocus &&
-                !boolValidators.validMatchPassword
-                  ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
-                  : "absolute -left-[9999px]"
-              }
-            >
-              <AiFillInfoCircle className={`mt-1`} />
-              <span className={`pl-3`}>
-                Must match the first password input field.
-              </span>
-            </p>
-          </div>
-        </div>
-
-        <div className={`flex flex-col gap-2 w-full mx-auto`}>
-          <div className="flex flex-row justify-start items-center space-x-2">
-            <aside className={``}>
-              <input
-                type="checkbox"
-                name="aggrement"
-                id="aggrement"
-                className="input-md"
-                onChange={handleSignupChanges}
-              />
-            </aside>
-            <p htmlFor="aggrement" className="font-Poppins text-sm text-muted">
-              I have read the
-              <span className="text-blue-500 ml-1">terms of Service.</span>
-              <a
-                href="#"
-                className="text-sm text-red-500 ml-1 hover:underline
-                            "
+                className={`select-md font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white w-full`}
               >
-                Click here to read
-              </a>
-            </p>
+                <option value="">---Select your Department---</option>
+                {
+                  department.map((department) => (
+                    <option key={department.deptId} value={department.name}>
+                      {department.name}
+                    </option>
+                  ))
+                }
+              </select>
+            </div>
           </div>
-          <div className={`text-sm flex space-x-3`}>
-            <p>Already registered ?</p>
-            <span className={``}>
-              <Link
-                to={`/login`}
-                className={`text-blue-700 font-Poppins hover:underline`}
-              >
-                Sign In
-              </Link>
-            </span>
-          </div>
-        </div>
 
-        {/* Create An Account Button */}
-        <div className={`flex w-full mx-auto pb-5`}>
-          {!isRegisterStudentLoading ? (
-            <button
-              className="w-1/2 px-2 bg-[#3C4852] text-sm rounded-none text-white font-Poppins cursor-pointer disabled:opacity-25 disabled:cursor-default"
-              onClick={() => {
-                onCreateClicked();
-              }}
-              disabled={
-                !boolValidators.validEmail ||
-                requiredValues.inistitute === "" ||
-                requiredValues.department === "" ||
-                !boolValidators.validMatchPassword ||
-                !requiredValues.aggrement
-                  ? true
-                  : false
-              }
-            >
-              Create an account
-            </button>
-          ) : (
-            <Loading />
-          )}
-        </div>
-      </form>
+          {/* Fragment for Phone number  */}
+          <div className={`flex flex-col gap-2 w-full mx-auto`}>
+            <div className={`flex justify-between items-center`}>
+              <label htmlFor="email" className="font-Poppins text-muted">
+                Phone Number
+              </label>
+              {/* <div
+                className={`flex items-center ${
+                  boolValidators.validPhone
+                    ? "ml-2 text-green-700 text-xs"
+                    : "hidden"
+                }`}
+              >
+                <GiCheckMark color="green" size={25} />
+                <span>Correct</span>
+              </div>
+              <FaTimesCircle
+                className={`${
+                  boolValidators.validPhone
+                    ? "hidden"
+                    : "flex justify-center items-center ml-1"
+                }`}
+                color="red"
+                size={20}
+              /> */}
+            </div>
+            <div className={`py-2 flex-col font-Poppins`}>
+              <div className={`flex`}>
+                <span className="px-4 inline-flex items-center min-w-fit border border-r-0 border-gray-200 bg-gray-50 text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
+                  +251
+                </span>
+                <input
+                  type={`number`}
+                  id="phone"
+                  name="phone"
+                  // value={requiredValues.phone}
+                  className={`input-md font-Poppins overflow-y-scroll border border-l-0 rounded-l-none focus:border-[#ddd] focus:bg-zinc-100 bg-gray-50`}
+                />
+              </div>
+              {/* <small className={`font-Quicksand text-sm text-[#6c757d]`}>
+                Your active phone number (e.g 912..)
+              </small> */}
+              <p
+                id="emailnote"
+                className={`${
+                  boolValidators.phoneFocus &&
+                  requiredValues.phone &&
+                  !boolValidators.validPhone
+                    ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
+                    : "absolute -left-[9999px]"
+                }`}
+              >
+                <AiFillInfoCircle className={`mt-1 `} />
+                <span className={`ml-1 pr-10`}>Phone number must be 9 digit</span>
+              </p>
+            </div>
+          </div>
+
+          {/* Code Section  password */}
+
+          <div className={`flex flex-col gap-2 w-full mx-auto`}>
+            <div className={`flex justify-between items-center`}>
+              <label htmlFor="password" className="font-Poppins text-muted">
+                Password
+              </label>
+              <div
+                className={`flex items-center ${
+                  boolValidators.passwordValidator
+                    ? "ml-2 text-green-700 text-xs"
+                    : "hidden"
+                }`}
+              >
+                <GiCheckMark color="green" size={25} />
+                <span>Correct</span>
+              </div>
+              <FaTimesCircle
+                className={`${
+                  boolValidators.passwordValidator || !requiredValues.password
+                    ? "hidden"
+                    : "flex justify-center items-center ml-1"
+                }`}
+                color="red"
+                size={20}
+              />
+            </div>
+
+            <div className={`py-2 flex-col`}>
+              <div className={`flex`}>
+                <span className="px-4 inline-flex items-center border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
+                  <FaLock size={18} color="gray" />
+                </span>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={requiredValues.password}
+                  onChange={handleSignupChanges}
+                  required
+                  aria-invalid={
+                    boolValidators.passwordValidator ? "false" : "true"
+                  }
+                  aria-describedby="pwdnote"
+                  placeholder="Type your password"
+                  className={`input-md font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white`}
+                  onFocus={() =>
+                    setBoolValidators((boolValidators) => ({
+                      ...boolValidators,
+                      pwdFocus: true,
+                    }))
+                  }
+                  onBlur={() =>
+                    setBoolValidators((boolValidators) => ({
+                      ...boolValidators,
+                      pwdFocus: false,
+                    }))
+                  }
+                />
+              </div>
+              <p
+                id="pwdnote"
+                className={
+                  boolValidators.pwdFocus && !boolValidators.passwordValidator
+                    ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2  -bottom-5 flex"
+                    : "absolute -left-[9999px]"
+                }
+              >
+                <AiFillInfoCircle className={`mt-1`} />
+                <span className={`pl-3`}>
+                  8 to 24 characters.
+                  <br />
+                  {/* Must include uppercase and lowercase letters, a number and a
+                  special character.
+                  <br />
+                  Allowed special characters:
+                  <span aria-label="exclamation mark">!</span>{" "}
+                  <span aria-label="at symbol">@</span>
+                  <span aria-label="hashtag">#</span>
+                  <span aria-label="dollar sign">$</span>
+                  <span aria-label="percent">%</span> */}
+                </span>
+              </p>
+            </div>
+          </div>
+
+          {/* Code Section for Confirm  password */}
+
+          <div className={`flex flex-col gap-2 w-full mx-auto`}>
+            <div className={`flex justify-between items-center`}>
+              <label
+                htmlFor="confirm_password"
+                className="font-Poppins text-muted"
+              >
+                Confirm Password
+              </label>
+              <div
+                className={`flex items-center ${
+                  boolValidators.validMatchPassword && requiredValues.password
+                    ? "ml-2 text-green-700 text-xs"
+                    : "hidden"
+                }`}
+              >
+                <GiCheckMark color="green" size={25} />
+                <span>Correct</span>
+              </div>
+              <FaTimesCircle
+                className={`${
+                  boolValidators.validMatchPassword ||
+                  !requiredValues.confirm_password
+                    ? "hidden"
+                    : "flex justify-center items-center ml-1"
+                }`}
+                color="red"
+                size={20}
+              />
+            </div>
+
+            <div className={`py-2 flex-col`}>
+              <div className={`flex`}>
+                <span className="px-4 inline-flex items-center min-w-fit border border-r-0 rounded-l-md border-gray-300 bg-white text-sm text-gray-500 dark:bg-gray-700 dark:border-gray-700 dark:text-gray-400 cursor-pointer">
+                  <FaLock size={18} color="gray" />
+                </span>
+                <input
+                  type="password"
+                  id="confirm_password"
+                  name="confirm_password"
+                  value={requiredValues.confirm_password}
+                  onChange={handleSignupChanges}
+                  required
+                  aria-invalid={
+                    boolValidators.validMatchPassword ? "false" : "true"
+                  }
+                  aria-describedby="confirmnote"
+                  placeholder="Re-Type your password"
+                  className={`input-md font-Poppins border border-l-0 rounded-l-none focus:border-[#ddd] bg-white w-full`}
+                  onFocus={() =>
+                    setBoolValidators((boolValidators) => ({
+                      ...boolValidators,
+                      confirmPwdFocus: true,
+                    }))
+                  }
+                  onBlur={() =>
+                    setBoolValidators((boolValidators) => ({
+                      ...boolValidators,
+                      confirmPwdFocus: false,
+                    }))
+                  }
+                />
+              </div>
+
+              <p
+                id="confirmnote"
+                className={
+                  boolValidators.confirmPwdFocus &&
+                  !boolValidators.validMatchPassword
+                    ? "text-sm font-Poppins text-white rounded-lg bg-[#2c2727] py-3 px-2 mt-2 w-[80%] -bottom-5 flex"
+                    : "absolute -left-[9999px]"
+                }
+              >
+                <AiFillInfoCircle className={`mt-1`} />
+                <span className={`pl-3`}>
+                  Must match the first password input field.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className={`flex flex-col gap-2 w-full mx-auto`}>
+            <div className="flex flex-row justify-start items-center space-x-2">
+              <aside className={``}>
+                <input
+                  type="checkbox"
+                  name="aggrement"
+                  id="aggrement"
+                  className="input-md"
+                  onChange={handleSignupChanges}
+                />
+              </aside>
+              <p htmlFor="aggrement" className="font-Poppins text-sm text-muted">
+                I have read the
+                <span className="text-blue-500 ml-1">terms of Service.</span>
+                <a
+                  href="#"
+                  className="text-sm text-red-500 ml-1 hover:underline"
+                >
+                  Click here to read
+                </a>
+              </p>
+            </div>
+            <div className={`text-sm flex space-x-3`}>
+              <p>Already registered ?</p>
+              <span className={``}>
+                <Link
+                  to={`/login`}
+                  className={`text-blue-700 font-Poppins hover:underline`}
+                >
+                  Sign In
+                </Link>
+              </span>
+            </div>
+          </div>
+
+          {/* Create An Account Button */}
+          <div className={`md:flex ss:w-full ss:mx-auto pb-5`}>
+            {!isRegisterStudentLoading ? (
+              <button
+                className="w-full px-2 bg-[#3C4852] text-sm rounded-none text-white font-Poppins cursor-pointer disabled:opacity-25 disabled:cursor-default"
+                onClick={() => {
+                  onCreateClicked();
+                }}
+                disabled={
+                  !boolValidators.validEmail ||
+                  requiredValues.inistitute === "" ||
+                  requiredValues.department === "" ||
+                  !boolValidators.validMatchPassword ||
+                  !requiredValues.aggrement
+                    ? true
+                    : false
+                }
+              >
+                Create an account
+              </button>
+            ) : (
+              <Loading />
+            )}
+          </div>
+
+        </form>
+
+      </div>
+   
+
+     
     </React.Fragment>
   );
 };

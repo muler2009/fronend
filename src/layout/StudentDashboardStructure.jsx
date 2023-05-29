@@ -20,8 +20,8 @@ export const StudentDashboardStructure = () => {
           <Outlet />
         </main>
         {/* footer section of the page */}
-        <footer className="w-full relative bottom-0 -z-0 grid place-content-center bg-[#0073aa]">
-          <h6 className="font-Poppins text-sm py-5 text-white">
+        <footer className={`w-full relative bottom-0 grid place-content-center bg-white border-[1px] text-[#5c727d] overflow-hidden`}>
+          <h6 className="font-Poppins text-sm py-5 text-black">
             &copy; 2023 lefetena.com
           </h6>
         </footer>

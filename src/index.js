@@ -27,7 +27,7 @@ const router = createBrowserRouter(
 
       <Route path="/*" element={<Public />} />
       <Route path="/verify/:token" element={<EmailVerification />} />
-      {/* <Route path="student/*" element={<StudentDashboardStructure />} /> */}
+      {/* <Route path="student/*" element={<StudentDashboardStructure />} />  */}
 
       {/* Protected routes */}
       <Route element={<RequiredAuthentication />}>

@@ -369,9 +369,9 @@ const UploadPaymentDetails = () => {
               <ul
                 className={`list-disc px-5 font-Roboto text-sm py-2 text-[#6c757d]`}
               >
-                <li>+2519-12-34-56</li>
-                <li>+2519-12-34-56</li>
-                <li>+2519-12-34-56</li>
+                <li>+2519-22-69-4021</li>
+                <li>+2519-13-80-2977</li>
+                <li>+2519-13-15-8556</li>
               </ul>
             </li>
           </ul>

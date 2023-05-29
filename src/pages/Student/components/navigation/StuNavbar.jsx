@@ -5,7 +5,7 @@ import * as Gr from "react-icons/gr";
 import * as Vs from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import user from "../../../../assets/images/user.jpeg";
+import user from "../../../../assets/images/user.png";
 import DropDownProfile from "../../../../common/DropDownProfile";
 import { currentUserEmail } from "../../../../features/auth/authSlice";
 import { logout } from "../../../../features/auth/myAuthSlice";

@@ -1,14 +1,12 @@
 export const BASE_URL = "https://lefetena.com/exit-api/api";
-export const BASE_FILE_URL = "https://lefetena.com/exit-api/api/File/";
-
 // export const BASE_URL = "http://127.0.0.1:8000/api";
-// export const BASE_FILE_URL = "http://127.0.0.1:8000/api/File/";
 
 export const API_TAGS = {
   ALL_SUBSCRIPTIONS: "all-subscription",
   ASSIST_ADMIN: "assist-admins",
   QUESTIONS: "questions",
   MODULES: "modules",
+  DEPARTMENT: "department",
   REGISTER_STUDENT: "register-student",
   SUBSCRIPTIONS: "Subscription",
 };

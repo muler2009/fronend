@@ -76,7 +76,7 @@ const EmailVerification = () => {
           toast.error(res.error.data.title);
         }
       })
-      .catch((err) => toast.error("Data is not saved"));
+      .catch((err) => toast.error("Please try again"));
   }, [params]);
   return (
     <React.Fragment>

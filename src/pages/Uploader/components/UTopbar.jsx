@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiFillSetting } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
-import user from "../../../assets/images/user.jpeg";
+import user from "../../../assets/images/user.png";
 
 const UTopbar = () => {
   return (

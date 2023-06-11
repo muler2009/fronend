@@ -1,3 +1,4 @@
+import { Approval } from "@mui/icons-material";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import { LoadingButton } from "@mui/lab";
@@ -15,20 +16,17 @@ import {
   MenuItem,
   Paper,
   Select,
-  TextField,
   Typography,
 } from "@mui/material";
 import { Stack } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import {
-  useAddAssistAdminMutation,
   useApproveSubscriptionMutation,
   useGetAllSubscriptionQuery,
 } from "../../../../api/apiSlice";
 import Loading from "../../../public/components/Loading";
 import GridData from "../../components/DataGrid/GridData";
-import { Approval } from "@mui/icons-material";
 
 const AllSubscriptionTable = () => {
   const {
@@ -48,23 +46,28 @@ const AllSubscriptionTable = () => {
     //   field: "id",
     //   headerName: "No.",
     //   filterable: false,
+    //   minWidth: 50,
+    //   flex: 50,
     //   renderCell: (index) => index.api.getRowIndex(index.row.id) + 1,
     // },
     {
       field: "studentName",
       headerName: "Name",
+      minWidth: 150,
       flex: 1,
       renderCell: (params) => params?.row?.student?.fullname,
     },
     {
       field: "department",
       headerName: "Department",
+      minWidth: 150,
       flex: 1,
       renderCell: (params) => params?.row?.student?.department,
     },
     {
       field: "requestedDate",
       headerName: "Requested Date",
+      minWidth: 100,
       flex: 1,
       renderCell: (params) =>
         new Date(params?.row?.student?.created_at)?.toLocaleDateString("en-us"),
@@ -72,6 +75,7 @@ const AllSubscriptionTable = () => {
     {
       field: "requestedTime",
       headerName: "Requested Time",
+      minWidth: 100,
       flex: 1,
       renderCell: (params) =>
         new Date(params?.row?.student?.created_at)?.toLocaleTimeString("en-us"),
@@ -79,6 +83,7 @@ const AllSubscriptionTable = () => {
     {
       field: "payment",
       headerName: "Status",
+      minWidth: 150,
       flex: 1,
       renderCell: (params) => (
         <Chip
@@ -90,6 +95,7 @@ const AllSubscriptionTable = () => {
     {
       field: "payee_code",
       headerName: "Pay Code",
+      minWidth: 100,
       flex: 1,
     },
     // {
@@ -101,6 +107,7 @@ const AllSubscriptionTable = () => {
       field: "action",
       headerName: "Action",
       sortable: false,
+      minWidth: 100,
       flex: 1.5,
       align: "left",
       renderCell: (params) => {
@@ -136,13 +143,12 @@ const AllSubscriptionTable = () => {
           setOpenApproval(false);
         }
       })
-      .catch((err) => toast.error("Data is not saved"));
+      .catch((err) => toast.error("Please try again"));
   };
 
   const [filtered, setFiltered] = useState([]);
   const [show, setShow] = useState("Pending");
   useEffect(() => {
-    // console.log(assistData?.data);
     assistData?.data &&
       setFiltered(
         assistData?.data?.filter((item) => item?.payment === "Pending")

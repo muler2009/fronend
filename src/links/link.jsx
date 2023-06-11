@@ -2,9 +2,16 @@ import { FaHome } from 'react-icons/fa'
 import { FcSupport, FcAbout} from 'react-icons/fc'
 import * as Icon from 'react-icons/io'
 import * as MdIcon from 'react-icons/md'
+import * as Hi from 'react-icons/hi'
+
 
 
 export const link = [
+    { 
+        label: 'Home',
+        path: '/',
+        icon: <Hi.HiHome size={20} /> 
+    },
     { 
         label: 'Login',
         path: '/login',

@@ -41,7 +41,7 @@ const QuestionCardModified = (props) => {
 
   const ChoiceLetter = ["A", "B", "C", "D"];
   let letter = ChoiceLetter.map((letter) => letter);
-  // console.log(show);
+
   return (
     <React.Fragment>
       <div className={`text-right pr-5`}>
@@ -53,7 +53,7 @@ const QuestionCardModified = (props) => {
             <div
               className={`w-10 h-10 bg-green-400 rounded-full text-white font-bold flex justify-center items-center`}
             >
-              <h1 className={`text-xl`}>{question.id}</h1>
+              <h1 className={`text-xl`}>{pageNumber + 1}</h1>
             </div>
           </div>
 
@@ -66,8 +66,10 @@ const QuestionCardModified = (props) => {
               <div className={`flex flex-col gap-2`}>
                 {question?.choices.map((answer, index) => (
                   <div
-                    onClick={(e) => onAnswerSelected(question, answer, index)}
-                    key={answer}
+                    onClick={(e) => {
+                      onAnswerSelected(question, answer, index);
+                    }}
+                    key={Math.random()}
                     className={`w-full flex space-x-3`}
                   >
                     <div
@@ -94,7 +96,7 @@ const QuestionCardModified = (props) => {
                           : null
                       }`}
                     >
-                      {answer}
+                      {answer?.toString()?.trim()}
                     </div>
                   </div>
                 ))}

@@ -11,10 +11,10 @@ export const MODULE_COLUMN = [
     Header: "Module Name",
     accessor: "module",
   },
-  {
-    Header: "Department",
-    accessor: "department",
-  },
+  // {
+  //   Header: "Department",
+  //   accessor: "department",
+  // },
   // {
   //     Header: "Category",
   //     accessor: "moduleCategory"
@@ -34,6 +34,10 @@ export const MODULE_COLUMN = [
   {
     Header: "Lock",
     accessor: "lock",
+  },
+  {
+    Header: "Payee Code",
+    accessor: "payee_code",
   },
   {
     Header: "Payment",

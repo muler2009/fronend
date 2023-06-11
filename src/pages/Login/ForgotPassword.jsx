@@ -5,6 +5,9 @@ import * as Md from "react-icons/md";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useForgotMutation } from "../../api/apiSlice";
+import { Button } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+import Loading from "../public/components/Loading";
 
 const ForgotPassword = () => {
   const forgotRef = useRef();
@@ -17,7 +20,7 @@ const ForgotPassword = () => {
   return (
     <section className="container mx-auto flex justify-center items-start my-10 py-10 h-full bg-[#fafafa]">
       <div
-        className={`w-[40%] h-full rounde-sm flex flex-col justify-center items-center shadow-md py-10 my-10 border-2 border-[#7c60b8] relative bg-white`}
+        className={`sm:w-[50%] ss:w-[55%] xs:w-[65%] xxs:w-[90%] xxxs:w-[95%] h-full rounde-sm flex flex-col justify-center items-center shadow-md py-10 my-10 border-2 border-[#7c60b8] relative bg-white`}
       >
         {/* Fragment for displaying the key */}
         <div
@@ -79,28 +82,32 @@ const ForgotPassword = () => {
 
           {/* for the reset button */}
           <div className={`flex`}>
-            <button
-              className={`btn-sm w-full mx-auto hover:bg-[#28a745] hover:text-white`}
-              onClick={async (e) => {
-                e.preventDefault();
+            {!isForgotRequestLoading ? (
+              <button
+                className={`btn-sm w-full mx-auto hover:bg-[#28a745] hover:text-white`}
+                onClick={async (e) => {
+                  e.preventDefault();
 
-                await forgotRequest({ email: forgotpasswordEmail })
-                  .then((res) => {
-                    if (res.error) {
-                      toast.error(
-                        res.error.data.title || res.error.data.message
-                      );
-                    } else {
-                      toast.success(
-                        "Password reset link is sent. Please check your email."
-                      );
-                    }
-                  })
-                  .catch((err) => toast.error("Data is not saved"));
-              }}
-            >
-              Reset Password
-            </button>
+                  await forgotRequest({ email: forgotpasswordEmail })
+                    .then((res) => {
+                      if (res.error) {
+                        toast.error(res?.error?.data?.data?.error);
+                      } else {
+                        toast.success(
+                          "Password reset link is sent. Please check your email."
+                        );
+                      }
+                    })
+                    .catch((err) => toast.error("Data is not send"));
+                }}
+              >
+                Reset Password
+              </button>
+            ) : (
+              <div className="w-full text-center">
+                <Loading />
+              </div>
+            )}
           </div>
 
           <div className={`hover:text-blue-700`}>

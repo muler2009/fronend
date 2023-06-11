@@ -1,9 +1,15 @@
 import React, { useEffect, useRef } from "react";
-import { Heros, Subscribe, FAQ, FAQImage } from "./components";
-import Signup from "../signup/Signup";
+import {
+  Heros,
+  Subscribe,
+  FAQ,
+  FAQImage,
+  FAQCard,
+  ContactAddress,
+} from "./components";
+import Signup, { SignupHome } from "../signup/Signup";
 import Aboutus from "./components/Aboutus";
 import { motion, useInView, useAnimation } from "framer-motion";
-import FAQCard from "./components/FAQCard";
 
 const HomeX = ({ children }) => {
   const ref = useRef(null);
@@ -14,7 +20,7 @@ const HomeX = ({ children }) => {
     if (isInView) {
       mainContols.start("visible");
     }
-    // console.log(isInView);
+    console.log(isInView);
   }, [isInView]);
 
   return (
@@ -34,17 +40,18 @@ const HomeX = ({ children }) => {
   );
 };
 
-const Home = () => {
+export const Home = () => {
   return (
     <HomeX>
       <Heros />
+      <ContactAddress />
       <Subscribe />
-      <div className="container mx-auto flex">
-        <div className="xs:w-full xs:px-5 sm:px-10 md:w-1/2">
+      <div className="xxs:w-full xxs:mx-auto xxs:px-5 md:container md:mx-auto md:flex md:flex-wrap">
+        <div className="xs:w-full sm:px-10 md:w-1/2">
           <FAQCard />
         </div>
-        <div className="xs:w-full xs:px-5 md:w-1/2">
-          <Signup id="#register" />
+        <div className="xs:w-full md:w-1/2 lg:px-10 lg:mx-auto">
+          <SignupHome id="#register" />
         </div>
       </div>
       <Aboutus />
@@ -52,4 +59,22 @@ const Home = () => {
   );
 };
 
-export default Home;
+// export const Home = () => {
+//   return (
+//     <React.Fragment>
+//       <Heros />
+//       <Subscribe />
+//       <section className="flex md:flex space-x-5 bg-[#f7f9fa]">
+//         <div className="flex flex-1 flex-wrap justify-start md:container md:mx-auto md:px-10 ">
+//           <div className="w-full md:w-1/2 px-5 ">
+//             <Aboutus />
+//             <FAQ />
+//           </div>
+//           <div className="w-full md:w-1/2">
+//             <Signup id="#register" />
+//           </div>
+//         </div>
+//       </section>
+//     </React.Fragment>
+//   );
+// };

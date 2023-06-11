@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
-import { institution, department } from "../../common/selectItem";
-import { AiOutlineCheck, AiFillInfoCircle } from "react-icons/ai";
+import React, { useEffect, useRef, useState } from "react";
+import { AiFillInfoCircle } from "react-icons/ai";
+import { FaEnvelope, FaLock, FaTimesCircle } from "react-icons/fa";
 import { GiCheckMark } from "react-icons/gi";
-import { BsPeopleFill, BsCheck2All } from "react-icons/bs";
-import { FaEnvelope, FaTimesCircle, FaLock } from "react-icons/fa";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { department, institution } from "../../common/selectItem";
 import { useRegisterUserDataMutation } from "../../features/users/registerApiSlice";
-import SuccessMessage from "../../components/ui/SuccessMessage";
 
-import Swal from "sweetalert2";
-import * as BsIcon from "react-icons/bs";
 import * as Fa from "react-icons/fa";
+import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useGetDepartmentsQuery } from "../../api/apiSlice";
 
 const NAME_REGEX = /^[A-Za-z][A-Za-z0-9-_]{4,23}$/;
 const EMAIL_VALIDATOR_REGEX =
@@ -85,6 +83,12 @@ const RegistrationForm = (props) => {
     setRegistrationSuccessful,
     isRegistrationSuccessful,
   } = props;
+
+  const {
+    data: departmentData,
+    isLoading: departmentIsLoading,
+    error: departmentError,
+  } = useGetDepartmentsQuery();
 
   const focusReference = useRef({});
   const errorRef = useRef();
@@ -654,7 +658,7 @@ const RegistrationForm = (props) => {
 
         {/* Aggrement and others */}
         <div className="flex flex-col space-y-3 pt-5">
-          <div className="flex flex-row justify-start items-center space-x-2">
+          {/* <div className="flex flex-row justify-start items-center space-x-2">
             <aside className={``}>
               <input
                 type="checkbox"
@@ -675,7 +679,7 @@ const RegistrationForm = (props) => {
                 Click here to read
               </a>
             </p>
-          </div>
+          </div> */}
           <div className={`text-sm flex space-x-3`}>
             <p>Already registered ?</p>
             <span className={``}>
@@ -687,9 +691,9 @@ const RegistrationForm = (props) => {
         </div>
 
         {/* Create An Account Buttone */}
-        <div className="py-4 relative top-6">
+        <div className="py-4 relative top-6 xxs:w-full">
           <button
-            className="w-1/2 px-2 py-5 bg-[#3C4852] text-sm rounded-none text-white font-Poppins cursor-pointer disabled:opacity-25 disabled:cursor-default"
+            className="xxs:w-full md:w-1/2 px-2 py-5 bg-[#3C4852] text-sm rounded-none text-white font-Poppins cursor-pointer disabled:opacity-25 disabled:cursor-default"
             onClick={() => {
               onCreateClicked();
               showSuccessAlert();
@@ -697,9 +701,9 @@ const RegistrationForm = (props) => {
             disabled={
               !boolValidators.validLName ||
               !boolValidators.validName ||
-              !boolValidators.validMatchPassword ||
-              !requiredValues.aggrement
-                ? true
+              !boolValidators.validMatchPassword
+                ? // !requiredValues.aggrement
+                  true
                 : false
             }
           >

@@ -22,11 +22,33 @@ export const apiSlice = createApi({
   refetchOnMountOrArgChange: true,
 
   endpoints: (builder) => ({
+    // ME
+    //---------------------------------
+    getMe: builder.query({
+      query: () => "me",
+      providesTags: [],
+    }),
+
     // QUESTIONS
     //---------------------------------
     getQuestions: builder.query({
       query: () => "questions",
       providesTags: [API_TAGS.QUESTIONS],
+    }),
+    postSubscribedQuestions: builder.mutation({
+      query: (data) => ({
+        url: `subscribed-questions`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [API_TAGS.QUESTIONS],
+    }),
+
+    // DEPARTMENT
+    //---------------------------------
+    getDepartments: builder.query({
+      query: () => "departments",
+      providesTags: [API_TAGS.DEPARTMENT],
     }),
 
     // REGISTER_STUDENT
@@ -58,6 +80,14 @@ export const apiSlice = createApi({
     forgotVerify: builder.mutation({
       query: (data) => ({
         url: `forgot-password/${data?.token}`,
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: [API_TAGS.REGISTER_STUDENT],
+    }),
+    resetPassToken: builder.mutation({
+      query: (data) => ({
+        url: `reset-pass-token/${data?.token}`,
         method: "POST",
         body: data,
       }),
@@ -112,14 +142,23 @@ export const apiSlice = createApi({
 });
 
 export const {
+  // ME
+  useGetMeQuery,
+
   // QUESTIONS
   //---------------------------------
   useGetQuestionsQuery,
+  usePostSubscribedQuestionsMutation,
+
+  // DEPARTMENT
+  //---------------------------------
+  useGetDepartmentsQuery,
 
   // REGISTER_STUDENT
   //---------------------------------
   useRegisterStudentMutation,
   useVerifyMutation,
+  useResetPassTokenMutation,
 
   // SUBSCRIPTIONS
   //---------------------------------

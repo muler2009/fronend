@@ -7,11 +7,11 @@ export const dropDownMenu = [
   //   icon: <cg.CgProfile />,
   //   path: "./profile",
   // },
-  {
-    label: "Change Password",
-    icon: <fi.FiUnlock />,
-    hasModal: true,
-  },
+  // {
+  //   label: "Change Password",
+  //   icon: <fi.FiUnlock />,
+  //   hasModal: true,
+  // },
   //   {
   //     label: "Logout",
   //     icon: <fi.FiPower />,

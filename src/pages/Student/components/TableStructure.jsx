@@ -1,16 +1,17 @@
 import React, { Fragment } from "react";
-import {
-  useTable,
-  useRowSelect,
-  usePagination,
-  useFilters,
-  useGlobalFilter,
-} from "react-table";
-import ShowDataEntries from "../../../components/common/ShowDataEntries";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import {
+  useGlobalFilter,
+  usePagination,
+  useRowSelect,
+  useTable,
+} from "react-table";
 import ModuleSearch from "../../../components/ModuleSearch";
+import ShowDataEntries from "../../../components/common/ShowDataEntries";
+import { useNavigate } from "react-router-dom";
 
-const TableStructure = ({ columns, data, useAction }) => {
+const TableStructure = ({ columns, data, useAction, getDataSelected }) => {
+  const navigate = useNavigate();
   const tableHookInstance = useTable(
     {
       columns,
@@ -18,7 +19,7 @@ const TableStructure = ({ columns, data, useAction }) => {
       initialState: {
         pageIndex: 0,
         pageSize: 5,
-        hiddenColumns: ["lock", "pending"],
+        hiddenColumns: ["module_id", "lock", "pending"],
       },
     },
     useAction,
@@ -90,7 +91,19 @@ const TableStructure = ({ columns, data, useAction }) => {
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => {
                     return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      <td
+                        {...cell.getCellProps()}
+                        onClick={() => {
+                          console.log(cell?.row?.original?.lock);
+                          cell?.row?.original?.lock === "unlocked"
+                            ? navigate(
+                                `../new-exam/` + cell?.row?.original?.module_id
+                              )
+                            : getDataSelected(cell?.row?.original);
+                        }}
+                      >
+                        {cell.render("Cell")}
+                      </td>
                     );
                   })}
                 </tr>

@@ -11,6 +11,7 @@ import { Submenu } from './Sidebar'
 import { currentUserEmail } from '../../../features/auth/authSlice'
 import { FaPowerOff } from 'react-icons/fa'
 import LogoutConfirmationModal from './LogoutConfirmationModal'
+import logo1 from '../../../assets/images/logo1.png'
 
 const StuNavbar = () => {
 
@@ -22,7 +23,7 @@ const StuNavbar = () => {
 
   return (
     <React.Fragment>
-        <div className={`py-5 px-4 h-16 bg-[#ffffff] border-b-[1px] border-b-[#dee2e6]`}>
+        <div className={`py-3 px-4 bg-[#ffffff] border-b-[1px] border-b-[#dee2e6]`}>
             <div className={`flex justify-between items-center`}>
                 <div className={`flex justify-between items-center xs:mx-5 xs:space-x-5`}>
 
@@ -35,7 +36,7 @@ const StuNavbar = () => {
 
                     <Link to='/student' className={`font-Oswald tracking-[0.045em] text-2xl flex justify-start items-center space-x-2 px-3 text-[#071466]`}>
                         
-                        <span className={`text-xl`}>PiConsultancy</span>
+                        <img src={logo1} alt="Pi Logo" className="w-[110px] h-[70px]" />
                     </Link>     
                 </div>
 

@@ -11,6 +11,7 @@ import { totalNumberOfQuestion } from "../../../features/module/moduleSlice";
 import { Button } from "@mui/material";
 import { useSubscribeMutation } from "../../../api/apiSlice";
 import { Link } from "react-router-dom";
+import Loading from "../../public/components/Loading";
 
 const UpgradeFromModule = (props) => {
   const totalQuestionInModule = useSelector(totalNumberOfQuestion);
@@ -55,7 +56,7 @@ const UpgradeFromModule = (props) => {
           setUpgradeModalShowState(false);
         }
       })
-      .catch((err) => toast.error("Data is not saved"));
+      .catch((err) => toast.error("Please try again"));
 
     // toast.success("You successfully submitted the payment detail!", {
     //   position: toast.POSITION.TOP_CENTER,
@@ -79,7 +80,7 @@ const UpgradeFromModule = (props) => {
   return (
     <section className="bg-black bg-opacity-10 inset-0 fixed top-0  flex justify-center sm:px-10">
       <div
-        className={`container mx-auto h-2/3 bg-white relative top-10 rounded-t-lg sm:w-full sm:h-[700px] lg:w-[30%] lg:h-2/3`}
+        className={`container mx-auto h-[70%] bg-white relative top-10 rounded-t-lg sm:w-full sm:h-[700px] lg:w-[30%] `}
       >
         <div className={`border-b-1 flex flex-col`}>
           <div
@@ -143,16 +144,20 @@ const UpgradeFromModule = (props) => {
             >
               Prev
             </Button>
-            <Button
-              className={`px-5 bg-gray-200 text-sm rounded-none disabled:cursor-default disabled:opacity-25 duration-200`}
-              onClick={() => {
-                page !== title.length - 1
-                  ? setPage((prev) => prev + 1)
-                  : uploadSuccessNotification();
-              }}
-            >
-              {page !== title.length - 1 ? "Next" : "Request"}
-            </Button>
+            {isSubscribeForModuleLoading ? (
+              <Loading />
+            ) : (
+              <Button
+                className={`px-5 bg-gray-200 text-sm rounded-none disabled:cursor-default disabled:opacity-25 duration-200`}
+                onClick={() => {
+                  page !== title.length - 1
+                    ? setPage((prev) => prev + 1)
+                    : uploadSuccessNotification();
+                }}
+              >
+                {page !== title.length - 1 ? "Next" : "Request"}
+              </Button>
+            )}
 
             {/* <button
               key={2}
@@ -253,11 +258,11 @@ const UpgradeModuleFor = ({ dataSelected }) => {
 
         <div className={`text-xl font-Poppins text-center mt-10`}>
           {dataSelected.num_of_ques === 200
-            ? "200 ETB"
-            : dataSelected.num_of_ques === 400
-            ? "300 ETB"
+            ? "299 ETB"
             : dataSelected.num_of_ques === 500
-            ? "350 ETB"
+            ? "499 ETB"
+            : dataSelected.num_of_ques === 800
+            ? "699 ETB"
             : null}
         </div>
       </div>
@@ -268,7 +273,7 @@ const UpgradeModuleFor = ({ dataSelected }) => {
 const PaymentInformation = () => {
   return (
     <React.Fragment>
-      <div className={`flex flex-col px-5 my-5`}>
+      <div className={`flex flex-col px-5 mb-3`}>
         {bank_attribute?.map((bank, index) => (
           <div
             className={`bg-white py-3 px-5 flex justify-between items-center font-Poppins hover:bg-[#eff5fa]  hover:border-[#5584a4] hover:rounded-lg shadow-lg my-2`}
@@ -312,7 +317,7 @@ const UploadPaymentDetails = () => {
       <form className={`flex flex-col gap-10 px-10 w-5/6 mx-auto `}>
         <div className={``}>
           <h1
-            className={`text-black text-lg font-Roboto py-1 flex justify-start items-center`}
+            className={`text-black text-lg font-Roboto  flex justify-start items-center`}
           >
             <Md.MdInfo size={20} className={`mr-2`} color="blue" />
             Instruction
@@ -330,60 +335,41 @@ const UploadPaymentDetails = () => {
                 <li>
                   <Button
                     onClick={() =>
-                      window.open("https://t.me/legfetena3", "_blank")
+                      window.open("https://t.me/@lefetena_1", "_blank")
                     }
                     target="_blank"
                     startIcon={<Fi.FiNavigation />}
                   >
-                    @lefetena3
+                    @lefetena_1
                   </Button>
                 </li>
                 <li>
                   <Button
                     onClick={() =>
-                      window.open("https://t.me/legfetena2", "_blank")
+                      window.open("https://t.me/@lefetena_2", "_blank")
                     }
                     target="_blank"
                     startIcon={<Fi.FiNavigation />}
                   >
-                    @lefetena2
+                    @lefetena_2
                   </Button>
                 </li>
-                <li>
-                  <Button
-                    onClick={() =>
-                      window.open("https://t.me/legfetena3", "_blank")
-                    }
-                    target="_blank"
-                    startIcon={<Fi.FiNavigation />}
-                  >
-                    @lefetena3
-                  </Button>
-                </li>
-              </ul>
-            </li>
-            <li>
-              For more info
-              <ul
-                className={`list-disc px-5 font-Roboto text-sm py-2 text-[#6c757d]`}
-              >
-                <li>+2519-12-34-56</li>
-                <li>+2519-12-34-56</li>
-                <li>+2519-12-34-56</li>
+                <li>+2519-13-80-2977</li>
+                <li>+2519-23-32-1962</li>
               </ul>
             </li>
           </ul>
-          <p
-            className={`text-black text-lg font-xs py-1 flex justify-start items-center`}
+          <h1
+            className={`text-black text-xs font-Roboto py-1 flex justify-start items-center`}
           >
             <Bs.BsFillHandIndexThumbFill
-              size={20}
+              size={18}
               className={`mr-2`}
               color="blue"
             />
             Click on <span className="text-blue-700 px-2">REQUEST</span> button
             to order module upgrade
-          </p>
+          </h1>
         </div>
         {/* <div className={`space-y-2`}>
           <label className={`font-Roboto mb-[0.5rem] text-[15px]`}>

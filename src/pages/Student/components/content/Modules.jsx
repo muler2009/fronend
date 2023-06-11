@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import * as Go from "react-icons/go";
 import * as Gr from "react-icons/gr";
-import * as Hi from "react-icons/hi2";
 import { Link } from "react-router-dom";
-import TableStructure from "../ui/TableStructure";
-import { ShowEntries } from "./Result";
-import { useGetModuleQuery } from "../../../../features/module/moduleApiSlice";
 import { MODULE_COLUMN } from "../../../../common/attributes";
-import UpgradeAccountModal from "./UpgradeAccountModal";
+import { useGetModuleQuery } from "../../../../features/module/moduleApiSlice";
+import TableStructure from "../ui/TableStructure";
 import UpgradeFromModule from "./UpgradeFromModule";
-import { useGetQuestionsQuery } from "../../../../api/apiSlice";
 
 const AllModules = () => {
   const { data, isLoading, isSuccess, isError } = useGetModuleQuery(); // destructuring items from Query
@@ -41,6 +37,7 @@ const AllModules = () => {
                 >
                   <Link to={`../new-exam`}>
                     <Gr.GrUnlock size={20} color="white" />
+                    asd
                   </Link>
                 </button>
               ) : (
@@ -49,6 +46,7 @@ const AllModules = () => {
                   disabled={!rowData ? true : false}
                 >
                   <Go.GoLock size={20} />
+                  sda
                 </button>
               )}
             </div>

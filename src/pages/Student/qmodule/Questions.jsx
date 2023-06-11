@@ -1,14 +1,7 @@
 import React, { useState } from "react";
-import { useAddQuestion } from "../../Uploader/components/useAddQuestion";
-import AnswerExplanation from "./AnswerExplanation";
-import ShowResultOfQuiz from "./ShowResultOfQuiz";
 import QuestionCardModified from "./QuestionCardModified";
-import { currentModuleCode } from "../../../features/module/moduleSlice";
-import { useSelector } from "react-redux";
-import { current } from "@reduxjs/toolkit";
 
 const Questions = (props) => {
-  const module_code = useSelector(currentModuleCode);
   const {
     questions,
     result,
@@ -30,12 +23,12 @@ const Questions = (props) => {
   } = props;
   return (
     <React.Fragment>
-      <div
+      {/* <div
         className={`bg-white mx-1 flex justify-between items-center px-10 py-5`}
       >
         <h1 className={`font-Poppins`}>Mock Module{module_code}</h1>
         <h1 className={`font-Oswald`}>00:00</h1>
-      </div>
+      </div> */}
       <div className={`flex flex-col`}>
         {/* {questions?.map((question, index) => {
           return (
@@ -55,7 +48,6 @@ const Questions = (props) => {
         })} */}
         <QuestionCardModified
           question={questions}
-          // key={index}
           result={result}
           setResult={setResult}
           answerSelected={answerSelected}

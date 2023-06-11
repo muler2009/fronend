@@ -131,7 +131,7 @@ const AssistTable = () => {
           setOpenAdd(false);
         }
       })
-      .catch((err) => toast.error("Data is not saved"));
+      .catch((err) => toast.error("Please try again"));
   };
 
   if (errorAssist) return <Typography>{errorAssist?.data?.message}</Typography>;

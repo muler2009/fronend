@@ -51,7 +51,6 @@ export const side_navigation = [
   //   path: "modules",
   //   icon: <GrNotes />,
   // },
-
   // {
   //     sideKey: 2,
   //     label: 'Exams',
@@ -63,22 +62,18 @@ export const side_navigation = [
   //             path: 'new-exam',
   //             label: 'New Exam',
   //             icon: <GrNotes />,
-
   //         },
   //         {
   //             path: 'upcoming-exam',
   //             label: 'Upcoming Exam',
   //             icon: <GrNotes />,
-
   //         },
   //         {
   //             path: 'On Going Exam',
   //             label: 'On Going Exam',
   //             icon: <GrNotes />,
-
   //         }
   //     ]
-
   // },
   // {
   //   sideKey: 3,
@@ -86,11 +81,10 @@ export const side_navigation = [
   //   path: "result",
   //   icon: <AiFillProfile />,
   // },
-
-  {
-    sideKey: 5,
-    label: "Change Password",
-    path: "change_password",
-    icon: <AiFillProfile />,
-  },
+  // {
+  //   sideKey: 5,
+  //   label: "Change Password",
+  //   path: "change_password",
+  //   icon: <AiFillProfile />,
+  // },
 ];

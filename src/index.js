@@ -19,21 +19,34 @@ import EmailVerification from "./pages/public/EmailVerification";
 import Public from "./pages/public/Public";
 import store from "./store/store";
 import AllSubscription from "./pages/Admin/Pages/AllSubscription/AllSubscription";
+import ForgotPasswordVerified from "./pages/public/ForgotPasswordVerified";
+import RequiredAdminAuthentication from "./features/auth/RequiredAdminAuthentication";
+import RequiredHomeAuthentication from "./features/auth/RequiredHomeAuthentication";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Layout />}>
       {/* Public Route */}
 
-      <Route path="/*" element={<Public />} />
+      {/* <Route path="/*" element={<Public />} /> */}
       <Route path="/verify/:token" element={<EmailVerification />} />
-      {/* <Route path="student/*" element={<StudentDashboardStructure />} /> */}
+      <Route
+        path="/forgot_password/:token"
+        element={<ForgotPasswordVerified />}
+      />
+      {/* <Route path="student/*" element={<StudentDashboardStructure />} />  */}
+
+      <Route element={<RequiredHomeAuthentication />}>
+        <Route path="/*" />
+      </Route>
 
       {/* Protected routes */}
       <Route element={<RequiredAuthentication />}>
         <Route path="student/*" element={<StudentDashboardStructure />} />
         <Route path="upload/*" element={<UploaderStructure />} />
+      </Route>
 
+      <Route element={<RequiredAdminAuthentication />}>
         <Route path="my-admin/*" element={<ModuleAdmin />} />
         <Route path="my-admin/assist" element={<AssistAdmin />} />
         <Route path="my-admin/subscription" element={<AllSubscription />} />

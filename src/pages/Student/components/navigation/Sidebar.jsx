@@ -4,7 +4,7 @@ import { side_navigation } from '../../constants/studentNavigation'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { currentUserEmail } from '../../../../features/auth/authSlice'
-import user from '../../../../assets/images/user.jpeg'
+import user from '../../../../assets/images/user.png'
 import * as Ri from 'react-icons/ri'
 
 

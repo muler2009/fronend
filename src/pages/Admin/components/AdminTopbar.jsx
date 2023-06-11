@@ -4,8 +4,11 @@ import {
   AiOutlineDashboard,
   AiOutlinePoweroff,
 } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../features/auth/myAuthSlice";
 
 const AdminTopbar = () => {
+  const dispatch = useDispatch();
   return (
     <React.Fragment>
       <section
@@ -26,7 +29,11 @@ const AdminTopbar = () => {
               <div
                 className={`w-12 h-12 flex justify-center items-center rounded-full hover:bg-gray-100 cursor-pointer relative`}
               >
-                <AiOutlinePoweroff className={`text-[#143068]`} size={20} />
+                <AiOutlinePoweroff
+                  className={`text-[#143068]`}
+                  size={20}
+                  onClick={() => dispatch(logout())}
+                />
               </div>
             </div>
           </div>

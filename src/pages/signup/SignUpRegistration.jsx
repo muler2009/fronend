@@ -28,6 +28,7 @@ const institution = [
 const department = [
   // { id: 1, name: "Mechanical Engineering" },
   { id: 2, name: "Accounting" },
+  { id: 3, name: "Management" },
   // { deptId: 2, name: "Business Management" },
   // { deptId: 3, name: "Management" },
   // { deptId: 4, name: "Software Engineering" },

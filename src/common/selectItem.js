@@ -9,6 +9,7 @@ const institution = [
 const department = [
   //   { id: 1, name: "Mechanical Engineering" },
   { id: 2, name: "Accounting" },
+  { id: 3, name: "Management" },
 ];
 
 const diificulty_level = [
